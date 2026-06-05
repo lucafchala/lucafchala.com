@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark" data-lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Luca F. Chala</title>
+    <meta name="description" content="Estudante, fotógrafo e radioamador (PU2XIK) em São Paulo, BR.">
+    <meta property="og:title" content="Luca F. Chala">
+    <meta property="og:description" content="Fotografia, radioamadorismo (PU2XIK) e contato.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lucafchala.com/">
+    
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.dataset.theme = savedTheme;
+    </script>
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg:         #0d0c0a;
+            --border:     #252220;
+            --text:       #e6e1d6;
+            --muted:      #6a6358;
+            --accent:     #c08030;
+            --accent-dim: #6a4818;
+            --ctrl-bg:    #161412;
+        }
+
+        [data-theme="light"] {
+            --bg:         #f4efe6;
+            --border:     #d8d1c4;
+            --text:       #1c1a17;
+            --muted:      #9a8f80;
+            --accent:     #a06820;
+            --accent-dim: #c89050;
+            --ctrl-bg:    #ede8df;
+        }
+
+        html {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        body {
+            min-height: 100vh;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 48px 32px 72px;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+            opacity: 0.28;
+        }
+
+        /* ── Controls ── */
+        .controls {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 24px;
+        }
+
+        .controls-inner {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--ctrl-bg);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 4px 6px;
+            transition: background 0.25s, border-color 0.25s;
+        }
+
+        .ctrl-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 4px 7px;
+            cursor: pointer;
+            transition: color 0.15s;
+            border-radius: 2px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .ctrl-btn:hover { color: var(--accent); }
+        .ctrl-btn.active { color: var(--text); }
+
+        #btn-theme {
+            font-size: 15px;
+            padding: 2px 7px;
+        }
+
+        .ctrl-sep {
+            color: var(--border);
+            font-size: 10px;
+            user-select: none;
+            line-height: 1;
+        }
+
+        /* ── Memorial ── */
+        .memorial {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            margin-bottom: 44px;
+            background: linear-gradient(135deg, var(--ctrl-bg) 0%, transparent 100%);
+            border-radius: 4px;
+            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) both;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .memorial::before {
+            content: '†';
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--accent);
+            opacity: 0.8;
+        }
+
+        .memorial-header {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .memorial-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 22px;
+            color: var(--text);
+            line-height: 1;
+            font-weight: 600;
+        }
+
+        .memorial-dates {
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            color: var(--accent-dim);
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .memorial-text {
+            font-size: 13px;
+            color: var(--text);
+            letter-spacing: 0.03em;
+            line-height: 1.6;
+            font-weight: 300;
+            padding-right: 20px;
+        }
+
+        /* ── Header ── */
+        header {
+            margin-bottom: 52px;
+            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) both;
+        }
+
+        .name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(56px, 11vw, 86px);
+            font-weight: 300;
+            line-height: 0.92;
+            letter-spacing: -0.025em;
+            margin-bottom: 18px;
+        }
+
+        .name em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .micro {
+            margin-bottom: 22px;
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 10.5px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            flex-wrap: wrap;
+        }
+
+        .tagline .sep {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--border);
+            flex-shrink: 0;
+        }
+
+        .callsign {
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.14em;
+        }
+
+        /* ── Rule ── */
+        .rule {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 36px 0;
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+        }
+
+        .rule::before,
+        .rule::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── Bio ── */
+        .bio-wrapper {
+            max-width: 540px;
+            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.12s both;
+        }
+
+        .bio {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 21px;
+            line-height: 1.82;
+            color: var(--text);
+            letter-spacing: 0.013em;
+            font-feature-settings: "liga" 1, "kern" 1, "onum" 1, "calt" 1;
+            font-variant-ligatures: common-ligatures;
+            text-rendering: optimizeLegibility;
+        }
+
+        .bio::first-letter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.4em;
+            font-weight: 600;
+            font-style: italic;
+            float: left;
+            line-height: 0.80;
+            margin-right: 0.085em;
+            margin-top: 0.08em;
+            color: var(--accent);
+        }
+
+        .bio strong {
+            font-weight: 600;
+            font-style: italic;
+            color: var(--text);
+        }
+
+        /* ── Links ── */
+        .links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px 28px;
+            margin-top: 52px;
+            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.24s both;
+        }
+
+        .group h3 {
+            font-size: 9.5px;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .group ul { list-style: none; }
+        .group li { margin-bottom: 7px; }
+
+        .group a,
+        .services-row a,
+        footer a {
+            text-decoration: none;
+            transition: color 0.15s, border-color 0.15s, background 0.15s;
+        }
+
+        .group a {
+            color: var(--text);
+            font-size: 12px;
+            font-weight: 300;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        /* Internal arrow → */
+        .arr {
+            color: var(--accent-dim);
+            font-size: 10px;
+            transition: color 0.15s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .group a:hover .arr {
+            color: var(--accent);
+            transform: translateX(3px);
+        }
+
+        /* External arrow ↗ */
+        .arr-ext {
+            color: var(--accent-dim);
+            font-size: 11px;
+            line-height: 1;
+            transition: color 0.15s, transform 0.2s;
+            display: inline-block;
+        }
+
+        .group a:hover .arr-ext {
+            color: var(--accent);
+            transform: translate(2px, -2px);
+        }
+
+        .group a.cta-link {
+            padding: 4px 10px;
+            margin-left: -10px;
+            border-left: 2px solid var(--accent-dim);
+            border-radius: 0 3px 3px 0;
+            background: linear-gradient(90deg, var(--ctrl-bg) 0%, transparent 100%);
+        }
+
+        .group a.cta-link:hover {
+            border-left-color: var(--accent);
+            background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
+        }
+
+        .deprecated { opacity: 0.38; }
+
+        .deprecated-label {
+            font-size: 9px;
+            color: var(--muted);
+            letter-spacing: 0.06em;
+        }
+
+        /* ── Services ── */
+        .services {
+            margin-top: 60px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
+            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.36s both;
+        }
+
+        .services-label {
+            font-size: 9.5px;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .services-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .services-row a {
+            color: var(--muted);
+            font-size: 11.5px;
+            font-weight: 300;
+        }
+
+        .services-row a:hover { color: var(--text); }
+
+        /* ── Footer ── */
+        footer {
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.44s both;
+        }
+
+        footer a {
+            color: var(--muted);
+            font-size: 10.5px;
+            letter-spacing: 0.05em;
+        }
+
+        footer a:hover { color: var(--accent); }
+
+        /* ── Animation ── */
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 540px) {
+            body { padding: 32px 22px 52px; }
+            .links { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+            .bio { font-size: 18px; }
+        }
+
+        @media (max-width: 360px) {
+            .links { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="h-card">
+
+    <a href="https://lucafchala.com/" class="u-url" style="display:none;"></a>
+
+    <div class="controls">
+        <div class="controls-inner">
+            <button class="ctrl-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
+            <span class="ctrl-sep">|</span>
+            <button class="ctrl-btn" id="btn-en" onclick="setLang('en')">EN</button>
+            <span class="ctrl-sep">·</span>
+            <button class="ctrl-btn" id="btn-theme" onclick="toggleTheme()" title="Toggle Dark/Light Mode" aria-label="Alternar tema de cores">◐</button>
+        </div>
+    </div>
+
+    <!-- MEMORIAL -->
+    <div class="memorial" role="note" aria-label="Nota de pesar">
+        <div class="memorial-header">
+            <span class="memorial-name">Gabriel Ganley</span>
+            <span class="memorial-dates">2003 – 23.05.2026</span>
+        </div>
+        <p class="memorial-text" id="memorial-text">Descanse em paz, Bbzinho. Obrigado por inspirar tantos.</p>
+    </div>
+
+    <header>
+        <h1 class="name p-name">Luca <em>F.</em><br>Chala</h1>
+        <p class="micro">photography · radio</p>
+        <div class="tagline">
+            <span data-i18n="t1">Estudante</span>
+            <span class="sep"></span>
+            <span data-i18n="t2">Fotógrafo</span>
+            <span class="sep"></span>
+            <span class="callsign">PU2XIK</span>
+            <span class="sep"></span>
+            <span>São Paulo, BR</span>
+        </div>
+    </header>
+
+    <div class="rule">CQ DE PU2XIK</div>
+
+    <div class="bio-wrapper">
+        <p class="bio p-note" data-i18n="bio">
+            Estudante baseado em São Paulo. Fotografo o cotidiano urbano com uma <strong>Sony A6700</strong>, atuo como radioamador sob o indicativo <strong>PU2XIK</strong> e divido meu tempo entre treinos de hipertrofia e a preparação para cursar engenharia elétrica.
+        </p>
+    </div>
+
+    <div class="links">
+        <div class="group">
+            <h3 data-i18n="h_photo">Fotografia</h3>
+            <ul>
+                <li>
+                    <a href="https://fotos.lucafchala.com" target="_blank" rel="noopener noreferrer">
+                        <span class="arr">→</span><span data-i18n="fotos">Fotos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://lucafchala.com/instagram" target="_blank" rel="noopener noreferrer">
+                        <span class="arr">→</span> Instagram
+                    </a>
+                </li>
+                <li>
+                    <a href="https://weblog.lucafchala.com/2024/06/photography-gear" target="_blank" rel="noopener noreferrer">
+                        <span class="arr">→</span><span data-i18n="gear">Equipamento</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="group">
+            <h3 data-i18n="h_radio">Rádio</h3>
+            <ul>
+                <li>
+                    <!-- external: qrz.com -->
+                    <a href="https://www.qrz.com/db/PU2XIK" target="_blank" rel="noopener noreferrer">
+                        <span class="arr-ext">↗</span> QRZ.com
+                    </a>
+                </li>
+                <li>
+                    <a href="https://radio.lucafchala.com" target="_blank" rel="noopener noreferrer">
+                        <span class="arr">→</span> Radio Portal
+                    </a>
+                </li>
+                <li>
+                    <a href="https://radio.lucafchala.com/pu2xik/" target="_blank" rel="noopener noreferrer">
+                        <span class="arr">→</span> Portal Profile
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="group">
+            <h3 data-i18n="h_contact">Contato</h3>
+            <ul>
+                <li>
+                    <a href="#" id="email-link" class="u-email">
+                        <span class="arr">→</span> Email
+                    </a>
+                    <noscript>
+                        <span style="font-size: 10px; color: var(--muted); margin-left: 8px;">(website [at] lucafchala.com)</span>
+                    </noscript>
+                </li>
+                <li>
+                    <!-- external: wa.me -->
+                    <a href="https://wa.me/5511989211178" target="_blank" rel="noopener noreferrer">
+                        <span class="arr-ext">↗</span> WhatsApp
+                    </a>
+                </li>
+                <li>
+                    <a href="https://lucafchala.com/signal" class="deprecated" target="_blank" rel="noopener noreferrer">
+                        <span class="arr">→</span> Signal
+                        <span class="deprecated-label">deprecated</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://lucafchala.com/buymeacoffee" class="cta-link" target="_blank" rel="noopener noreferrer">
+                        <span class="arr">→</span>
+                        <span data-i18n="coffee">Buy me a coffee</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="services">
+        <p class="services-label" data-i18n="h_services">Serviços</p>
+        <div class="services-row">
+            <a href="https://paste.lucafchala.com" target="_blank" rel="noopener noreferrer">Paste</a>
+            <a href="https://now.lucafchala.com" target="_blank" rel="noopener noreferrer">Now</a>
+            <a href="https://log.lucafchala.com" target="_blank" rel="noopener noreferrer">Status</a>
+            <a href="https://weblog.lucafchala.com" target="_blank" rel="noopener noreferrer">Weblog</a>
+            <a href="https://url.lucafchala.com" target="_blank" rel="noopener noreferrer">PURLs</a>
+        </div>
+    </div>
+
+    <footer>
+        <a href="https://proof.lucafchala.com" target="_blank" rel="noopener noreferrer" data-i18n="proof">Prova de propriedade</a>
+        <!-- external: proven.lol -->
+        <a href="https://proven.lol/e49379" target="_blank" rel="noopener noreferrer">Proven.lol ↗</a>
+        <a href="https://paste.lucafchala.com/pgp" target="_blank" rel="noopener noreferrer" class="u-key" data-i18n="pgp">Chave PGP ↗</a>
+        <a href="https://paste.lucafchala.com/ssh" target="_blank" rel="noopener noreferrer" class="u-key" data-i18n="ssh">Chave SSH ↗</a>
+    </footer>
+
+    <script>
+        const i18n = {
+            pt: {
+                t1: 'Estudante',
+                t2: 'Fotógrafo',
+                bio: 'Estudante baseado em São Paulo. Fotografo o cotidiano urbano com uma <strong>Sony A6700</strong>, atuo como radioamador sob o indicativo <strong>PU2XIK</strong> e divido meu tempo entre treinos de hipertrofia e a preparação para cursar engenharia elétrica.',
+                h_photo: 'Fotografia',
+                h_radio: 'Rádio',
+                h_contact: 'Contato',
+                h_services: 'Serviços',
+                fotos: 'Fotos',
+                gear: 'Equipamento',
+                coffee: 'Buy me a coffee',
+                proof: 'Prova de propriedade',
+                pgp: 'Chave PGP ↗',
+                ssh: 'Chave SSH ↗',
+                memorial: 'Descanse em paz, Bbzinho. Obrigado por inspirar tantos.'
+            },
+            en: {
+                t1: 'Student',
+                t2: 'Photographer',
+                bio: 'Student based in São Paulo, Brazil. I shoot street photography with a <strong>Sony A6700</strong>, operate amateur radio as <strong>PU2XIK</strong>, and split my time between hypertrophy training and preparing to study electrical engineering.',
+                h_photo: 'Photography',
+                h_radio: 'Radio',
+                h_contact: 'Contact',
+                h_services: 'Services',
+                fotos: 'Photos',
+                gear: 'Camera Gear',
+                coffee: 'Buy me a coffee',
+                proof: 'Proof of ownership',
+                pgp: 'PGP key ↗',
+                ssh: 'SSH key ↗',
+                memorial: 'Rest in peace, Bbzinho. Thank you for inspiring so many.'
+            }
+        };
+
+        function setLang(lang) {
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+            document.documentElement.dataset.lang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (i18n[lang][key] !== undefined) {
+                    el.innerHTML = i18n[lang][key];
+                }
+            });
+
+            const memEl = document.getElementById('memorial-text');
+            if (memEl) memEl.textContent = i18n[lang].memorial;
+
+            document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+            localStorage.setItem('lang', lang);
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+            html.dataset.theme = next;
+            localStorage.setItem('theme', next);
+        }
+
+        const savedLang = localStorage.getItem('lang') || 'pt';
+        if (savedLang !== 'pt') {
+            setLang(savedLang);
+        } else {
+            document.getElementById('btn-pt').classList.add('active');
+        }
+
+        const user = 'website';
+        const domain = 'lucafchala.com';
+        document.getElementById('email-link').href = `mailto:${user}@${domain}`;
+    </script>
+
+</body>
+</html>
