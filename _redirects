@@ -1,51 +1,48 @@
-# Cloudflare Pages _redirects — lucafchala.com
-# PURLs live at lucafchala.com/slug
-# Format: /path  destination  status
+# Cloudflare Pages _redirects
+# Updated via dash.lucafchala.com
 
-# ── Contact ───────────────────────────────────
-/instagram      https://www.instagram.com/lucafchala                                                                                                                                                                   301
-/signal         https://signal.me/#eu/4vqshkFFVw36CvpTsD_-AugJ9d-XCDvpmH03l1Tj5HJ8nxGZW2tDQKMGJsUCQc4g                                                                                                               301
-/buymeacoffee   https://livepix.gg/tucas                                                                                                                                                                               301
-/simplex        https://simplex.chat/contact#/?v=2-7&smp=smp%3A%2F%2F6iIcWT_dF2zN_w5xzZEY7HI2Prbh3ldP07YTyDexPjE%3D%40smp10.simplex.im%2FNWvHcv_uYgb3tlyxpk9q8c93Lh8L6QBP%23%2F%3Fv%3D1-4%26dh%3DMCowBQYDK2VuAyEAZoG7NjetcQBmYnxxdUB_KxRw1ZNUAgaLa-HPEvl41Dk%253D%26q%3Dc%26srv%3Drb2pbttocvnbrngnwziclp2f4ckjq65kebafws6g4hy22cdaiv5dwjqd.onion    301
+# ── contact ──
+/instagram  https://www.instagram.com/lucafchala  301
+/signal  https://signal.me/#eu/4vqshkFFVw36CvpTsD_-AugJ9d-XCDvpmH03l1Tj5HJ8nxGZW2tDQKMGJsUCQc4g  301
+/buymeacoffee  https://livepix.gg/tucas  301
+/simplex  https://simplex.chat/contact#/?v=2-7&smp=smp%3A%2F%2F6iIcWT_dF2zN_w5xzZEY7HI2Prbh3ldP07YTyDexPjE%3D%40smp10.simplex.im%2FNWvHcv_uYgb3tlyxpk9q8c93Lh8L6QBP%23%2F%3Fv%3D1-4%26dh%3DMCowBQYDK2VuAyEAZoG7NjetcQBmYnxxdUB_KxRw1ZNUAgaLa-HPEvl41Dk%253D%26q%3Dc%26srv%3Drb2pbttocvnbrngnwziclp2f4ckjq65kebafws6g4hy22cdaiv5dwjqd.onion  301
 
-# ── Events ────────────────────────────────────
-/piauifut2024         https://fotos.lucafchala.com/piauifut2024    301
-/piauifut2025         https://fotos.lucafchala.com/piauifut2025                   301
-/piauifest2025        https://fotos.lucafchala.com/piauifest2025                   301
-/mostra2025           https://fotos.lucafchala.com/mostracultural2025                   301
-/isa_16anos           https://drive.google.com/drive/folders/12le75s8WISbtBsk0nMJVriqi-H74efmz                    301
-/salto_dias-dos-pais  https://drive.google.com/drive/folders/1_eyarONWOWVJ4sygXPUysF3sU-WftTM1                   301
-/ibiúna_2025          https://paste.lucafchala.com/cloudspot_deprecation                                          301
-/paraty               https://paste.lucafchala.com/cloudspot_deprecation                                          301
-/natal-2024           https://paste.lucafchala.com/cloudspot_deprecation                                          301
-/viagem-familia_2024  https://paste.lucafchala.com/cloudspot_deprecation                                          301
-/ferriani_2024        https://paste.lucafchala.com/cloudspot_deprecation                                          301
-/dia-dos-pais_2024    https://paste.lucafchala.com/cloudspot_deprecation                                          301
-/churras              https://paste.lucafchala.com/cloudspot_deprecation                                          301
-/ecp_carros           https://paste.lucafchala.com/cloudspot_deprecation                                          301
-/ecp_125_anos         https://fotos.lucafchala.com/ecp125                                          301
+# ── events ──
+/piauifut2024  https://drive.google.com/drive/folders/1OFR7xmT1LkRu5UDy6cX_fr9iP7qmodAP?usp=drive_link  301
+/piauifut2025  https://drive.google.com/drive/folders/1-ElIAZT2Wnyv23HFSqZUWK6cKqwqwjN2  301
+/piauifest2025  https://drive.google.com/drive/folders/1CDTfc56wY2ErnTi4DqFbloJ1kR18kxGA  301
+/mostra2025  https://drive.google.com/drive/folders/1FEpVkyz4kTEKUOPanjPcgkHUWWj9rwfu  301
+/isa_16anos  https://drive.google.com/drive/folders/12le75s8WISbtBsk0nMJVriqi-H74efmz  301
+/salto_dias-dos-pais  https://drive.google.com/drive/folders/1_eyarONWOWVJ4sygXPUysF3sU-WftTM1  301
+/ibiúna_2025  https://paste.lucafchala.com/cloudspot_deprecation  301
+/paraty  https://paste.lucafchala.com/cloudspot_deprecation  301
+/natal-2024  https://paste.lucafchala.com/cloudspot_deprecation  301
+/viagem-familia_2024  https://paste.lucafchala.com/cloudspot_deprecation  301
+/ferriani_2024  https://paste.lucafchala.com/cloudspot_deprecation  301
+/dia-dos-pais_2024  https://paste.lucafchala.com/cloudspot_deprecation  301
+/churras  https://paste.lucafchala.com/cloudspot_deprecation  301
+/ecp_carros  https://paste.lucafchala.com/cloudspot_deprecation  301
+/ecp_125_anos  https://paste.lucafchala.com/cloudspot_deprecation  301
 
-# ── Video projects ────────────────────────────
-/a-mascara                                            https://paste.lucafchala.com/a-mascara                                                         301
-/a-máscara                                            https://paste.lucafchala.com/a-mascara                                                         301
-/a-mascara_download                                   https://drive.google.com/file/d/15GRrKFxkP62dPClsbprQZsa0jZDOQRrj/view?usp=sharing             301
-/a-mascara_download-csa                               https://drive.google.com/file/d/1rxtR_n3xvA6pB3xOBI5HQ9zJ8XDMdplG/view?usp=sharing             301
-/a-mascara_yt                                         https://youtu.be/QBcq8sRf81c                                                                    301
-/nirvana-e-a-cultura-do-ultrarromantismo              https://paste.lucafchala.com/nirvana-e-a-cultura-do-ultrarromantismo                            301
-/nirvana-e-a-cultura-do-ultrarromantismo_download     https://drive.google.com/file/d/1OxQTB0In3aBOwrcMy6GfBekYgL4xNIA2/view?usp=sharing             301
-/nirvana-e-a-cultura-do-ultrarromantismo_download-csa https://drive.google.com/file/d/1OYAvjwwj_l9FL6533pujLb1IXT9S2EfG/view?usp=sharing             301
-/nirvana-e-a-cultura-do-ultrarromantismo_yt           https://youtu.be/g5IHyrC36mA                                                                    301
-/vela_f5-entrega                                      https://paste.lucafchala.com/vela_f5-2024                                                       301
-/vela_f5-download                                     https://drive.google.com/file/d/1D9cQ1996ZJjdqT9nln0YBNcXaw7BeTM0/view?usp=sharing             301
-/vela_f5-download_csa                                 https://drive.google.com/file/d/1oe70ZmxADDGeSHpcuGJ4jpOSBSZiwaM3/view?usp=sharing             301
-/vela_f5-youtube                                      https://www.youtube.com/watch?v=4UwA21rnP-8                                                     301
-/para-alem-de-sonhar                                  https://youtu.be/3j1NFW43o0o                                                                    301
+# ── video ──
+/a-mascara_download  https://drive.google.com/file/d/15GRrKFxkP62dPClsbprQZsa0jZDOQRrj/view?usp=sharing  301
+/a-mascara_download-csa  https://drive.google.com/file/d/1rxtR_n3xvA6pB3xOBI5HQ9zJ8XDMdplG/view?usp=sharing  301
+/a-mascara_yt  https://youtu.be/QBcq8sRf81c  301
+/a-mascara  https://paste.lucafchala.com/a-mascara  301
+/nirvana-e-a-cultura-do-ultrarromantismo_download  https://drive.google.com/file/d/1OxQTB0In3aBOwrcMy6GfBekYgL4xNIA2/view?usp=sharing  301
+/nirvana-e-a-cultura-do-ultrarromantismo_download-csa  https://drive.google.com/file/d/1OYAvjwwj_l9FL6533pujLb1IXT9S2EfG/view?usp=sharing  301
+/nirvana-e-a-cultura-do-ultrarromantismo_yt  https://youtu.be/g5IHyrC36mA  301
+/nirvana-e-a-cultura-do-ultrarromantismo  https://paste.lucafchala.com/nirvana-e-a-cultura-do-ultrarromantismo  301
+/vela_f5-download  https://drive.google.com/file/d/1D9cQ1996ZJjdqT9nln0YBNcXaw7BeTM0/view?usp=sharing  301
+/vela_f5-download_csa  https://drive.google.com/file/d/1oe70ZmxADDGeSHpcuGJ4jpOSBSZiwaM3/view?usp=sharing  301
+/vela_f5-youtube  https://www.youtube.com/watch?v=4UwA21rnP-8  301
+/vela_f5-entrega  https://paste.lucafchala.com/vela_f5-2024  301
+/para-alem-de-sonhar  https://youtu.be/3j1NFW43o0o  301
 
-# ── Tools ─────────────────────────────────────
-/review              https://forms.gle/AoMuMFPj9TFuzS3H8                301
-/cloudspot_dashboard https://app.cloudspot.io/dashboard/events           301
-/pgp                 https://paste.lucafchala.com/pgp                    301
-/sessionid           https://paste.lucafchala.com/sessionid              301
-/fjfss               https://paste.lucafchala.com/cloudspot_deprecation  301
-/portfolio           https://paste.lucafchala.com/cloudspot_deprecation  301
-/teste-api           https://lucafchala.com                              301
+# ── tools ──
+/review  https://forms.gle/AoMuMFPj9TFuzS3H8  301
+/cloudspot_dashboard  https://app.cloudspot.io/dashboard/events  301
+/pgp  https://paste.lucafchala.com/pgp  301
+/portfolio  https://paste.lucafchala.com/cloudspot_deprecation  301
+/teste-api  https://lucafchala.com  301
+/testedash  claude.ai  301
