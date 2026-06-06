@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status · lucafchala.com</title>
+    <meta name="description" content="Status dos serviços de lucafchala.com">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <script>
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.dataset.theme = savedTheme;
+    </script>
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg:         #0d0c0a;
+            --border:     #252220;
+            --text:       #e6e1d6;
+            --muted:      #6a6358;
+            --accent:     #c08030;
+            --accent-dim: #6a4818;
+            --ctrl-bg:    #161412;
+            --ok:         #4a9060;
+            --ok-dim:     #1e3828;
+            --warn:       #a07820;
+            --warn-dim:   #3a2c08;
+            --err:        #904040;
+            --err-dim:    #381818;
+        }
+
+        [data-theme="light"] {
+            --bg:         #f4efe6;
+            --border:     #d8d1c4;
+            --text:       #1c1a17;
+            --muted:      #9a8f80;
+            --accent:     #a06820;
+            --accent-dim: #c89050;
+            --ctrl-bg:    #ede8df;
+            --ok:         #2e7050;
+            --ok-dim:     #d0ead8;
+            --warn:       #806010;
+            --warn-dim:   #f0e0b0;
+            --err:        #802828;
+            --err-dim:    #f0d0d0;
+        }
+
+        html {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.25s, color 0.25s;
+        }
+
+        body {
+            min-height: 100vh;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 48px 32px 72px;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+            opacity: 0.28;
+        }
+
+        /* ── Controls ── */
+        .controls {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 24px;
+        }
+
+        .controls-inner {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--ctrl-bg);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 4px 6px;
+        }
+
+        .ctrl-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 4px 7px;
+            cursor: pointer;
+            transition: color 0.15s;
+            border-radius: 2px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .ctrl-btn:hover { color: var(--accent); }
+
+        #btn-theme {
+            font-size: 15px;
+            padding: 2px 7px;
+        }
+
+        .ctrl-sep {
+            color: var(--border);
+            font-size: 10px;
+            user-select: none;
+            line-height: 1;
+        }
+
+        /* ── Header ── */
+        header {
+            margin-bottom: 44px;
+            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) both;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            margin-bottom: 24px;
+            transition: color 0.15s;
+        }
+
+        .back-link:hover { color: var(--accent); }
+
+        .page-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(40px, 9vw, 64px);
+            font-weight: 300;
+            line-height: 0.92;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .page-title em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .page-sub {
+            color: var(--muted);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        /* ── Overall banner ── */
+        .overall {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--ok);
+            padding: 14px 18px;
+            border-radius: 4px;
+            background: linear-gradient(135deg, var(--ctrl-bg) 0%, transparent 100%);
+            margin-bottom: 40px;
+            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s both;
+        }
+
+        .overall.degraded { border-left-color: var(--warn); }
+        .overall.outage   { border-left-color: var(--err); }
+
+        .overall-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--ok);
+            flex-shrink: 0;
+            box-shadow: 0 0 6px var(--ok);
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+
+        .overall.degraded .overall-dot { background: var(--warn); box-shadow: 0 0 6px var(--warn); }
+        .overall.outage   .overall-dot { background: var(--err);  box-shadow: 0 0 6px var(--err); }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0.45; }
+        }
+
+        .overall-text {
+            font-size: 12px;
+            color: var(--text);
+        }
+
+        .overall-text span {
+            color: var(--muted);
+            font-size: 10px;
+            margin-left: 10px;
+        }
+
+        /* ── Service groups ── */
+        .group-label {
+            font-size: 9.5px;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .services-list {
+            list-style: none;
+            margin-bottom: 36px;
+            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.18s both;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            gap: 12px;
+        }
+
+        .service-item:last-child { border-bottom: none; }
+
+        .service-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .service-name a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 12.5px;
+            font-weight: 300;
+            transition: color 0.15s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .service-name a:hover { color: var(--accent); }
+
+        .service-url {
+            color: var(--muted);
+            font-size: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 9.5px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .badge-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .badge.ok   { color: var(--ok);   background: var(--ok-dim); }
+        .badge.ok   .badge-dot { background: var(--ok); }
+
+        .badge.warn { color: var(--warn); background: var(--warn-dim); }
+        .badge.warn .badge-dot { background: var(--warn); }
+
+        .badge.err  { color: var(--err);  background: var(--err-dim); }
+        .badge.err  .badge-dot { background: var(--err); }
+
+        .badge.unknown { color: var(--muted); background: var(--ctrl-bg); }
+        .badge.unknown .badge-dot { background: var(--muted); }
+
+        /* ── Latency bars ── */
+        .latency-wrap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .latency-val {
+            font-size: 10px;
+            color: var(--muted);
+            min-width: 36px;
+            text-align: right;
+        }
+
+        /* ── Last checked ── */
+        .last-checked {
+            font-size: 10px;
+            color: var(--muted);
+            margin-top: -20px;
+            margin-bottom: 36px;
+            letter-spacing: 0.04em;
+            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.28s both;
+        }
+
+        /* ── Footer ── */
+        footer {
+            margin-top: 52px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.36s both;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 10.5px;
+            letter-spacing: 0.05em;
+            transition: color 0.15s;
+        }
+
+        footer a:hover { color: var(--accent); }
+
+        /* ── Animation ── */
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 540px) {
+            body { padding: 32px 22px 52px; }
+            .service-url { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="controls">
+        <div class="controls-inner">
+            <button class="ctrl-btn" id="btn-theme" onclick="toggleTheme()" title="Toggle theme" aria-label="Alternar tema">◐</button>
+        </div>
+    </div>
+
+    <header>
+        <a class="back-link" href="https://lucafchala.com">← lucafchala.com</a>
+        <h1 class="page-title">Service <em>Status</em></h1>
+        <p class="page-sub">lucafchala.com · real-time checks</p>
+    </header>
+
+    <div class="overall" id="overall-banner">
+        <span class="overall-dot" id="overall-dot"></span>
+        <div class="overall-text">
+            <span id="overall-msg">Checking services…</span>
+            <span id="overall-sub"></span>
+        </div>
+    </div>
+
+    <!-- Main services -->
+    <p class="group-label">Serviços principais</p>
+    <ul class="services-list" id="list-main"></ul>
+
+    <!-- Tools -->
+    <p class="group-label">Ferramentas</p>
+    <ul class="services-list" id="list-tools"></ul>
+
+    <p class="last-checked" id="last-checked">—</p>
+
+    <footer>
+        <a href="https://lucafchala.com">← Início</a>
+        <a href="https://weblog.lucafchala.com" target="_blank" rel="noopener noreferrer">Weblog ↗</a>
+        <a href="mailto:website@lucafchala.com">Contato</a>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+            html.dataset.theme = next;
+            localStorage.setItem('theme', next);
+        }
+
+        const SERVICES = {
+            main: [
+                { name: 'lucafchala.com',       url: 'https://lucafchala.com',       display: 'lucafchala.com' },
+                { name: 'fotos.lucafchala.com',  url: 'https://fotos.lucafchala.com',  display: 'fotos.lucafchala.com' },
+                { name: 'radio.lucafchala.com',  url: 'https://radio.lucafchala.com',  display: 'radio.lucafchala.com' },
+                { name: 'weblog.lucafchala.com', url: 'https://weblog.lucafchala.com', display: 'weblog.lucafchala.com' },
+                { name: 'now.lucafchala.com',    url: 'https://now.lucafchala.com',    display: 'now.lucafchala.com' },
+            ],
+            tools: [
+                { name: 'paste.lucafchala.com',  url: 'https://paste.lucafchala.com',  display: 'paste.lucafchala.com' },
+                { name: 'url.lucafchala.com',    url: 'https://url.lucafchala.com',    display: 'url.lucafchala.com' },
+                { name: 'keys.lucafchala.com',   url: 'https://keys.lucafchala.com',   display: 'keys.lucafchala.com' },
+                { name: 'proof.lucafchala.com',  url: 'https://proof.lucafchala.com',  display: 'proof.lucafchala.com' },
+            ]
+        };
+
+        const results = {};
+
+        function createRow(svc) {
+            const li = document.createElement('li');
+            li.className = 'service-item';
+            li.id = `row-${svc.name}`;
+            li.innerHTML = `
+                <div class="service-name">
+                    <a href="${svc.url}" target="_blank" rel="noopener noreferrer">${svc.name}</a>
+                    <span class="service-url">${svc.display}</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px">
+                    <span class="latency-val" id="lat-${svc.name}">—</span>
+                    <span class="badge unknown" id="badge-${svc.name}">
+                        <span class="badge-dot"></span>checking
+                    </span>
+                </div>`;
+            return li;
+        }
+
+        function renderList(id, group) {
+            const ul = document.getElementById(id);
+            SERVICES[group].forEach(svc => ul.appendChild(createRow(svc)));
+        }
+
+        renderList('list-main', 'main');
+        renderList('list-tools', 'tools');
+
+        async function checkService(svc) {
+            const start = performance.now();
+            try {
+                const probe = new URL(svc.url);
+                probe.searchParams.set('_status_probe', '1');
+                const resp = await fetch(probe.toString(), {
+                    method: 'HEAD',
+                    mode: 'no-cors',
+                    cache: 'no-store',
+                    signal: AbortSignal.timeout(8000)
+                });
+                const latency = Math.round(performance.now() - start);
+                return { ok: true, latency };
+            } catch (e) {
+                const latency = Math.round(performance.now() - start);
+                if (e.name === 'TimeoutError' || e.name === 'AbortError') {
+                    return { ok: false, latency, reason: 'timeout' };
+                }
+                /* no-cors fetch succeeds even for opaque responses; a network error means down */
+                return { ok: false, latency, reason: 'error' };
+            }
+        }
+
+        function updateBadge(svc, result) {
+            const badge = document.getElementById(`badge-${svc.name}`);
+            const lat   = document.getElementById(`lat-${svc.name}`);
+
+            results[svc.name] = result.ok;
+
+            if (result.ok) {
+                badge.className = 'badge ok';
+                badge.innerHTML = '<span class="badge-dot"></span>online';
+                lat.textContent = result.latency + ' ms';
+            } else {
+                const cls = result.reason === 'timeout' ? 'warn' : 'err';
+                const lbl = result.reason === 'timeout' ? 'slow'  : 'offline';
+                badge.className = `badge ${cls}`;
+                badge.innerHTML = `<span class="badge-dot"></span>${lbl}`;
+                lat.textContent = result.latency + ' ms';
+            }
+        }
+
+        function updateOverall() {
+            const vals = Object.values(results);
+            if (!vals.length) return;
+
+            const all = SERVICES.main.concat(SERVICES.tools);
+            const total = all.length;
+            const done  = vals.length;
+            const ok    = vals.filter(Boolean).length;
+
+            const banner = document.getElementById('overall-banner');
+            const msg    = document.getElementById('overall-msg');
+            const sub    = document.getElementById('overall-sub');
+
+            if (done < total) {
+                msg.textContent = `Checking… (${done}/${total})`;
+                return;
+            }
+
+            if (ok === total) {
+                banner.className = 'overall';
+                msg.textContent = 'All systems operational';
+                sub.textContent = `${ok}/${total} services online`;
+            } else if (ok >= total * 0.7) {
+                banner.className = 'overall degraded';
+                msg.textContent = 'Partial degradation';
+                sub.textContent = `${ok}/${total} services online`;
+            } else {
+                banner.className = 'overall outage';
+                msg.textContent = 'Service disruption';
+                sub.textContent = `${ok}/${total} services online`;
+            }
+
+            const now = new Date();
+            document.getElementById('last-checked').textContent =
+                `Last checked: ${now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
+        }
+
+        async function runChecks() {
+            const all = SERVICES.main.concat(SERVICES.tools);
+            await Promise.all(all.map(async svc => {
+                const result = await checkService(svc);
+                updateBadge(svc, result);
+                updateOverall();
+            }));
+        }
+
+        runChecks();
+        setInterval(runChecks, 60000);
+    </script>
+</body>
+</html>
