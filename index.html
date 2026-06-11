@@ -115,7 +115,7 @@
         }
 
         .ctrl-btn:hover { color: var(--accent); }
-        .ctrl-btn.active { color: var(--text); }
+        .ctrl-btn.active { color: var(--text); background: var(--border); }
 
         #btn-theme {
             font-size: 15px;
@@ -265,6 +265,8 @@
         .bio-wrapper {
             max-width: 540px;
             animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.12s both;
+            border-left: 2px solid var(--accent-dim);
+            padding-left: 20px;
         }
 
         .bio {
@@ -303,8 +305,21 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 40px 28px;
             margin-top: 52px;
-            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.24s both;
         }
+
+        .links .group:nth-child(1) { animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.20s both; }
+        .links .group:nth-child(2) { animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.28s both; }
+        .links .group:nth-child(3) { animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.36s both; }
+
+        .group {
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 16px 18px;
+            background: linear-gradient(160deg, var(--ctrl-bg) 0%, transparent 100%);
+            transition: border-color 0.2s;
+        }
+
+        .group:hover { border-color: var(--accent-dim); }
 
         .group h3 {
             font-size: 9.5px;
@@ -333,6 +348,13 @@
             display: inline-flex;
             align-items: center;
             gap: 7px;
+            padding: 3px 6px;
+            margin: 0 -6px;
+            border-radius: 3px;
+        }
+
+        .group a:hover {
+            background: linear-gradient(90deg, var(--border) 0%, transparent 80%);
         }
 
         /* Internal arrow → */
@@ -364,7 +386,7 @@
 
         .group a.cta-link {
             padding: 4px 10px;
-            margin-left: -10px;
+            margin: 0 -6px;
             border-left: 2px solid var(--accent-dim);
             border-radius: 0 3px 3px 0;
             background: linear-gradient(90deg, var(--ctrl-bg) 0%, transparent 100%);
@@ -409,9 +431,20 @@
             color: var(--muted);
             font-size: 11.5px;
             font-weight: 300;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            background: var(--ctrl-bg);
+            transition: border-color 0.2s, color 0.15s;
         }
 
-        .services-row a:hover { color: var(--text); }
+        .services-row a:hover {
+            border-color: var(--accent-dim);
+            color: var(--text);
+        }
 
         /* ── Footer ── */
         footer {
@@ -428,9 +461,29 @@
             color: var(--muted);
             font-size: 10.5px;
             letter-spacing: 0.05em;
+            position: relative;
+        }
+
+        footer a::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.2s;
         }
 
         footer a:hover { color: var(--accent); }
+        footer a:hover::after { width: 100%; }
+
+        /* ── Focus ── */
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 3px;
+        }
 
         /* ── Animation ── */
         @keyframes rise {
@@ -487,7 +540,7 @@
         </div>
     </header>
 
-    <div class="rule">CQ DE PU2XIK</div>
+    <div class="rule">CQ DE <span class="callsign">PU2XIK</span></div>
 
     <div class="bio-wrapper">
         <p class="bio p-note" data-i18n="bio">
@@ -575,9 +628,9 @@
     <div class="services">
         <p class="services-label" data-i18n="h_services">Serviços</p>
         <div class="services-row">
-            <a href="https://paste.lucafchala.com" target="_blank" rel="noopener noreferrer">Paste</a>
-            <a href="https://status.lucafchala.com" target="_blank" rel="noopener noreferrer">Status</a>
-            <a href="https://url.lucafchala.com" target="_blank" rel="noopener noreferrer">PURLs</a>
+            <a href="https://paste.lucafchala.com" target="_blank" rel="noopener noreferrer"><span class="arr">→</span>Paste</a>
+            <a href="https://status.lucafchala.com" target="_blank" rel="noopener noreferrer"><span class="arr">→</span>Status</a>
+            <a href="https://url.lucafchala.com" target="_blank" rel="noopener noreferrer"><span class="arr">→</span>PURLs</a>
         </div>
     </div>
 
