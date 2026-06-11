@@ -1,0 +1,35 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" xml:space="preserve">
+  <defs>
+    <filter id="noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0d0c0a"/>
+
+  <!-- Noise overlay -->
+  <rect width="1200" height="630" filter="url(#noise)" opacity="0.07"/>
+
+  <!-- Outer border -->
+  <rect x="1" y="1" width="1198" height="628" fill="none" stroke="#252220" stroke-width="1"/>
+
+  <!-- Left accent bar -->
+  <rect x="72" y="108" width="4" height="390" fill="#c08030" opacity="0.65"/>
+
+  <!-- Name: "Luca F." — "F." italic in bronze -->
+  <text x="100" y="250" font-family="Georgia, 'Times New Roman', serif" font-size="156" font-weight="300" letter-spacing="-4" fill="#e6e1d6">Luca <tspan font-style="italic" fill="#c08030">F.</tspan></text>
+
+  <!-- Name: "Chala" -->
+  <text x="100" y="406" font-family="Georgia, 'Times New Roman', serif" font-size="156" font-weight="300" letter-spacing="-4" fill="#e6e1d6">Chala</text>
+
+  <!-- Divider line -->
+  <line x1="100" y1="450" x2="560" y2="450" stroke="#252220" stroke-width="1"/>
+
+  <!-- Tagline -->
+  <text x="100" y="490" font-family="'Courier New', Courier, monospace" font-size="17" fill="#6a6358" letter-spacing="2.5">FOTÓGRAFO · PU2XIK · SÃO PAULO, BR</text>
+
+  <!-- Domain bottom-right -->
+  <text x="1128" y="578" font-family="'Courier New', Courier, monospace" font-size="15" fill="#6a4818" text-anchor="end" letter-spacing="1.5">lucafchala.com</text>
+</svg>
