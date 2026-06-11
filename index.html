@@ -115,7 +115,7 @@
         }
 
         .ctrl-btn:hover { color: var(--accent); }
-        .ctrl-btn.active { color: var(--text); }
+        .ctrl-btn.active { color: var(--text); background: var(--border); }
 
         #btn-theme {
             font-size: 15px;
@@ -127,66 +127,6 @@
             font-size: 10px;
             user-select: none;
             line-height: 1;
-        }
-
-        /* ── Memorial ── */
-        .memorial {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            padding: 16px 20px;
-            margin-bottom: 44px;
-            background: linear-gradient(135deg, var(--ctrl-bg) 0%, transparent 100%);
-            border-radius: 4px;
-            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) both;
-            position: relative;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .memorial::before {
-            content: '†';
-            position: absolute;
-            top: 16px;
-            right: 18px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            color: var(--accent);
-            opacity: 0.8;
-        }
-
-        .memorial-header {
-            display: flex;
-            align-items: baseline;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .memorial-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 22px;
-            color: var(--text);
-            line-height: 1;
-            font-weight: 600;
-        }
-
-        .memorial-dates {
-            font-size: 10px;
-            letter-spacing: 0.12em;
-            color: var(--accent-dim);
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        .memorial-text {
-            font-size: 13px;
-            color: var(--text);
-            letter-spacing: 0.03em;
-            line-height: 1.6;
-            font-weight: 300;
-            padding-right: 20px;
         }
 
         /* ── Header ── */
@@ -265,6 +205,8 @@
         .bio-wrapper {
             max-width: 540px;
             animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.12s both;
+            border-left: 2px solid var(--accent-dim);
+            padding-left: 20px;
         }
 
         .bio {
@@ -300,11 +242,25 @@
         /* ── Links ── */
         .links {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px 28px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
             margin-top: 52px;
-            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.24s both;
         }
+
+        .links .group:nth-child(1) { animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.20s both; }
+        .links .group:nth-child(2) { animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.28s both; }
+        .links .group:nth-child(3) { animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.36s both; }
+        .links .group:nth-child(4) { animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.44s both; }
+
+        .group {
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 16px 18px;
+            background: linear-gradient(160deg, var(--ctrl-bg) 0%, transparent 100%);
+            transition: border-color 0.2s;
+        }
+
+        .group:hover { border-color: var(--accent-dim); }
 
         .group h3 {
             font-size: 9.5px;
@@ -333,6 +289,13 @@
             display: inline-flex;
             align-items: center;
             gap: 7px;
+            padding: 3px 6px;
+            margin: 0 -6px;
+            border-radius: 3px;
+        }
+
+        .group a:hover {
+            background: linear-gradient(90deg, var(--border) 0%, transparent 80%);
         }
 
         /* Internal arrow → */
@@ -364,7 +327,7 @@
 
         .group a.cta-link {
             padding: 4px 10px;
-            margin-left: -10px;
+            margin: 0 -6px;
             border-left: 2px solid var(--accent-dim);
             border-radius: 0 3px 3px 0;
             background: linear-gradient(90deg, var(--ctrl-bg) 0%, transparent 100%);
@@ -388,7 +351,7 @@
             margin-top: 60px;
             padding-top: 22px;
             border-top: 1px solid var(--border);
-            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.36s both;
+            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.52s both;
         }
 
         .services-label {
@@ -409,9 +372,20 @@
             color: var(--muted);
             font-size: 11.5px;
             font-weight: 300;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            background: var(--ctrl-bg);
+            transition: border-color 0.2s, color 0.15s;
         }
 
-        .services-row a:hover { color: var(--text); }
+        .services-row a:hover {
+            border-color: var(--accent-dim);
+            color: var(--text);
+        }
 
         /* ── Footer ── */
         footer {
@@ -421,16 +395,36 @@
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
-            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.44s both;
+            animation: rise 0.9s cubic-bezier(0.16,1,0.3,1) 0.60s both;
         }
 
         footer a {
             color: var(--muted);
             font-size: 10.5px;
             letter-spacing: 0.05em;
+            position: relative;
+        }
+
+        footer a::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.2s;
         }
 
         footer a:hover { color: var(--accent); }
+        footer a:hover::after { width: 100%; }
+
+        /* ── Focus ── */
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 3px;
+        }
 
         /* ── Animation ── */
         @keyframes rise {
@@ -441,11 +435,11 @@
         /* ── Responsive ── */
         @media (max-width: 540px) {
             body { padding: 32px 22px 52px; }
-            .links { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+            .links { gap: 16px; }
             .bio { font-size: 18px; }
         }
 
-        @media (max-width: 360px) {
+        @media (max-width: 420px) {
             .links { grid-template-columns: 1fr; }
         }
     </style>
@@ -464,15 +458,6 @@
         </div>
     </div>
 
-    <!-- MEMORIAL -->
-    <div class="memorial" role="note" aria-label="Nota de pesar">
-        <div class="memorial-header">
-            <span class="memorial-name">Gabriel Ganley</span>
-            <span class="memorial-dates">2003 – 23.05.2026</span>
-        </div>
-        <p class="memorial-text" id="memorial-text">Descanse em paz, Bbzinho. Obrigado por inspirar tantos.</p>
-    </div>
-
     <header>
         <h1 class="name p-name">Luca <em>F.</em><br>Chala</h1>
         <p class="micro">photography · radio</p>
@@ -487,7 +472,7 @@
         </div>
     </header>
 
-    <div class="rule">CQ DE PU2XIK</div>
+    <div class="rule">CQ DE <span class="callsign">PU2XIK</span></div>
 
     <div class="bio-wrapper">
         <p class="bio p-note" data-i18n="bio">
@@ -570,14 +555,35 @@
                 </li>
             </ul>
         </div>
+
+        <div class="group">
+            <h3 data-i18n="h_social">Redes</h3>
+            <ul>
+                <li>
+                    <a href="https://lucafchala.com/github" target="_blank" rel="noopener noreferrer">
+                        <span class="arr">→</span> GitHub
+                    </a>
+                </li>
+                <li>
+                    <a href="https://lucafchala.com/linkedin" target="_blank" rel="noopener noreferrer">
+                        <span class="arr">→</span> LinkedIn
+                    </a>
+                </li>
+                <li>
+                    <a href="https://lucafchala.com/spotify" target="_blank" rel="noopener noreferrer">
+                        <span class="arr">→</span> Spotify
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 
     <div class="services">
         <p class="services-label" data-i18n="h_services">Serviços</p>
         <div class="services-row">
-            <a href="https://paste.lucafchala.com" target="_blank" rel="noopener noreferrer">Paste</a>
-            <a href="https://status.lucafchala.com" target="_blank" rel="noopener noreferrer">Status</a>
-            <a href="https://url.lucafchala.com" target="_blank" rel="noopener noreferrer">PURLs</a>
+            <a href="https://paste.lucafchala.com" target="_blank" rel="noopener noreferrer"><span class="arr">→</span>Paste</a>
+            <a href="https://status.lucafchala.com" target="_blank" rel="noopener noreferrer"><span class="arr">→</span>Status</a>
+            <a href="https://url.lucafchala.com" target="_blank" rel="noopener noreferrer"><span class="arr">→</span>PURLs</a>
         </div>
     </div>
 
@@ -599,13 +605,13 @@
                 h_radio: 'Rádio',
                 h_contact: 'Contato',
                 h_services: 'Serviços',
+                h_social: 'Redes',
                 fotos: 'Fotos',
                 gear: 'Equipamento',
                 coffee: 'Buy me a coffee',
                 proof: 'Prova de propriedade',
                 pgp: 'Chave PGP ↗',
-                ssh: 'Chave SSH ↗',
-                memorial: 'Descanse em paz, Bbzinho. Obrigado por inspirar tantos.'
+                ssh: 'Chave SSH ↗'
             },
             en: {
                 t1: 'Student',
@@ -615,13 +621,13 @@
                 h_radio: 'Radio',
                 h_contact: 'Contact',
                 h_services: 'Services',
+                h_social: 'Online',
                 fotos: 'Photos',
                 gear: 'Camera Gear',
                 coffee: 'Buy me a coffee',
                 proof: 'Proof of ownership',
                 pgp: 'PGP key ↗',
-                ssh: 'SSH key ↗',
-                memorial: 'Rest in peace, Bbzinho. Thank you for inspiring so many.'
+                ssh: 'SSH key ↗'
             }
         };
 
@@ -635,9 +641,6 @@
                     el.innerHTML = i18n[lang][key];
                 }
             });
-
-            const memEl = document.getElementById('memorial-text');
-            if (memEl) memEl.textContent = i18n[lang].memorial;
 
             document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
             document.getElementById('btn-en').classList.toggle('active', lang === 'en');
