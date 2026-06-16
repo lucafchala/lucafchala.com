@@ -5,10 +5,13 @@ Personal website for Luca F. Chala. Static site, no build step, deployed automat
 ## Structure
 
 ```
-index.html          # Main landing page (670 lines)
+index.html          # Main landing page
 404.html            # Custom 404 page
 transferring.html   # Migration notice (for pages moving off omg.lol)
 _redirects          # Cloudflare Pages redirect rules (301s)
+_headers            # Cloudflare Pages response headers (CSP, HSTS, Link)
+robots.txt          # Crawl rules + AI Content-Signal preferences + sitemap ref
+sitemap.xml         # Canonical URLs for this deployment
 status/
   index.html        # Service status dashboard
 ```
