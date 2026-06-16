@@ -1,6 +1,9 @@
 # Cloudflare Pages _redirects
 # Updated via dash.lucafchala.com
 
+# ── security ──
+/security.txt  /.well-known/security.txt  301
+
 # ── contact ──
 /instagram  https://www.instagram.com/lucafchala  301
 /signal  https://signal.me/#eu/4vqshkFFVw36CvpTsD_-AugJ9d-XCDvpmH03l1Tj5HJ8nxGZW2tDQKMGJsUCQc4g  301
