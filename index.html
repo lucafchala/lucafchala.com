@@ -16,6 +16,29 @@
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="pt_BR">
     <link rel="canonical" href="https://lucafchala.com/">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Luca F. Chala",
+      "alternateName": "PU2XIK",
+      "url": "https://lucafchala.com/",
+      "image": "https://lucafchala.com/og.svg",
+      "jobTitle": "Photographer",
+      "description": "Student, photographer and amateur radio operator (PU2XIK) in São Paulo, Brazil.",
+      "address": { "@type": "PostalAddress", "addressLocality": "São Paulo", "addressCountry": "BR" },
+      "knowsLanguage": ["pt-BR", "en"],
+      "sameAs": [
+        "https://www.instagram.com/lucafchala",
+        "https://github.com/lucafchala",
+        "https://www.linkedin.com/in/luca-f-chala-9b9143282",
+        "https://open.spotify.com/user/31slhygw6llfhswcz5jsldwzpleq",
+        "https://www.qrz.com/db/PU2XIK"
+      ]
+    }
+    </script>
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
@@ -452,11 +475,11 @@
 
     <div class="controls">
         <div class="controls-inner">
-            <button class="ctrl-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
+            <button class="ctrl-btn active" id="btn-pt">PT</button>
             <span class="ctrl-sep">|</span>
-            <button class="ctrl-btn" id="btn-en" onclick="setLang('en')">EN</button>
+            <button class="ctrl-btn" id="btn-en">EN</button>
             <span class="ctrl-sep">·</span>
-            <button class="ctrl-btn" id="btn-theme" onclick="toggleTheme()" title="Toggle Dark/Light Mode" aria-label="Alternar tema de cores">◐</button>
+            <button class="ctrl-btn" id="btn-theme" title="Toggle Dark/Light Mode" aria-label="Alternar tema de cores">◐</button>
         </div>
     </div>
 
@@ -661,6 +684,76 @@
         const user = 'website';
         const domain = 'lucafchala.com';
         document.getElementById('email-link').href = `mailto:${user}@${domain}`;
+
+        // Controls (listeners instead of inline onclick so the CSP can drop 'unsafe-inline')
+        document.getElementById('btn-pt').addEventListener('click', () => setLang('pt'));
+        document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
+        document.getElementById('btn-theme').addEventListener('click', toggleTheme);
+
+        // ── WebMCP — expose page actions to AI agents, feature-detected ──
+        // https://webmachinelearning.github.io/webmcp/
+        if (navigator.modelContext && typeof navigator.modelContext.provideContext === 'function') {
+            navigator.modelContext.provideContext({
+                tools: [
+                    {
+                        name: 'set_theme',
+                        description: 'Switch the site color theme to dark or light.',
+                        inputSchema: {
+                            type: 'object',
+                            properties: {
+                                theme: { type: 'string', enum: ['dark', 'light'], description: 'Theme to apply.' }
+                            },
+                            required: ['theme']
+                        },
+                        async execute({ theme }) {
+                            const next = theme === 'light' ? 'light' : 'dark';
+                            document.documentElement.dataset.theme = next;
+                            localStorage.setItem('theme', next);
+                            return { content: [{ type: 'text', text: `Theme set to ${next}.` }] };
+                        }
+                    },
+                    {
+                        name: 'set_language',
+                        description: 'Switch the page language between Portuguese (pt) and English (en).',
+                        inputSchema: {
+                            type: 'object',
+                            properties: {
+                                language: { type: 'string', enum: ['pt', 'en'], description: 'Language code.' }
+                            },
+                            required: ['language']
+                        },
+                        async execute({ language }) {
+                            const lang = language === 'en' ? 'en' : 'pt';
+                            setLang(lang);
+                            return { content: [{ type: 'text', text: `Language set to ${lang}.` }] };
+                        }
+                    },
+                    {
+                        name: 'get_profile',
+                        description: 'Get structured profile information about Luca F. Chala: roles, amateur-radio callsign, location, and key links.',
+                        inputSchema: { type: 'object', properties: {} },
+                        async execute() {
+                            const profile = {
+                                name: 'Luca F. Chala',
+                                callsign: 'PU2XIK',
+                                location: 'São Paulo, Brazil',
+                                roles: ['Student', 'Photographer', 'Amateur radio operator'],
+                                bio: i18n.en.bio.replace(/<[^>]+>/g, ''),
+                                links: {
+                                    photos: 'https://fotos.lucafchala.com',
+                                    instagram: 'https://lucafchala.com/instagram',
+                                    radioPortal: 'https://radio.lucafchala.com',
+                                    qrz: 'https://www.qrz.com/db/PU2XIK',
+                                    github: 'https://lucafchala.com/github',
+                                    email: `${user}@${domain}`
+                                }
+                            };
+                            return { content: [{ type: 'text', text: JSON.stringify(profile, null, 2) }] };
+                        }
+                    }
+                ]
+            });
+        }
     </script>
 
 </body>

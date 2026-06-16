@@ -5,10 +5,13 @@ Personal website for Luca F. Chala. Static site, no build step, deployed automat
 ## Structure
 
 ```
-index.html          # Main landing page (670 lines)
+index.html          # Main landing page
 404.html            # Custom 404 page
 transferring.html   # Migration notice (for pages moving off omg.lol)
 _redirects          # Cloudflare Pages redirect rules (301s)
+_headers            # Cloudflare Pages response headers (CSP, HSTS, Link)
+robots.txt          # Crawl rules + AI Content-Signal preferences + sitemap ref
+sitemap.xml         # Canonical URLs for this deployment
 status/
   index.html        # Service status dashboard
 ```
@@ -25,6 +28,27 @@ status/
 ## Subdomains (all separate deployments, monitored in `status/`)
 
 `fotos` • `radio` • `weblog` • `now` • `paste` • `url` • `keys` • `proof` • `status` — all under `lucafchala.com`.
+
+## Content-Security-Policy
+
+`_headers` pins the homepage's inline `<script>` blocks (head theme script, the
+JSON-LD block, and the main app script) with `sha256-` hashes instead of
+`'unsafe-inline'`. **If you edit any inline script in `index.html`, regenerate
+the hashes** or the page's JS will be blocked:
+
+```bash
+python3 - <<'PY'
+import re, hashlib, base64
+html = open('index.html', encoding='utf-8').read()
+for m in re.finditer(r'<script\b([^>]*)>(.*?)</script>', html, re.DOTALL):
+    a, inner = m.group(1), m.group(2)
+    if 'src=' in a or not inner.strip(): continue
+    print("'sha256-" + base64.b64encode(hashlib.sha256(inner.encode()).digest()).decode() + "'")
+PY
+```
+
+Inline event handlers (`onclick=`…) are intentionally avoided for the same
+reason — wire events with `addEventListener` in the main script.
 
 ## Deployment
 
