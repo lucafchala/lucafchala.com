@@ -1,0 +1,22 @@
+# Luca F. Chala
+
+> Student, photographer, and amateur radio operator (callsign PU2XIK) based in
+> São Paulo, Brazil. lucafchala.com is the apex of a small network of
+> self-hosted, single-purpose sites. All content may be crawled, indexed, and
+> used by AI agents (see /robots.txt).
+
+## Pages
+- [Home](https://lucafchala.com/): Bio, photography, radio, and contact links (bilingual PT-BR / EN).
+- [Status](https://lucafchala.com/status/): Live status of the ecosystem's services.
+- [Sitemap](https://lucafchala.com/sitemap.xml): Canonical URLs.
+
+## Ecosystem (separate subdomains)
+- [Photos](https://fotos.lucafchala.com): Photo gallery and event deliveries.
+- [Radio portal](https://radio.lucafchala.com): Amateur-radio portal and the PU2XIK profile.
+- [Pastes](https://paste.lucafchala.com): Notes and documents.
+- [Short URLs](https://url.lucafchala.com): Public directory of short links.
+- [Proof of ownership](https://proof.lucafchala.com): PGP-signed identity statement.
+
+## Contact
+- Email: website@lucafchala.com
+- Security: see [/.well-known/security.txt](https://lucafchala.com/.well-known/security.txt)
