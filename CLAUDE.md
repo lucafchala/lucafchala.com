@@ -13,7 +13,7 @@ _headers            # Cloudflare Pages response headers (CSP, HSTS, Link)
 robots.txt          # Crawl rules + AI Content-Signal preferences + sitemap ref
 sitemap.xml         # Canonical URLs for this deployment
 status/
-  index.html        # Service status dashboard
+  index.html        # Redirect to status.lucafchala.com (the real dashboard)
 ```
 
 ## Key facts
@@ -22,7 +22,7 @@ status/
 - **Bilingual** — Portuguese (BR) and English, switched client-side. Translations are inline in `index.html` as `data-pt` / `data-en` attributes.
 - **Dark/light theme** — toggled via a button, persisted in `localStorage`.
 - **`_redirects`** — Cloudflare Pages syntax (`/path  https://dest  301`). Covers social links, event galleries, video downloads, and tools.
-- **`status/index.html`** — polls all subdomains with HEAD requests, shows latency + status badges, auto-refreshes every 60 s.
+- **`status/index.html`** — a script-free redirect (meta refresh) to `https://status.lucafchala.com`, the canonical dashboard. The real status site runs server-side Cloudflare Pages Functions that do functional checks of every service (real status codes, content markers, data-file integrity, and fotos `/api/healthz`). The old client-side version lived here but could only see total outages (cross-origin `no-cors` probes are opaque) and its inline scripts were blocked by this site's CSP — so it now points at the source of truth.
 - **`404.html`** — minified; shows the invalid slug and links back home.
 
 ## Subdomains (all separate deployments, monitored in `status/`)
