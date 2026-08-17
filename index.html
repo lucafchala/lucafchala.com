@@ -474,11 +474,77 @@
         @media (max-width: 420px) {
             .links { grid-template-columns: 1fr; }
         }
+
+        /* ── Hidden: radio sweep (hold the callsign) ── */
+        body.radio-sweep::after {
+            content: '';
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: -12%;
+            height: 14%;
+            background: linear-gradient(180deg, transparent, rgba(192, 128, 48, 0.32), transparent);
+            z-index: 9998;
+            pointer-events: none;
+            animation: sweep-down 2.2s ease-in-out;
+        }
+
+        @keyframes sweep-down {
+            0%   { top: -14%; opacity: 0; }
+            10%  { opacity: 1; }
+            90%  { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        /* ── Hidden: Morse flash (five quick taps on the name) ── */
+        .morse-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 9998;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .morse-overlay.visible { opacity: 1; }
+
+        .morse-led {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.12;
+            box-shadow: 0 0 0 rgba(192, 128, 48, 0);
+            transition: opacity 0.06s linear, box-shadow 0.06s linear;
+        }
+
+        .morse-led.on {
+            opacity: 1;
+            box-shadow: 0 0 20px 5px var(--accent-dim);
+        }
+
+        .morse-caption {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
     </style>
 </head>
 <body class="h-card">
 
     <a href="https://lucafchala.com/" class="u-url" style="display:none;"></a>
+
+    <div class="morse-overlay" id="morse-overlay" aria-hidden="true">
+        <span class="morse-led" id="morse-led"></span>
+        <span class="morse-caption">CQ DE PU2XIK</span>
+    </div>
 
     <div class="controls">
         <div class="controls-inner">
@@ -696,6 +762,119 @@
         document.getElementById('btn-pt').addEventListener('click', () => setLang('pt'));
         document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
         document.getElementById('btn-theme').addEventListener('click', toggleTheme);
+
+        // ── Hidden: DevTools console signature ──
+        console.log(
+            '%c  )) ))) )))  %cPU2XIK%c\n\n' +
+            'CQ CQ DE PU2XIK\n' +
+            'Student · Photographer · Amateur radio operator\n' +
+            'São Paulo, BR — github.com/lucafchala',
+            'color:#c08030;font-family:monospace;font-size:11px;',
+            'background:#c08030;color:#0d0c0a;font-weight:bold;padding:2px 7px;border-radius:2px;font-family:monospace;font-size:12px;',
+            'color:#c08030;font-family:monospace;font-size:12px;line-height:1.6;'
+        );
+
+        // ── Hidden: hold the callsign → radio sweep ──
+        (function () {
+            const el = document.querySelector('.callsign');
+            if (!el) return;
+            let holdTimer = null;
+            let sweeping = false;
+
+            function startHold() {
+                if (sweeping) return;
+                holdTimer = setTimeout(() => {
+                    sweeping = true;
+                    document.body.classList.add('radio-sweep');
+                    setTimeout(() => {
+                        document.body.classList.remove('radio-sweep');
+                        sweeping = false;
+                    }, 2200);
+                }, 600);
+            }
+
+            function cancelHold() {
+                clearTimeout(holdTimer);
+            }
+
+            el.addEventListener('pointerdown', startHold);
+            el.addEventListener('pointerup', cancelHold);
+            el.addEventListener('pointercancel', cancelHold);
+            el.addEventListener('pointerleave', cancelHold);
+        })();
+
+        // ── Hidden: five quick taps on the name → Morse flash ──
+        (function () {
+            const el = document.querySelector('.name');
+            if (!el) return;
+            const overlay = document.getElementById('morse-overlay');
+            const led = document.getElementById('morse-led');
+            if (!overlay || !led) return;
+
+            const MORSE = {
+                C: '-.-.', Q: '--.-', D: '-..', E: '.',
+                P: '.--.', U: '..-', '2': '..---', X: '-..-', I: '..', K: '-.-'
+            };
+            const UNIT = 60;
+            let taps = [];
+            let playing = false;
+
+            function morseSequence(str) {
+                const seq = [];
+                str.split(' ').forEach((word, wi, words) => {
+                    [...word].forEach((ch, ci) => {
+                        const code = MORSE[ch];
+                        if (!code) return;
+                        [...code].forEach((sym, si) => {
+                            seq.push({ on: true, duration: sym === '-' ? UNIT * 3 : UNIT });
+                            if (si < code.length - 1) seq.push({ on: false, duration: UNIT });
+                        });
+                        if (ci < word.length - 1) seq.push({ on: false, duration: UNIT * 3 });
+                    });
+                    if (wi < words.length - 1) seq.push({ on: false, duration: UNIT * 7 });
+                });
+                return seq;
+            }
+
+            function playMorse() {
+                const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                overlay.classList.add('visible');
+
+                if (reduceMotion) {
+                    led.classList.add('on');
+                    setTimeout(() => {
+                        led.classList.remove('on');
+                        overlay.classList.remove('visible');
+                        playing = false;
+                    }, 900);
+                    return;
+                }
+
+                const seq = morseSequence('CQ DE PU2XIK');
+                let elapsed = 0;
+                seq.forEach(step => {
+                    setTimeout(() => led.classList.toggle('on', step.on), elapsed);
+                    elapsed += step.duration;
+                });
+                setTimeout(() => {
+                    led.classList.remove('on');
+                    overlay.classList.remove('visible');
+                    playing = false;
+                }, elapsed + 400);
+            }
+
+            el.addEventListener('click', () => {
+                if (playing) return;
+                const now = Date.now();
+                taps = taps.filter(t => now - t < 1500);
+                taps.push(now);
+                if (taps.length >= 5) {
+                    taps = [];
+                    playing = true;
+                    playMorse();
+                }
+            });
+        })();
 
         // ── WebMCP — expose page actions to AI agents, feature-detected ──
         // https://webmachinelearning.github.io/webmcp/
