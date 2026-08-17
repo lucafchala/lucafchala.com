@@ -25,3 +25,49 @@ jobs:
 
       - name: Security headers file present
         run: test -f _headers
+
+      - name: Internal links resolve
+        run: |
+          python3 - <<'PY'
+          import re, os, sys
+
+          paths_seen = set()
+          for root, dirs, files in os.walk('.'):
+              dirs[:] = [d for d in dirs if d not in ('.git', 'node_modules')]
+              for f in files:
+                  if not f.endswith('.html'):
+                      continue
+                  p = os.path.join(root, f)
+                  html = open(p, encoding='utf-8').read()
+                  for m in re.finditer(r'''href=["'](/[^"'#]*)''', html):
+                      paths_seen.add((p, m.group(1)))
+                  for m in re.finditer(r'''href=["']https://lucafchala\.com(/[^"'#]*)''', html):
+                      paths_seen.add((p, m.group(1)))
+
+          redirect_sources = set()
+          with open('_redirects', encoding='utf-8') as f:
+              for line in f:
+                  line = line.strip()
+                  if not line or line.startswith('#'):
+                      continue
+                  parts = line.split()
+                  if parts:
+                      redirect_sources.add(parts[0])
+
+          bad = []
+          for src_file, link in sorted(paths_seen):
+              path = link.split('?')[0]
+              if path == '/' or path in redirect_sources:
+                  continue
+              rel = path.lstrip('/')
+              candidates = [c for c in (rel, rel.rstrip('/') + '/index.html') if c]
+              if not any(os.path.isfile(c) for c in candidates):
+                  bad.append((src_file, link))
+
+          if bad:
+              print("Broken internal links found:")
+              for src_file, link in bad:
+                  print(f"  {src_file}: {link}")
+              sys.exit(1)
+          print(f"Checked {len(paths_seen)} internal links, all resolve.")
+          PY
