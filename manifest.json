@@ -1,0 +1,18 @@
+{
+  "name": "Luca F. Chala",
+  "short_name": "Luca Chala",
+  "description": "Estudante, fotógrafo e radioamador (PU2XIK) em São Paulo, BR.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0d0c0a",
+  "theme_color": "#0d0c0a",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}
