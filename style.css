@@ -1129,8 +1129,13 @@ main:focus { outline: none; }
     .toc a:hover span:first-child { color: var(--accent); }
 }
 
-@media (max-width: 380px) {
+/* The logo + name + the four control groups need ~398 px: the name goes before
+   the bar overflows (390 px is the most common iPhone width). */
+@media (max-width: 400px) {
     .brand-text { display: none; }
+}
+
+@media (max-width: 380px) {
     .contact-grid .card:not(.full) { grid-column: 1 / -1; }
     .recent a { grid-template-columns: 1fr auto; }
     .recent time { grid-column: 1 / -1; }
