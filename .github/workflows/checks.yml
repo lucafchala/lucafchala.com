@@ -71,3 +71,41 @@ jobs:
               sys.exit(1)
           print(f"Checked {len(paths_seen)} internal links, all resolve.")
           PY
+
+      - name: CSP hashes cover every inline script
+        run: |
+          python3 - <<'PY'
+          import re, os, sys, hashlib, base64
+
+          def h(x):
+              return "'sha256-" + base64.b64encode(hashlib.sha256(x.encode()).digest()).decode() + "'"
+
+          headers = open('_headers', encoding='utf-8').read()
+          m = re.search(r"script-src ([^;]*)", headers)
+          allowed = set(m.group(1).split()) if m else set()
+
+          missing = []
+          for root, dirs, files in os.walk('.'):
+              dirs[:] = [d for d in dirs if d not in ('.git', 'node_modules')]
+              for f in files:
+                  if not f.endswith('.html'):
+                      continue
+                  p = os.path.join(root, f)
+                  html = open(p, encoding='utf-8').read()
+                  for s in re.finditer(r'<script\b([^>]*)>(.*?)</script>', html, re.DOTALL):
+                      attrs, inner = s.group(1), s.group(2)
+                      if 'src=' in attrs or not inner.strip() or 'application/ld+json' in attrs:
+                          continue
+                      if h(inner) not in allowed:
+                          missing.append(f"{p}: inline <script{attrs}> -> {h(inner)}")
+                  for handler in re.findall(r'\son[a-z]+="([^"]*)"', html):
+                      if h(handler) not in allowed or "'unsafe-hashes'" not in allowed:
+                          missing.append(f"{p}: inline handler {handler!r} -> {h(handler)} (needs 'unsafe-hashes')")
+
+          if missing:
+              print("These inline scripts would be blocked by the CSP in _headers:")
+              print("\n".join("  " + x for x in missing))
+              print("Regenerate the hashes (see CLAUDE.md).")
+              sys.exit(1)
+          print("All inline scripts are covered by the CSP.")
+          PY

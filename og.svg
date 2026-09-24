@@ -28,7 +28,7 @@
   <line x1="100" y1="450" x2="560" y2="450" stroke="#252220" stroke-width="1"/>
 
   <!-- Tagline -->
-  <text x="100" y="490" font-family="'Courier New', Courier, monospace" font-size="17" fill="#6a6358" letter-spacing="2.5">FOTÓGRAFO · PU2XIK · SÃO PAULO, BR</text>
+  <text x="100" y="490" font-family="'Courier New', Courier, monospace" font-size="17" fill="#6a6358" letter-spacing="2.5">ESTUDANTE · FOTÓGRAFO · PU2XIK · SÃO PAULO, BR</text>
 
   <!-- Domain bottom-right -->
   <text x="1128" y="578" font-family="'Courier New', Courier, monospace" font-size="15" fill="#6a4818" text-anchor="end" letter-spacing="1.5">lucafchala.com</text>

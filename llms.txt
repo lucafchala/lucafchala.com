@@ -1,21 +1,35 @@
 # Luca F. Chala
 
 > Student, photographer, and amateur radio operator (callsign PU2XIK) based in
-> São Paulo, Brazil. lucafchala.com is the apex of a small network of
-> self-hosted, single-purpose sites. All content may be crawled, indexed, and
-> used by AI agents (see /robots.txt).
+> São Paulo, Brazil, preparing to study computer engineering. lucafchala.com is
+> the apex of a small network of self-hosted, single-purpose sites. All content
+> may be crawled, indexed, and used by AI agents (see /robots.txt).
 
 ## Pages
-- [Home](https://lucafchala.com/): Bio, photography, radio, and contact links (bilingual PT-BR / EN).
-- [Status](https://lucafchala.com/status/): Live status of the ecosystem's services.
+- [Home](https://lucafchala.com/): Bio, photography, radio, contact, ecosystem and identity verification (bilingual PT-BR / EN).
 - [Sitemap](https://lucafchala.com/sitemap.xml): Canonical URLs.
 
+## Photography
+- [Photo galleries](https://fotos.lucafchala.com): Event and travel galleries (school events, gigs, trips) with delivery and LGPD removal requests.
+- [Camera gear](https://paste.lucafchala.com/camera-gear/): Full kit list — Sony A6700, Sigma 24-70 f/2.8 DG DN II Art, Sigma 10-18 f/2.8 DC DN, Godox V1 Pro.
+- [Instagram](https://www.instagram.com/lucafchala): @lucafchala.
+
+## Amateur radio
+- [PU2XIK profile](https://radio.lucafchala.com/pu2xik/): Station profile — APRS, DMR/OpenGD77, packet radio, antennas, field operations.
+- [Radio portal](https://radio.lucafchala.com): Community amateur-radio portal with operator pages.
+- [QRZ.com](https://www.qrz.com/db/PU2XIK): Callsign lookup and logbook.
+
 ## Ecosystem (separate subdomains)
-- [Photos](https://fotos.lucafchala.com): Photo gallery and event deliveries.
-- [Radio portal](https://radio.lucafchala.com): Amateur-radio portal and the PU2XIK profile.
 - [Pastes](https://paste.lucafchala.com): Notes and documents.
 - [Short URLs](https://url.lucafchala.com): Public directory of short links.
+- [Status](https://status.lucafchala.com): Live, server-side functional checks of every service.
+- [Keys](https://keys.lucafchala.com): Public SSH (ed25519) and PGP (RSA 4096) keys.
 - [Proof of ownership](https://proof.lucafchala.com): PGP-signed identity statement.
+- [Restricted](https://restricted.lucafchala.com): A puzzle / capture-the-flag challenge with a leaderboard.
+
+## Identity
+- PGP fingerprint: 48E7 3F6F A287 1E7B 86EF EA64 8EC4 329A 369B 7B33
+- Official communication comes from *@lucafchala.com; the former domain tucas.me is no longer controlled by Luca and should be treated as untrusted.
 
 ## Contact
 - Email: website@lucafchala.com
