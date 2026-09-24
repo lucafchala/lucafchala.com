@@ -2,6 +2,8 @@ name: smoke-test
 on:
   deployment_status
 
+permissions: {}
+
 jobs:
   smoke-test:
     if: github.event.deployment_status.state == 'success'
@@ -12,7 +14,7 @@ jobs:
           BASE_URL: ${{ github.event.deployment_status.environment_url || 'https://lucafchala.com' }}
         run: |
           set -e
-          paths="/ /status/ /sitemap.xml /robots.txt /llms.txt /manifest.json /.well-known/security.txt /.well-known/gpc.json"
+          paths="/ /style.css /app.js /theme.js /404.js /status/ /sitemap.xml /robots.txt /llms.txt /manifest.json /.well-known/security.txt /.well-known/gpc.json"
           fail=0
           for path in $paths; do
             url="${BASE_URL%/}${path}"
@@ -25,3 +27,15 @@ jobs:
             fi
           done
           exit $fail
+
+      - name: Headers, a short link and the 404
+        env:
+          BASE_URL: ${{ github.event.deployment_status.environment_url || 'https://lucafchala.com' }}
+        run: |
+          set -e
+          base="${BASE_URL%/}"
+          curl -sI "$base/" | grep -qi '^content-security-policy:.*script-src' || { echo "FAIL: CSP header missing"; exit 1; }
+          loc=$(curl -s -o /dev/null -w '%{redirect_url}' "$base/instagram")
+          case "$loc" in https://www.instagram.com/*|https://instagram.com/*) echo "OK: /instagram -> $loc" ;; *) echo "FAIL: /instagram -> '$loc'"; exit 1 ;; esac
+          code=$(curl -s -o /dev/null -w '%{http_code}' "$base/this-short-link-does-not-exist")
+          [ "$code" = "404" ] && echo "OK: unknown path is a real 404" || { echo "FAIL: unknown path returned $code"; exit 1; }
