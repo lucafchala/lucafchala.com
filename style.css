@@ -46,6 +46,10 @@
     --on-accent:     #0d0c0a;
     --topbar-bg:     rgba(13, 12, 10, 0.78);
     --shadow:        0 24px 60px -24px rgba(0, 0, 0, 0.7);
+    /* Status colours, the same AA-checked values status.lucafchala.com uses */
+    --up:            #5fb878;
+    --degraded:      #d4a03c;
+    --down:          #e06666;
 
     --serif: 'Cormorant Garamond', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
     --mono:  'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
@@ -69,6 +73,9 @@
     --on-accent:     #f4efe6;
     --topbar-bg:     rgba(244, 239, 230, 0.8);
     --shadow:        0 24px 60px -28px rgba(60, 40, 10, 0.35);
+    --up:            #23703d;
+    --degraded:      #8a5a0a;
+    --down:          #a8282a;
     color-scheme: light;
 }
 
@@ -878,6 +885,7 @@ html:not(.js) .needs-js { display: none; }
     list-style: none;
 }
 .eco a {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -890,6 +898,7 @@ html:not(.js) .needs-js { display: none; }
 }
 .eco a:hover { border-color: var(--accent-dim); transform: translateY(-2px); background: var(--ctrl-bg); }
 .eco .sub {
+    padding-right: 12px; /* room for the status dot */
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
@@ -900,6 +909,13 @@ html:not(.js) .needs-js { display: none; }
 .eco .sub b { font-weight: 500; color: var(--text); }
 .eco .sub i { font-style: normal; color: var(--muted); font-size: 10.5px; }
 .eco .d { font-size: 10.5px; color: var(--muted); line-height: 1.55; }
+.eco .live { position: absolute; top: 12px; right: 12px; display: flex; }
+.eco .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--up); }
+.eco .live[data-status="degraded"] .live-dot { background: var(--degraded); }
+.eco .live[data-status="down"] .live-dot { background: var(--down); }
+.eco .live:not([data-status="up"]) .live-dot { box-shadow: 0 0 0 3px var(--surface), 0 0 0 4px currentColor; }
+.eco .live[data-status="degraded"] { color: var(--degraded); }
+.eco .live[data-status="down"] { color: var(--down); }
 
 /* ── Verification ── */
 .fp-card { padding: 18px 20px; }

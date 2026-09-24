@@ -77,7 +77,14 @@ Every push triggers that repo's own Cloudflare deploy. Editing a short link in `
 - **CSP:** `script-src 'self'` plus Cloudflare Web Analytics. There are **no hashes to maintain**: every executable script is a file.
 - **CI** (GitHub Actions):
   - `checks.yml` validates JSON, internal links, and that no inline script or `on*=` handler would be blocked by the CSP.
-  - `smoke-test.yml` runs after each deploy. It requests the key routes and assets, and checks that the CSP header is present, that `/instagram` redirects correctly, and that an unknown path is a real 404.
+  - `smoke-test.yml` runs on every push to `main` (after waiting until Cloudflare Pages serves the pushed version of a changed file), daily, and on demand. It requests the key routes and assets and checks:
+    - the CSP header, with no `'unsafe-inline'` in `script-src`;
+    - that `/instagram` and `/pgp` redirect correctly;
+    - that an unknown path is the generated 404;
+    - that `security.txt` has at least 30 days left.
+
+    It used to trigger on `deployment_status`, which Pages never sends, so it never ran.
+  - `checks.yml` also runs monthly: its `security.txt` step fails when `Expires` is less than 30 days away. The same step exists in proof.lucafchala.com.
 - **Consumes:** nothing third‑party. Fonts are self‑hosted in `fonts/`. Cloudflare's Web Analytics beacon is injected at the edge and allowed by the CSP.
 - **Exposes:** the landing page (`/`), the short links in `_redirects` (e.g. `/instagram`, `/review`), the `/status` redirect, and the shared `404`.
 
@@ -147,6 +154,10 @@ A single long page, mobile‑first:
 - **02 Rádio:** QSL‑card station summary and profile / QRZ / portal links.
 - **03 Contato:** email (compose + copy), WhatsApp, Signal, SimpleX, Pix, social links.
 - **04 Ecossistema:** every subdomain with a one‑line description.
+  - **Live status dot:** a dot on each card, read from `status.lucafchala.com/api/painel`.
+    - It only shows when status serves its shared D1 snapshot (`retratoCompartilhado`), so homepage visitors never trigger a sweep.
+    - With no snapshot, or on any error, there are no dots.
+    - Colours are `--up` / `--degraded` / `--down`, with a ring and screen-reader text so colour isn't the only signal.
 - **05 Verificação:** PGP fingerprint (copy), keys, proof, keys.openpgp.org.
 - **Footer:** `73 de PU2XIK`, utility links, shortcuts.
 

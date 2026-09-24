@@ -1,41 +1,90 @@
 name: smoke-test
+# Runs after each push to main, once Cloudflare Pages is serving it. It used to
+# trigger on `deployment_status`, but the Pages GitHub integration creates no
+# GitHub deployments, so it never ran (#24). Daily too, to catch the zone or a
+# generated file breaking something without a push here.
 on:
-  deployment_status
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
 
-permissions: {}
+permissions:
+  contents: read
+
+concurrency:
+  group: smoke-test
+  cancel-in-progress: true
+
+env:
+  BASE_URL: https://lucafchala.com
 
 jobs:
   smoke-test:
-    if: github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
     steps:
-      - name: Hit key routes on the deployed site
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Pages has no "deployed" signal we can read, so wait until the site serves
+      # the pushed bytes of a changed static file. HTML is skipped on purpose: the
+      # Cloudflare zone rewrites it (injected scripts), so its hash never matches.
+      - name: Wait for the deploy
+        if: github.event_name == 'push'
         env:
-          BASE_URL: ${{ github.event.deployment_status.environment_url || 'https://lucafchala.com' }}
+          BEFORE: ${{ github.event.before }}
         run: |
-          set -e
+          files=$(git diff --name-only "$BEFORE" HEAD 2>/dev/null | grep -Ev '(\.html$|^_headers$|^_redirects$|^\.github/|\.md$)' || true)
+          probe=""
+          for f in $files; do [ -f "$f" ] && { probe="$f"; break; }; done
+          if [ -z "$probe" ]; then
+            echo "No verbatim-served file changed; giving Pages 120 s."
+            sleep 120
+            exit 0
+          fi
+          want=$(sha256sum "$probe" | cut -d' ' -f1)
+          echo "Waiting for /$probe ($want)"
+          for i in $(seq 1 36); do
+            got=$(curl -s "$BASE_URL/$probe?smoke=$GITHUB_SHA-$i" | sha256sum | cut -d' ' -f1)
+            [ "$got" = "$want" ] && { echo "Deployed after ~$((i * 10)) s"; exit 0; }
+            sleep 10
+          done
+          echo "FAIL: /$probe still not the pushed version after 6 min"
+          exit 1
+
+      - name: Key routes answer 200
+        run: |
           paths="/ /style.css /app.js /theme.js /404.js /status/ /sitemap.xml /robots.txt /llms.txt /manifest.json /.well-known/security.txt /.well-known/gpc.json"
           fail=0
           for path in $paths; do
-            url="${BASE_URL%/}${path}"
-            code=$(curl -s -o /dev/null -w '%{http_code}' -L "$url")
-            if [ "$code" != "200" ]; then
-              echo "FAIL: $url returned $code"
-              fail=1
-            else
-              echo "OK: $url"
-            fi
+            code=$(curl -s -o /dev/null -w '%{http_code}' -L "$BASE_URL$path")
+            if [ "$code" = "200" ]; then echo "OK: $path"; else echo "FAIL: $path returned $code"; fail=1; fi
           done
           exit $fail
 
-      - name: Headers, a short link and the 404
-        env:
-          BASE_URL: ${{ github.event.deployment_status.environment_url || 'https://lucafchala.com' }}
+      - name: CSP, short links and the 404
         run: |
           set -e
-          base="${BASE_URL%/}"
-          curl -sI "$base/" | grep -qi '^content-security-policy:.*script-src' || { echo "FAIL: CSP header missing"; exit 1; }
-          loc=$(curl -s -o /dev/null -w '%{redirect_url}' "$base/instagram")
-          case "$loc" in https://www.instagram.com/*|https://instagram.com/*) echo "OK: /instagram -> $loc" ;; *) echo "FAIL: /instagram -> '$loc'"; exit 1 ;; esac
-          code=$(curl -s -o /dev/null -w '%{http_code}' "$base/this-short-link-does-not-exist")
-          [ "$code" = "404" ] && echo "OK: unknown path is a real 404" || { echo "FAIL: unknown path returned $code"; exit 1; }
+          csp=$(curl -sI "$BASE_URL/" | grep -i '^content-security-policy:' || true)
+          echo "$csp" | grep -q "script-src 'self'" || { echo "FAIL: CSP header missing or changed: $csp"; exit 1; }
+          echo "$csp" | grep -o "script-src[^;]*" | grep -q "unsafe-inline" && { echo "FAIL: script-src allows unsafe-inline"; exit 1; } || true
+          echo "OK: CSP"
+          check_redirect() {
+            loc=$(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' "$BASE_URL$1")
+            case "$loc" in 30[12]\ $2*) echo "OK: $1 -> $loc" ;; *) echo "FAIL: $1 -> '$loc' (expected $2…)"; exit 1 ;; esac
+          }
+          check_redirect /instagram https://www.instagram.com/
+          check_redirect /pgp https://keys.lucafchala.com
+          code=$(curl -s -o /dev/null -w '%{http_code}' "$BASE_URL/this-short-link-does-not-exist")
+          [ "$code" = "404" ] || { echo "FAIL: unknown path returned $code"; exit 1; }
+          curl -s "$BASE_URL/this-short-link-does-not-exist" | grep -q 'src="/404.js"' || { echo "FAIL: 404 page is not the generated one"; exit 1; }
+          echo "OK: unknown path is the generated 404"
+
+      - name: security.txt is not about to expire
+        run: |
+          exp=$(curl -s "$BASE_URL/.well-known/security.txt" | sed -n 's/^Expires: *//p')
+          left=$(( ( $(date -d "$exp" +%s) - $(date +%s) ) / 86400 ))
+          echo "Expires $exp ($left days left)"
+          [ "$left" -ge 30 ] || { echo "FAIL: renew .well-known/security.txt (lucafchala.com and proof)"; exit 1; }
