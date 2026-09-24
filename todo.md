@@ -5,23 +5,25 @@ _Last updated: 2026-09-24. Each open item is a GitHub issue; this file is the in
 ## Open
 
 ### Needs the owner (dashboard / private key)
-- [ ] Cloudflare zone: turn off Rocket Loader; decide on Email Obfuscation / Cloudflare Fonts; JavaScript Detections injects an inline script the CSP blocks; Web Analytics injected on subdomains whose CSP blocks it; `smoke-test.yml` never fires (no GitHub deployments) → lucafchala/lucafchala.com#18
+- [ ] Cloudflare zone: turn off Rocket Loader; decide on Email Obfuscation / Cloudflare Fonts; JavaScript Detections injects an inline script the CSP blocks; Web Analytics injected on subdomains whose CSP blocks it → lucafchala/lucafchala.com#18
 - [ ] PGP key: add an @lucafchala.com UID, revoke the tucas.me UIDs, publish WKD → lucafchala/lucafchala.com#19
 - [ ] Re-sign the proof statement (link keys.lucafchala.com, move the phone number) → lucafchala/proof.lucafchala.com#6
 - [ ] Bind `DASH_KV` for the login rate limit → lucafchala/dash.lucafchala.com#27
-- [ ] Renew `security.txt` before 2027-01-20 → lucafchala/lucafchala.com#20
 
 ### Content
 - [ ] Repoint the remaining Cloudspot / Drive event links (ibiúna_2025, ferriani_2024, …) → lucafchala/dash.lucafchala.com#26
 - [ ] Paste follow-ups: hand-built pages, e-mail-me addresses → lucafchala/paste.lucafchala.com#10
 
 ### Features
-- [ ] Homepage live status dots (status API sends CORS now) → lucafchala/lucafchala.com#21
 - [ ] PURL destination health check, click counts → lucafchala/dash.lucafchala.com#28
 - [ ] subs: backup beyond this browser, subscribable calendar → lucafchala/pays.lucafchala.com#2
 - [ ] status.lucafchala.com: optional secrets (`STATUS_ADMIN_TOKEN`, Turnstile) → lucafchala/status.lucafchala.com#50
 
 ## Done ✅
+- 2026-09-24:
+  - homepage live status dots, active once status has D1 (#21);
+  - `security.txt` renewed to 2027-09-01, with a monthly CI check (#20);
+  - `smoke-test.yml` now runs on push/daily (#24).
 - 2026-09-24: all eight PRs of the pass merged in order and verified in production (lucafchala/lucafchala.com#17): 39/39 route checks, 13/13 services up on status, plus the top-bar overflow at 390 px (lucafchala/lucafchala.com#22).
 - status phase 2 (lucafchala/status.lucafchala.com#51): reliable alerts, double opt-in, PT/EN, shared prefs, 404 probes, self-check marker restored.
 - 2026-09 ecosystem pass:

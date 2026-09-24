@@ -107,7 +107,11 @@
             p_top: 'Voltar ao topo',
             p_more: 'Mais',
             p_gallery: 'Galeria de fotos',
-            p_instagram: 'Instagram @lucafchala'
+            p_instagram: 'Instagram @lucafchala',
+            live_up: 'no ar',
+            live_degraded: 'instável',
+            live_down: 'fora do ar',
+            live_title: 'Agora, segundo status.lucafchala.com'
         },
         en: {
             skip: 'Skip to content',
@@ -214,7 +218,11 @@
             p_top: 'Back to top',
             p_more: 'More',
             p_gallery: 'Photo gallery',
-            p_instagram: 'Instagram @lucafchala'
+            p_instagram: 'Instagram @lucafchala',
+            live_up: 'up',
+            live_degraded: 'degraded',
+            live_down: 'down',
+            live_title: 'Right now, per status.lucafchala.com'
         }
     };
 
@@ -261,6 +269,7 @@
         $('#btn-en').setAttribute('aria-pressed', String(lang === 'en'));
         formatDates(lang);
         renderClock();
+        renderLive();
         if (persist) store.set('lang', lang);
     }
 
@@ -323,11 +332,56 @@
     const fingerprint = '48E73F6FA2871E7B86EFEA648EC4329A369B7B33';
     $('#fp-copy').addEventListener('click', () => copy(fingerprint));
 
+    // ── Live status dots on the 04 Ecossistema cards ──
+    // Reads /api/painel, which is edge-cached for 60 s and never sweeps. Dots only
+    // appear when status serves its shared D1 snapshot (retratoCompartilhado):
+    // without it the panel has no status, and /api/status would sweep every
+    // subdomain per visitor. Any failure leaves the cards as they are.
+    let live = null;
+    function renderLive() {
+        if (!live) return;
+        document.querySelectorAll('.eco a[href]').forEach(a => {
+            let host;
+            try { host = new URL(a.href).host; } catch (e) { return; }
+            const st = live[host];
+            let dot = a.querySelector('.live');
+            if (!st) { if (dot) dot.remove(); return; }
+            if (!dot) {
+                dot = document.createElement('span');
+                dot.className = 'live';
+                dot.innerHTML = '<span class="live-dot" aria-hidden="true"></span><span class="sr-only"></span>';
+                a.appendChild(dot);
+            }
+            dot.dataset.status = st;
+            dot.title = t('live_title') + ': ' + t('live_' + st);
+            dot.querySelector('.sr-only').textContent = ' — ' + t('live_' + st);
+        });
+    }
+    function loadLive() {
+        if (!window.fetch) return;
+        fetch('https://status.lucafchala.com/api/painel', { credentials: 'omit' })
+            .then(r => (r.ok ? r.json() : null))
+            .then(p => {
+                const svcs = p && p.retratoCompartilhado === true && p.status && Array.isArray(p.status.services) ? p.status.services : null;
+                if (!svcs) return;
+                const map = {};
+                svcs.forEach(s => {
+                    if (!s || typeof s.url !== 'string' || !['up', 'degraded', 'down'].includes(s.status)) return;
+                    try { const h = new URL(s.url).host; if (!map[h] || s.url.replace(/\/$/, '') === 'https://' + h) map[h] = s.status; } catch (e) {}
+                });
+                live = map;
+                renderLive();
+            })
+            .catch(() => {});
+    }
+
     // ── Init preferences ──
     const savedLang = store.get('lang');
     const initialLang = savedLang || ((navigator.language || 'pt').toLowerCase().startsWith('pt') ? 'pt' : 'en');
     setLang(initialLang, false);
     setInterval(renderClock, 20000);
+    // After first paint: the dots are decoration, never worth delaying the page.
+    if (document.readyState === 'complete') loadLive(); else window.addEventListener('load', loadLive, { once: true });
 
     // Controls (listeners instead of inline onclick so the CSP can drop 'unsafe-inline')
     $('#btn-pt').addEventListener('click', () => setLang('pt', true));
