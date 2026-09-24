@@ -4,12 +4,8 @@ _Last updated: 2026-09-24. Each open item is a GitHub issue; this file is the in
 
 ## Open
 
-### Merge + verify the 2026-09 pass
-- [ ] Merge order and post-deploy checklist → lucafchala/lucafchala.com#17
-  (dash#25 first, then url#11 · paste#9 · lucafchala.com#16, then keys#3 · proof#5 · pays#1 · status#51)
-
 ### Needs the owner (dashboard / private key)
-- [ ] Cloudflare zone: turn off Rocket Loader; decide on Email Obfuscation / Cloudflare Fonts → lucafchala/lucafchala.com#18
+- [ ] Cloudflare zone: turn off Rocket Loader; decide on Email Obfuscation / Cloudflare Fonts; JavaScript Detections injects an inline script the CSP blocks; Web Analytics injected on subdomains whose CSP blocks it; `smoke-test.yml` never fires (no GitHub deployments) → lucafchala/lucafchala.com#18
 - [ ] PGP key: add an @lucafchala.com UID, revoke the tucas.me UIDs, publish WKD → lucafchala/lucafchala.com#19
 - [ ] Re-sign the proof statement (link keys.lucafchala.com, move the phone number) → lucafchala/proof.lucafchala.com#6
 - [ ] Bind `DASH_KV` for the login rate limit → lucafchala/dash.lucafchala.com#27
@@ -23,9 +19,11 @@ _Last updated: 2026-09-24. Each open item is a GitHub issue; this file is the in
 - [ ] Homepage live status dots (status API sends CORS now) → lucafchala/lucafchala.com#21
 - [ ] PURL destination health check, click counts → lucafchala/dash.lucafchala.com#28
 - [ ] subs: backup beyond this browser, subscribable calendar → lucafchala/pays.lucafchala.com#2
-- [ ] status.lucafchala.com phase 2 (alerts, double opt-in, PT/EN, 404 probes) → PR lucafchala/status.lucafchala.com#51, closes #50 after the owner sets the optional secrets
+- [ ] status.lucafchala.com: optional secrets (`STATUS_ADMIN_TOKEN`, Turnstile) → lucafchala/status.lucafchala.com#50
 
 ## Done ✅
+- 2026-09-24: all eight PRs of the pass merged in order and verified in production (lucafchala/lucafchala.com#17): 39/39 route checks, 13/13 services up on status, plus the top-bar overflow at 390 px (lucafchala/lucafchala.com#22).
+- status phase 2 (lucafchala/status.lucafchala.com#51): reliable alerts, double opt-in, PT/EN, shared prefs, 404 probes, self-check marker restored.
 - 2026-09 ecosystem pass:
   - self-hosted fonts everywhere (they were CSP-blocked by Cloudflare Fonts rewrites);
   - no `'unsafe-inline'` scripts anywhere;
