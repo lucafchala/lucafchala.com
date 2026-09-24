@@ -12,7 +12,7 @@
 ## Photography
 - [Photo galleries](https://fotos.lucafchala.com): Event and travel galleries (school events, gigs, trips) with delivery and LGPD removal requests.
 - [Camera gear](https://paste.lucafchala.com/camera-gear/): Full kit list — Sony A6700, Sigma 24-70 f/2.8 DG DN II Art, Sigma 10-18 f/2.8 DC DN, Godox V1 Pro.
-- [Instagram](https://www.instagram.com/lucafchala): @lucafchala.
+- [Instagram](https://www.instagram.com/lucafchala): @lucafchala — travel photos and live stories from events as they happen (full galleries land on fotos afterwards).
 
 ## Amateur radio
 - [PU2XIK profile](https://radio.lucafchala.com/pu2xik/): Station profile — APRS, DMR/OpenGD77, packet radio, antennas, field operations.

@@ -131,10 +131,10 @@ Other repos *do* need configuration. This table is a map; each repo's own README
 
 A single long page, mobile‑first:
 
-- a sticky **top bar** with the monogram, a **search** button (command palette), the **PT/EN** switch and a **theme** toggle;
-- the **hero** — live São Paulo clock, the name, roles with callsign **PU2XIK**, CTAs, and (desktop) a section index;
+- a sticky **top bar** with the monogram, an **Instagram** shortcut, a **search** button (command palette), the **PT/EN** switch and a **theme** toggle;
+- the **hero** — live São Paulo clock, the name, roles with callsign **PU2XIK**, CTAs (photos · Instagram · contact), and (desktop) a section index;
 - the **bio** with drop cap and an at‑a‑glance facts grid (base, camera, callsign, next step);
-- **01 Fotografia** — recent galleries from `fotos` and a camera‑kit summary linking to the full gear list;
+- **01 Fotografia** — a featured **Instagram** card (travel photos + live event stories), recent galleries from `fotos` and a camera‑kit summary linking to the full gear list;
 - **02 Rádio** — a QSL‑card styled station summary (QTH, grid, zones, rig, modes) plus profile / QRZ / portal links;
 - **03 Contato** — email (compose + copy), WhatsApp, Signal, SimpleX, Pix support and social links;
 - **04 Ecossistema** — every subdomain with a one‑line description;
