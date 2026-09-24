@@ -23,8 +23,8 @@
 - [Pastes](https://paste.lucafchala.com): Notes and documents.
 - [Short URLs](https://url.lucafchala.com): Public directory of short links.
 - [Status](https://status.lucafchala.com): Live, server-side functional checks of every service.
-- [Keys](https://keys.lucafchala.com): Public SSH (ed25519) and PGP (RSA 4096) keys.
-- [Proof of ownership](https://proof.lucafchala.com): PGP-signed identity statement.
+- [Keys](https://keys.lucafchala.com): Public SSH (ed25519) and PGP (RSA 4096) keys; raw copies at https://keys.lucafchala.com/pgp.asc and https://keys.lucafchala.com/ssh.pub.
+- [Proof of ownership](https://proof.lucafchala.com): PGP-signed identity statement; verify with `curl -fsSL https://proof.lucafchala.com/proof.txt.asc | gpg --verify`.
 - [Restricted](https://restricted.lucafchala.com): A puzzle / capture-the-flag challenge with a leaderboard.
 
 ## Identity
