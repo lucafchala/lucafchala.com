@@ -40,7 +40,9 @@ status/
 `_headers` pins every executable inline `<script>` (the head theme script and the
 main app script in `index.html`, plus the two scripts in the dash-generated
 `404.html`) with `sha256-` hashes instead of `'unsafe-inline'`. The 404's two
-inline `onclick=` handlers are allowed via `'unsafe-hashes'` + their hashes.
+inline `onclick=` handlers are allowed via `'unsafe-hashes'` + their hashes —
+both as written and in the form Rocket Loader rewrites them to at the edge
+(`if (!window.__cfRLUnblockHandlers) return false; …`).
 The JSON-LD block is not executed and needs no hash.
 **If you edit any inline script, regenerate the hashes** or the page's JS will
 be blocked — CI (`checks.yml` → "CSP hashes cover every inline script") fails
@@ -56,7 +58,9 @@ for f in ('index.html', '404.html'):
     for m in re.finditer(r'<script\b([^>]*)>(.*?)</script>', html, re.DOTALL):
         if 'src=' in m.group(1) or 'ld+json' in m.group(1) or not m.group(2).strip(): continue
         scripts.append(h(m.group(2)))
-    handlers += [h(v) for v in re.findall(r'\son[a-z]+="([^"]*)"', html)]
+    for v in re.findall(r'\son[a-z]+="([^"]*)"', html):
+        # Rocket Loader rewrites each handler at the edge; allow both forms.
+        handlers += [h(v), h('if (!window.__cfRLUnblockHandlers) return false; ' + v)]
 src = "script-src 'self' " + ' '.join(scripts) + (" 'unsafe-hashes' " + ' '.join(handlers) if handlers else '') + " https://static.cloudflareinsights.com"
 hd = open('_headers', encoding='utf-8').read()
 open('_headers', 'w', encoding='utf-8').write(re.sub(r"script-src [^;]*", src, hd, count=1))
