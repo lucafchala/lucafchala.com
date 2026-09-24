@@ -6,7 +6,7 @@ _Last updated: 2026-09-24. Each open item is a GitHub issue; this file is the in
 
 ### Merge + verify the 2026-09 pass
 - [ ] Merge order and post-deploy checklist → lucafchala/lucafchala.com#17
-  (dash#25 first, then url#11 · paste#9 · lucafchala.com#16, then keys#3 · proof#5 · pays#1)
+  (dash#25 first, then url#11 · paste#9 · lucafchala.com#16, then keys#3 · proof#5 · pays#1 · status#51)
 
 ### Needs the owner (dashboard / private key)
 - [ ] Cloudflare zone: turn off Rocket Loader; decide on Email Obfuscation / Cloudflare Fonts → lucafchala/lucafchala.com#18
@@ -23,7 +23,7 @@ _Last updated: 2026-09-24. Each open item is a GitHub issue; this file is the in
 - [ ] Homepage live status dots (status API sends CORS now) → lucafchala/lucafchala.com#21
 - [ ] PURL destination health check, click counts → lucafchala/dash.lucafchala.com#28
 - [ ] subs: backup beyond this browser, subscribable calendar → lucafchala/pays.lucafchala.com#2
-- [ ] status.lucafchala.com phase 2 (alerts, CSP, a11y, PT/EN, fonts) → lucafchala/status.lucafchala.com#50
+- [ ] status.lucafchala.com phase 2 (alerts, double opt-in, PT/EN, 404 probes) → PR lucafchala/status.lucafchala.com#51, closes #50 after the owner sets the optional secrets
 
 ## Done ✅
 - 2026-09 ecosystem pass:
