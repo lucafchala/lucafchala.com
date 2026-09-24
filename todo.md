@@ -4,22 +4,30 @@ _Last updated: 2026-09-24. Each open item is a GitHub issue; this file is the in
 
 ## Open
 
-### Needs the owner (dashboard / private key)
-- [ ] Cloudflare zone: turn off Rocket Loader; decide on Email Obfuscation / Cloudflare Fonts; JavaScript Detections injects an inline script the CSP blocks; Web Analytics injected on subdomains whose CSP blocks it → lucafchala/lucafchala.com#18
+Everything open needs the owner: a dashboard action, the private key, or a decision. Each issue has a step-by-step checklist with how to verify it.
+
+### Cloudflare dashboard
+- [ ] status: D1 `STATUS_DB` (turns on the homepage dots and 90-day bars), scheduler Worker, SSL scope on the token, fotos Workers Builds → lucafchala/status.lucafchala.com#49
+- [ ] Zone: JavaScript Detections off, Web Analytics only on the apex, Rocket Loader off, Cloudflare Fonts off → lucafchala/lucafchala.com#18
+- [ ] Bind `DASH_KV` for the login rate limit → lucafchala/dash.lucafchala.com#27
+- [ ] status: `STATUS_ADMIN_TOKEN` (Turnstile optional, needs a code change first) → lucafchala/status.lucafchala.com#50
+
+### Private key
 - [ ] PGP key: add an @lucafchala.com UID, revoke the tucas.me UIDs, publish WKD → lucafchala/lucafchala.com#19
 - [ ] Re-sign the proof statement (link keys.lucafchala.com, move the phone number) → lucafchala/proof.lucafchala.com#6
-- [ ] Bind `DASH_KV` for the login rate limit → lucafchala/dash.lucafchala.com#27
 
-### Content
-- [ ] Repoint the remaining Cloudspot / Drive event links (ibiúna_2025, ferriani_2024, …) → lucafchala/dash.lucafchala.com#26
-- [ ] Paste follow-ups: hand-built pages, e-mail-me addresses → lucafchala/paste.lucafchala.com#10
-
-### Features
-- [ ] PURL destination health check, click counts → lucafchala/dash.lucafchala.com#28
-- [ ] subs: backup beyond this browser, subscribable calendar → lucafchala/pays.lucafchala.com#2
-- [ ] status.lucafchala.com: optional secrets (`STATUS_ADMIN_TOKEN`, Turnstile) → lucafchala/status.lucafchala.com#50
+### Decisions / content
+- [ ] `/review` points at a deleted Google Form (found by the weekly link check) → lucafchala/dash.lucafchala.com#30
+- [ ] Repoint the remaining Cloudspot / Drive event links → lucafchala/dash.lucafchala.com#26
+- [ ] `e-mail-me` paste: keep, trim or replace the addresses → lucafchala/paste.lucafchala.com#10
+- [ ] Click counts for short links: want them? → lucafchala/dash.lucafchala.com#28
 
 ## Done ✅
+- 2026-09-24 (code issues):
+  - weekly PURL destination check (dash#29, opens/closes "Links quebrados");
+  - video-project pastes became generated `type: "links"` pages (paste#11);
+  - pays encrypted backup + price history (pays#3);
+  - smoke test that runs, live status dots, `security.txt` renewal check (lucafchala.com#25, proof#7).
 - 2026-09-24:
   - homepage live status dots, active once status has D1 (#21);
   - `security.txt` renewed to 2027-09-01, with a monthly CI check (#20);
