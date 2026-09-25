@@ -34,6 +34,7 @@
             recent: 'Galerias recentes',
             see_all: 'Ver todas',
             featured: 'destaque',
+            soon: 'em breve',
             g_clovis: 'Show da Banda do Clóvis',
             g_junina: 'Festa Junina 2026',
             g_zenite: 'Show da Zênite',
@@ -145,6 +146,7 @@
             recent: 'Recent galleries',
             see_all: 'See all',
             featured: 'featured',
+            soon: 'coming soon',
             g_clovis: 'Banda do Clóvis live',
             g_junina: 'Festa Junina 2026',
             g_zenite: 'Zênite live',
@@ -378,13 +380,66 @@
             .catch(() => {});
     }
 
+    // "Galerias recentes" comes from fotos.lucafchala.com/api/recentes, so a new
+    // project shows up here without editing this HTML. The list in index.html
+    // is the fallback (no JS, offline, fotos down): it's only replaced when the
+    // response has at least one valid item. Titles arrive in PT and stay PT in
+    // EN mode, like the text status serves.
+    function loadGalleries() {
+        const list = document.querySelector('.recent');
+        if (!list || !window.fetch) return;
+        fetch('https://fotos.lucafchala.com/api/recentes', { credentials: 'omit' })
+            .then(r => (r.ok ? r.json() : null))
+            .then(p => {
+                const items = (p && Array.isArray(p.galerias) ? p.galerias : []).filter(g =>
+                    g && typeof g.slug === 'string' && /^[a-z0-9_-]+$/i.test(g.slug) &&
+                    typeof g.titulo === 'string' && g.titulo.trim() &&
+                    (g.data === null || (typeof g.data === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(g.data)))
+                ).slice(0, 5);
+                if (!items.length) return;
+                const frag = document.createDocumentFragment();
+                items.forEach(g => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    // Built from the validated slug, never the response's `url`:
+                    // nothing from outside becomes a link target.
+                    a.href = 'https://fotos.lucafchala.com/' + g.slug;
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.setAttribute('aria-describedby', 'newtab');
+                    // <time> is always there, even without a date: the palette labels by `time + span`.
+                    const time = document.createElement('time');
+                    if (g.data) time.setAttribute('datetime', g.data);
+                    const title = document.createElement('span');
+                    title.textContent = g.titulo.trim();
+                    const tail = document.createElement('span');
+                    if (g.destaque || g.emBreve) {
+                        tail.className = 'tag';
+                        tail.dataset.i18n = g.destaque ? 'featured' : 'soon';
+                        tail.textContent = t(tail.dataset.i18n);
+                    } else {
+                        tail.className = 'arr-ext';
+                        tail.setAttribute('aria-hidden', 'true');
+                        tail.textContent = '↗';
+                    }
+                    a.append(time, title, tail);
+                    li.appendChild(a);
+                    frag.appendChild(li);
+                });
+                list.replaceChildren(frag);
+                formatDates(root.dataset.lang || 'pt');
+            })
+            .catch(() => {});
+    }
+
     // ── Init preferences ──
     const savedLang = store.get('lang');
     const initialLang = savedLang || ((navigator.language || 'pt').toLowerCase().startsWith('pt') ? 'pt' : 'en');
     setLang(initialLang, false);
     setInterval(renderClock, 20000);
     // After first paint: the dots are decoration, never worth delaying the page.
-    if (document.readyState === 'complete') loadLive(); else window.addEventListener('load', loadLive, { once: true });
+    const afterLoad = () => { loadLive(); loadGalleries(); };
+    if (document.readyState === 'complete') afterLoad(); else window.addEventListener('load', afterLoad, { once: true });
 
     // Controls (listeners instead of inline onclick so the CSP can drop 'unsafe-inline')
     $('#btn-pt').addEventListener('click', () => setLang('pt', true));

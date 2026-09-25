@@ -151,6 +151,9 @@ A single long page, mobile‑first:
 - **Hero:** live São Paulo clock, name, roles with callsign **PU2XIK**, CTAs (photos · Instagram · contact), and on desktop a section index.
 - **Bio:** drop cap and an at‑a‑glance facts grid.
 - **01 Fotografia:** featured Instagram card, recent galleries from `fotos`, camera‑kit summary.
+  - **Recent galleries update themselves:** after load, the page reads `fotos.lucafchala.com/api/recentes` (the 5 newest public galleries, pinned first, CORS-open, 5‑min cache) and redraws the list. A new project in fotos shows up here with no edit to this repo.
+    - The list in `index.html` is the fallback for no JS, offline, or fotos down; it's replaced only when the API returns at least one valid item.
+    - Links are rebuilt from the validated slug; tags: `destaque` (pinned) and `em breve` (coming soon).
 - **02 Rádio:** QSL‑card station summary and profile / QRZ / portal links.
 - **03 Contato:** email (compose + copy), WhatsApp, Signal, SimpleX, Pix, social links.
 - **04 Ecossistema:** every subdomain with a one‑line description.
