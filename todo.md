@@ -6,15 +6,17 @@ _Last updated: 2026-09-25. Each open item is a GitHub issue; this file is the in
 
 Everything open needs the owner: a secret, the private key, or a single edit. Each issue has the exact steps and how to verify them.
 
-- [ ] **Web Analytics token:** paste the site token into draft PR lucafchala/lucafchala.com#29, then merge. CI stays red until it's a real 32-hex token. → lucafchala/lucafchala.com#18
 - [ ] **Click counts:** a token with Zone › Analytics › Read + the Zone ID as the dash secrets `CF_ANALYTICS_TOKEN` / `CF_ZONE_ID`. The code is merged (dash#32). → lucafchala/dash.lucafchala.com#28
 - [ ] **status:** `STATUS_ADMIN_TOKEN` (optional; Turnstile would need a CSP change first) → lucafchala/status.lucafchala.com#50
-- [ ] **status-agendador preview builds** fail on every status PR. Turn off "Builds for non-production branches" on that Worker (see status#52).
-- [ ] **JavaScript Detections** (optional): the `bot_management` API command is in #18. The Free dashboard can't turn it off.
-- [ ] **fotos deploy check** on the next merge to fotos `main` → lucafchala/fotos#189
 - [ ] **PGP:** add an @lucafchala.com UID, revoke the tucas.me UIDs, publish WKD → lucafchala/lucafchala.com#19; re-sign the proof statement → lucafchala/proof.lucafchala.com#6
 
 ## Done ✅
+- 2026-09-25 (afternoon):
+  - **Web Analytics:** site token in, lucafchala.com#29 merged; the beacon is on the homepage only (#18 closed);
+  - **status-agendador:** preview builds off in the panel (status#52);
+  - **JavaScript Detections:** left on by the owner's decision (recorded in #18);
+  - **"Galerias recentes" updates itself** from fotos' new `/api/recentes` (fotos#190, lucafchala.com#32);
+  - **fotos deploy check** passed on the #190 merge: the rollback target was the previous tagged version (fotos#189 closed);
 - 2026-09-25:
   - **homepage status dots work:** they read status's new `/api/resumo` (~1 KB, CORS-open, D1 read only). `/api/painel` had no CORS (status#52, status#53, lucafchala.com#27);
   - **data:** `ibiúna_2025` → fotos gallery and `/review` removed (dash#26, dash#30); `e-mail-me` has a single address (paste#10);
