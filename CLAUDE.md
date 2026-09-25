@@ -52,12 +52,13 @@ todo.md             # Open follow-ups (also tracked as GitHub issues)
 
 ### Cloudflare zone rewrites (production only)
 
-The zone has **Rocket Loader**, **Cloudflare Fonts** and **Email Obfuscation** enabled. They rewrite the served HTML, not the repo:
+State as of 2026-09-25 (lucafchala.com#18). The zone rewrites the served HTML, not the repo:
 
-- **Rocket Loader:** every `<script>` carries `data-cfasync="false"` so Rocket Loader leaves it alone. Keep it on new ones.
-- **Cloudflare Fonts:** only rewrites Google Fonts links. We self‑host, so it has nothing to do.
-- **Email Obfuscation:** injects `/cdn-cgi/…/email-decode.min.js`, which is same‑origin, so `'self'` covers it.
-- **Web Analytics:** injects `static.cloudflareinsights.com/beacon.min.js`; allowed in `script-src` and `connect-src`.
+- **Rocket Loader: off.** Every `<script>` still carries `data-cfasync="false"` so a future re-enable leaves it alone. Keep it on new ones.
+- **Cloudflare Fonts: off.** We self‑host anyway.
+- **Email Obfuscation: on** (owner's decision). It rewrites addresses in the HTML to `__cf_email__` and injects `/cdn-cgi/…/email-decode.min.js` (same‑origin, so `'self'` covers it). Pages that render addresses from JS/JSON (paste) show them normally.
+- **Web Analytics: manual snippet on the homepage only — pending the site token (PR #29).** Automatic injection is off on every hostname, so until #29 merges no page has analytics. Once merged, `index.html` loads `static.cloudflareinsights.com/beacon.min.js` with `data-cf-beacon='{"token": "…"}'` (the token is public; it's the site token from Cloudflare → Web Analytics → lucafchala.com → Manage site). It's allowed in `script-src` and `connect-src` here only. The snippet counts EU visitors too; the old automatic mode excluded them. CI fails while the token is the `__CF_BEACON_TOKEN__` placeholder.
+- **JavaScript Detections: on, and can't be turned off from the Free dashboard.** It injects an inline `window.__CF$cv$params=…` script on every page; the CSP blocks it (a console error, nothing breaks). The API route to try is in #18.
 
 ## Local preview
 
