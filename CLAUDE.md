@@ -29,7 +29,7 @@ todo.md             # Open follow-ups (also tracked as GitHub issues)
 - **Theme and language are shared across subdomains.** Choices are stored in the `lf_theme` / `lf_lang` cookies on `.lucafchala.com` (see `store` in `app.js` and `theme.js`), with `localStorage` as a fallback. Every sibling site reads the same cookies. Without a saved choice, the theme follows `prefers-color-scheme` and the language follows `navigator.language`.
 - **Command palette:** `/` or ⌘K/Ctrl+K opens a `<dialog>` built automatically from every link inside `main section[id]` and the footer. New links show up in it for free. `T` toggles theme, `L` toggles language.
 - **Live status dots** (04 Ecossistema, `loadLive`/`renderLive` in `app.js`):
-  - read `status.lucafchala.com/api/resumo` (~1 KB, CORS `*`, reads the D1 snapshot only) and draw only when `retratoCompartilhado` is true;
+  - read `status.lucafchala.com/api/resumo` (~1 KB, CORS `*`, reads the D1 snapshot only) and draw only when `retratoCompartilhado` is true and the snapshot isn't `atrasado` (stale: unknown is not up);
   - `/api/painel` has no CORS and is ~90 KB — reading it is what kept the dots from ever showing (status#52);
   - never switch them to `/api/status`, which sweeps every subdomain per request;
   - matching is by the card link's hostname.
@@ -44,9 +44,9 @@ todo.md             # Open follow-ups (also tracked as GitHub issues)
 - **Easter eggs** (keep them working): hold the first `.callsign` → radio sweep; five quick taps on `.name` → Morse "CQ DE PU2XIK"; styled console signature.
 - **Footer credit:** "HTML, CSS e JS puros · feito com ajuda do Claude". Don't claim the site is hand‑made.
 
-## Subdomains (separate repos/deployments, monitored by status)
+## Subdomains (separate repos/deployments)
 
-`fotos` • `radio` • `paste` • `url` • `keys` • `proof` • `pays` • `status` • `restricted` • `dash`. (`now`/`weblog` are discontinued and redirect to `/transferring`.)
+`fotos` • `radio` • `paste` • `url` • `keys` • `proof` • `pays` • `status` • `restricted` • `dash`. (`now`/`weblog` are discontinued and redirect to `/transferring`.) status.lucafchala.com monitors all of them except `restricted`, plus `rg` and `treino` (its `SERVICES` list is the source of truth).
 
 ## Content-Security-Policy
 

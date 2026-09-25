@@ -374,7 +374,9 @@
         fetch('https://status.lucafchala.com/api/resumo', { credentials: 'omit' })
             .then(r => (r.ok ? r.json() : null))
             .then(p => {
-                const svcs = p && p.retratoCompartilhado === true && Array.isArray(p.services) ? p.services : null;
+                // A stale snapshot (atrasado: older than status's 20 min TTL, e.g. the
+                // scheduler stopped) says nothing about now: no dots beats green ones.
+                const svcs = p && p.retratoCompartilhado === true && p.atrasado !== true && Array.isArray(p.services) ? p.services : null;
                 if (!svcs) return;
                 const map = {};
                 svcs.forEach(s => {
