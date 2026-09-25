@@ -85,7 +85,7 @@ Every push triggers that repo's own Cloudflare deploy. Editing a short link in `
 
     It used to trigger on `deployment_status`, which Pages never sends, so it never ran.
   - `checks.yml` also runs monthly: its `security.txt` step fails when `Expires` is less than 30 days away. The same step exists in proof.lucafchala.com.
-- **Consumes:** nothing third‑party. Fonts are self‑hosted in `fonts/`. Cloudflare Web Analytics will be a **manual snippet in `index.html`** (home only; the zone's automatic injection is off), allowed by the CSP — pending the site token in PR #29.
+- **Consumes:** nothing third‑party. Fonts are self‑hosted in `fonts/`. Cloudflare Web Analytics is a **manual snippet in `index.html`** (home only; the zone's automatic injection is off), allowed by the CSP.
 - **Exposes:** the landing page (`/`), the short links in `_redirects` (e.g. `/instagram`, `/review`), the `/status` redirect, and the shared `404`.
 
 ---
