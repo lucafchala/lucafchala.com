@@ -126,3 +126,13 @@ jobs:
           echo "Expires $exp ($left days left)"
           [ "$left" -ge 30 ] || { echo "Renew .well-known/security.txt here and in the sibling repo (lucafchala.com / proof.lucafchala.com): set Expires to ~11 months ahead"; exit 1; }
           [ "$left" -le 366 ] || { echo "Expires is more than a year out (RFC 9116 recommends less)"; exit 1; }
+
+      # Web Analytics is a manual snippet (lucafchala.com#18). The token is
+      # public but must be the real one: the placeholder never reaches main.
+      - name: Web Analytics snippet has a real token
+        run: |
+          n=$(grep -c 'static.cloudflareinsights.com/beacon.min.js' index.html || true)
+          [ "$n" = "1" ] || { echo "index.html must load the Web Analytics beacon exactly once (found $n)"; exit 1; }
+          grep -q '__CF_BEACON_TOKEN__' index.html && { echo "Fill in the Web Analytics token (Cloudflare → Web Analytics → lucafchala.com → Manage site) in place of __CF_BEACON_TOKEN__"; exit 1; } || true
+          grep -Eq "data-cf-beacon='\{\"token\": \"[0-9a-f]{32}\"\}'" index.html || { echo "data-cf-beacon token must be 32 hex characters"; exit 1; }
+          echo "Web Analytics snippet OK"
