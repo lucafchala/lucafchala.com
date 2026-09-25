@@ -28,7 +28,8 @@ todo.md             # Open follow-ups (also tracked as GitHub issues)
 - **Theme and language are shared across subdomains.** Choices are stored in the `lf_theme` / `lf_lang` cookies on `.lucafchala.com` (see `store` in `app.js` and `theme.js`), with `localStorage` as a fallback. Every sibling site reads the same cookies. Without a saved choice, the theme follows `prefers-color-scheme` and the language follows `navigator.language`.
 - **Command palette:** `/` or ⌘K/Ctrl+K opens a `<dialog>` built automatically from every link inside `main section[id]` and the footer. New links show up in it for free. `T` toggles theme, `L` toggles language.
 - **Live status dots** (04 Ecossistema, `loadLive`/`renderLive` in `app.js`):
-  - read `status.lucafchala.com/api/painel` and draw only when `retratoCompartilhado` is true;
+  - read `status.lucafchala.com/api/resumo` (~1 KB, CORS `*`, reads the D1 snapshot only) and draw only when `retratoCompartilhado` is true;
+  - `/api/painel` has no CORS and is ~90 KB — reading it is what kept the dots from ever showing (status#52);
   - never switch them to `/api/status`, which sweeps every subdomain per request;
   - matching is by the card link's hostname.
 - **Content that goes stale:** "Galerias recentes" (hand‑picked from fotos), the camera kit summary (from paste.lucafchala.com/camera-gear) and the radio details (from radio.lucafchala.com/pu2xik) are static snapshots. Update them when those change.

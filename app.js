@@ -333,8 +333,11 @@
     $('#fp-copy').addEventListener('click', () => copy(fingerprint));
 
     // ── Live status dots on the 04 Ecossistema cards ──
-    // Reads /api/painel, which is edge-cached for 60 s and never sweeps. Dots only
-    // appear when status serves its shared D1 snapshot (retratoCompartilhado):
+    // Reads status's /api/resumo: ~1 KB, CORS-open, cached 60 s, and it only
+    // reads the D1 snapshot (never sweeps). It used to read /api/painel, which
+    // has no CORS header and weighs ~90 KB, so the browser dropped it and no dot
+    // ever showed (status#52). Dots only appear with the shared snapshot
+    // (retratoCompartilhado):
     // without it the panel has no status, and /api/status would sweep every
     // subdomain per visitor. Any failure leaves the cards as they are.
     let live = null;
@@ -359,10 +362,10 @@
     }
     function loadLive() {
         if (!window.fetch) return;
-        fetch('https://status.lucafchala.com/api/painel', { credentials: 'omit' })
+        fetch('https://status.lucafchala.com/api/resumo', { credentials: 'omit' })
             .then(r => (r.ok ? r.json() : null))
             .then(p => {
-                const svcs = p && p.retratoCompartilhado === true && p.status && Array.isArray(p.status.services) ? p.status.services : null;
+                const svcs = p && p.retratoCompartilhado === true && Array.isArray(p.services) ? p.services : null;
                 if (!svcs) return;
                 const map = {};
                 svcs.forEach(s => {

@@ -154,7 +154,7 @@ A single long page, mobile‑first:
 - **02 Rádio:** QSL‑card station summary and profile / QRZ / portal links.
 - **03 Contato:** email (compose + copy), WhatsApp, Signal, SimpleX, Pix, social links.
 - **04 Ecossistema:** every subdomain with a one‑line description.
-  - **Live status dot:** a dot on each card, read from `status.lucafchala.com/api/painel`.
+  - **Live status dot:** a dot on each card, read from `status.lucafchala.com/api/resumo` (a ~1 KB, CORS-open summary that only reads status's D1 snapshot).
     - It only shows when status serves its shared D1 snapshot (`retratoCompartilhado`), so homepage visitors never trigger a sweep.
     - With no snapshot, or on any error, there are no dots.
     - Colours are `--up` / `--degraded` / `--down`, with a ring and screen-reader text so colour isn't the only signal.
