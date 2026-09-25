@@ -3,6 +3,8 @@
 
     const i18n = {
         pt: {
+            doc_title: 'Luca F. Chala — Fotografia & Radioamadorismo · PU2XIK',
+            brand_aria: 'Luca F. Chala — início',
             skip: 'Pular para o conteúdo',
             newtab: '(abre em nova aba)',
             search_aria: 'Buscar links e ações',
@@ -97,6 +99,7 @@
             k_theme: 'tema',
             k_lang: 'idioma',
             p_placeholder: 'Buscar links e ações…',
+            p_results: 'Resultados',
             p_nav: 'navegar',
             p_open: 'abrir',
             p_empty: 'Nada encontrado.',
@@ -115,6 +118,8 @@
             live_title: 'Agora, segundo status.lucafchala.com'
         },
         en: {
+            doc_title: 'Luca F. Chala — Photography & Amateur Radio · PU2XIK',
+            brand_aria: 'Luca F. Chala — home',
             skip: 'Skip to content',
             newtab: '(opens in a new tab)',
             search_aria: 'Search links and actions',
@@ -209,6 +214,7 @@
             k_theme: 'theme',
             k_lang: 'language',
             p_placeholder: 'Search links and actions…',
+            p_results: 'Results',
             p_nav: 'navigate',
             p_open: 'open',
             p_empty: 'Nothing found.',
@@ -267,6 +273,7 @@
             if (v !== undefined) el.setAttribute('aria-label', v);
         });
         $('#pal-input').placeholder = i18n[lang].p_placeholder;
+        document.title = i18n[lang].doc_title;
         $('#btn-pt').setAttribute('aria-pressed', String(lang === 'pt'));
         $('#btn-en').setAttribute('aria-pressed', String(lang === 'en'));
         formatDates(lang);
@@ -576,7 +583,8 @@
 
         input.addEventListener('input', () => { active = 0; render(); });
         input.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowDown') { e.preventDefault(); active = Math.min(active + 1, shown.length - 1); mark(); }
+            if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !shown.length) { e.preventDefault(); }
+            else if (e.key === 'ArrowDown') { e.preventDefault(); active = Math.min(active + 1, shown.length - 1); mark(); }
             else if (e.key === 'ArrowUp') { e.preventDefault(); active = Math.max(active - 1, 0); mark(); }
             else if (e.key === 'Enter') { e.preventDefault(); choose(active); }
             else if (e.key === 'Escape') { e.preventDefault(); dlg.close(); }
