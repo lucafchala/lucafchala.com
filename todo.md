@@ -1,14 +1,20 @@
 # TODO — ecosystem follow-ups
 
-_Last updated: 2026-09-25. Each open item is a GitHub issue; this file is the index._
+_Last updated: 2026-09-27. Each open item is a GitHub issue; this file is the index._
+
+## Review now
+
+- [ ] **Ecosystem pass 2026-09-25/26:** 9 PRs, one per repo, with the merge order and what to check in production after each → lucafchala/lucafchala.com#36
 
 ## Open
 
-Everything open needs the owner: a secret, the private key, or a single edit. Each issue has the exact steps and how to verify them.
+Everything open needs the owner: a secret, the private key, a decision, or a dashboard check. Each issue has the exact steps and how to verify them.
 
 - [ ] **Click counts:** a token with Zone › Analytics › Read + the Zone ID as the dash secrets `CF_ANALYTICS_TOKEN` / `CF_ZONE_ID`. The code is merged (dash#32). → lucafchala/dash.lucafchala.com#28
 - [ ] **status:** `STATUS_ADMIN_TOKEN` (optional; Turnstile would need a CSP change first) → lucafchala/status.lucafchala.com#50
 - [ ] **PGP:** add an @lucafchala.com UID, revoke the tucas.me UIDs, publish WKD → lucafchala/lucafchala.com#19; re-sign the proof statement → lucafchala/proof.lucafchala.com#6
+- [ ] **fotos, private/family albums:** pick the threat model; the `noscript` path hands a family album's Drive link to any non-browser client (reproduced in the pass) → lucafchala/fotos#146
+- [ ] **fotos, strict CSP:** check Workers Logs for `csp-violation` (7 days); the code side was verified in a real browser → lucafchala/fotos#126
 
 ## Done ✅
 - 2026-09-25 (afternoon):
