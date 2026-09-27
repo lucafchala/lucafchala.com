@@ -2,9 +2,14 @@
 
 _Last updated: 2026-09-27. Each open item is a GitHub issue; this file is the index._
 
-## Review now
+## Open — code, no owner needed
 
-- [ ] **Ecosystem pass 2026-09-25/26:** 9 PRs, one per repo, with the merge order and what to check in production after each → lucafchala/lucafchala.com#36
+Found in the 2026-09-25/26 pass (#36) and left for a follow-up; each issue has the evidence and a proposed fix.
+
+- [ ] **status:** a flapping service writes KV on every sweep (needs a design call: D1 state or hysteresis) → lucafchala/status.lucafchala.com#55; a rejected Resend batch re-sends the accepted ones → #56; drop CORS from `/api/status` now that dash reads `/api/resumo` → #57
+- [ ] **fotos:** dates in UTC → lucafchala/fotos#192; failed logins write KV → #193; stale README sections → #194; `/api/healthz` KV reads → #195; year "1970" → #196; legacy session paths → #197; `removal_requests` read-modify-write → #198; `/api/recentes` in the smoke → #199; noscript sweep per /64 → #200
+- [ ] **dash:** paste preview linkify vs `paste.js` → lucafchala/dash.lucafchala.com#35
+- [ ] **all repos:** `actions/checkout@v5`, CSP `upgrade-insecure-requests` → #37; ideas not built (hreflang, shared prefs check, staleness check) → #38
 
 ## Open
 
@@ -17,6 +22,7 @@ Everything open needs the owner: a secret, the private key, a decision, or a das
 - [ ] **fotos, strict CSP:** check Workers Logs for `csp-violation` (7 days); the code side was verified in a real browser → lucafchala/fotos#126
 
 ## Done ✅
+- 2026-09-27: **ecosystem pass merged** — 9 PRs, one per repo (review guide and production checks: #36). Highlights: fotos stored XSS via event title + IPv6 rate limits per /64 (fotos#191); status latency panel broken since #51, subscribe abuse, watchdog and duplicate-alert fixes (status#54); dash post-login open redirect, save/sync race (dash#34); notice pages off Google Fonts, stale status dots hidden, sturdier smoke-test (#34); landmarks in url/paste/keys/proof/pays.
 - 2026-09-25 (afternoon):
   - **Web Analytics:** site token in, lucafchala.com#29 merged; the beacon is on the homepage only (#18 closed);
   - **status-agendador:** preview builds off in the panel (status#52);
