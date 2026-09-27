@@ -84,9 +84,9 @@ Every push triggers that repo's own Cloudflare deploy. Editing a short link in `
     - that `security.txt` has at least 30 days left.
 
     It used to trigger on `deployment_status`, which Pages never sends, so it never ran.
-  - `checks.yml` also runs monthly: its `security.txt` step fails when `Expires` is less than 30 days away. The same step exists in proof.lucafchala.com.
+  - `checks.yml` also runs monthly: its `security.txt` step fails when `Expires` is less than 30 days away. The same step exists in proof.lucafchala.com and status.lucafchala.com; renew all three together.
 - **Consumes:** nothing third‑party. Fonts are self‑hosted in `fonts/`. Cloudflare Web Analytics is a **manual snippet in `index.html`** (home only; the zone's automatic injection is off), allowed by the CSP.
-- **Exposes:** the landing page (`/`), the short links in `_redirects` (e.g. `/instagram`, `/review`), the `/status` redirect, and the shared `404`.
+- **Exposes:** the landing page (`/`), the short links in `_redirects` (e.g. `/instagram`, `/pgp`), the `/status` redirect, and the shared `404`.
 
 ---
 
@@ -208,6 +208,7 @@ All behaviour is in `404.js`, loaded from `'self'`, so the page needs nothing sp
 ├── _headers            # Response headers: CSP, HSTS, COOP/CORP, Link, cache
 ├── transferring.html   # "Moved off omg.lol" holding page
 ├── status/index.html   # Redirect to status.lucafchala.com
+├── notice.css          # Styles for those two pages (self-hosted fonts, shared theme)
 ├── robots.txt, sitemap.xml, llms.txt, manifest.json, .well-known/
 ├── fonts/              # Self-hosted woff2 (Cormorant Garamond normal+italic, JetBrains Mono), latin, variable, OFL
 ├── favicon.svg, icon.svg, icon-*.png, apple-touch-icon.png, og.png, og.svg

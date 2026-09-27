@@ -23,14 +23,19 @@ env:
 jobs:
   smoke-test:
     runs-on: ubuntu-latest
+    # Every curl has --max-time too: a hung connection would otherwise hold the
+    # job until GitHub's 6 h default instead of failing.
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       # Pages has no "deployed" signal we can read, so wait until the site serves
-      # the pushed bytes of a changed static file. HTML is skipped on purpose: the
-      # Cloudflare zone rewrites it (injected scripts), so its hash never matches.
+      # the pushed bytes of a changed static file. HTML can't be compared whole:
+      # the Cloudflare zone rewrites it (injected scripts, obfuscated emails), so
+      # for an HTML-only push (most of them) wait for a line the push added
+      # instead. The zone only inserts; it leaves plain text lines alone.
       - name: Wait for the deploy
         if: github.event_name == 'push'
         env:
@@ -39,19 +44,36 @@ jobs:
           files=$(git diff --name-only "$BEFORE" HEAD 2>/dev/null | grep -Ev '(\.html$|^_headers$|^_redirects$|^\.github/|\.md$)' || true)
           probe=""
           for f in $files; do [ -f "$f" ] && { probe="$f"; break; }; done
-          if [ -z "$probe" ]; then
-            echo "No verbatim-served file changed; giving Pages 120 s."
+          if [ -n "$probe" ]; then
+            want=$(sha256sum "$probe" | cut -d' ' -f1)
+            echo "Waiting for /$probe ($want)"
+            for i in $(seq 1 36); do
+              got=$(curl -s --max-time 20 "$BASE_URL/$probe?smoke=$GITHUB_SHA-$i" | sha256sum | cut -d' ' -f1)
+              [ "$got" = "$want" ] && { echo "Deployed after ~$((i * 10)) s"; exit 0; }
+              sleep 10
+            done
+            echo "FAIL: /$probe still not the pushed version after 6 min"
+            exit 1
+          fi
+          page="" line=""
+          for f in $(git diff --name-only "$BEFORE" HEAD -- '*.html' 2>/dev/null); do
+            [ -f "$f" ] && [ "$f" != 404.html ] || continue
+            # An added line long enough to be unique: not a comment, and without an address the zone would obfuscate.
+            line=$(git diff -U0 "$BEFORE" HEAD -- "$f" | grep '^+[^+]' | sed 's/^+[[:space:]]*//' | grep -v '@' | grep -v '^<!--' | awk 'length >= 24' | head -1)
+            [ -n "$line" ] && { page="$f"; break; }
+          done
+          if [ -z "$page" ]; then
+            echo "No served file with a checkable change; giving Pages 120 s."
             sleep 120
             exit 0
           fi
-          want=$(sha256sum "$probe" | cut -d' ' -f1)
-          echo "Waiting for /$probe ($want)"
+          case "$page" in index.html) url=/ ;; */index.html) url="/${page%index.html}" ;; *) url="/${page%.html}" ;; esac
+          echo "Waiting for $url to contain: $line"
           for i in $(seq 1 36); do
-            got=$(curl -s "$BASE_URL/$probe?smoke=$GITHUB_SHA-$i" | sha256sum | cut -d' ' -f1)
-            [ "$got" = "$want" ] && { echo "Deployed after ~$((i * 10)) s"; exit 0; }
+            curl -s --max-time 20 "$BASE_URL$url?smoke=$GITHUB_SHA-$i" | grep -qF -- "$line" && { echo "Deployed after ~$((i * 10)) s"; exit 0; }
             sleep 10
           done
-          echo "FAIL: /$probe still not the pushed version after 6 min"
+          echo "FAIL: $url still doesn't have the pushed change after 6 min"
           exit 1
 
       - name: Key routes answer 200
@@ -59,7 +81,7 @@ jobs:
           paths="/ /style.css /app.js /theme.js /404.js /status/ /sitemap.xml /robots.txt /llms.txt /manifest.json /.well-known/security.txt /.well-known/gpc.json"
           fail=0
           for path in $paths; do
-            code=$(curl -s -o /dev/null -w '%{http_code}' -L "$BASE_URL$path")
+            code=$(curl -s --max-time 20 -o /dev/null -w '%{http_code}' -L "$BASE_URL$path")
             if [ "$code" = "200" ]; then echo "OK: $path"; else echo "FAIL: $path returned $code"; fail=1; fi
           done
           exit $fail
@@ -67,24 +89,24 @@ jobs:
       - name: CSP, short links and the 404
         run: |
           set -e
-          csp=$(curl -sI "$BASE_URL/" | grep -i '^content-security-policy:' || true)
+          csp=$(curl -sI --max-time 20 "$BASE_URL/" | grep -i '^content-security-policy:' || true)
           echo "$csp" | grep -q "script-src 'self'" || { echo "FAIL: CSP header missing or changed: $csp"; exit 1; }
           echo "$csp" | grep -o "script-src[^;]*" | grep -q "unsafe-inline" && { echo "FAIL: script-src allows unsafe-inline"; exit 1; } || true
           echo "OK: CSP"
           check_redirect() {
-            loc=$(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' "$BASE_URL$1")
+            loc=$(curl -s --max-time 20 -o /dev/null -w '%{http_code} %{redirect_url}' "$BASE_URL$1")
             case "$loc" in 30[12]\ $2*) echo "OK: $1 -> $loc" ;; *) echo "FAIL: $1 -> '$loc' (expected $2…)"; exit 1 ;; esac
           }
           check_redirect /instagram https://www.instagram.com/
           check_redirect /pgp https://keys.lucafchala.com
-          code=$(curl -s -o /dev/null -w '%{http_code}' "$BASE_URL/this-short-link-does-not-exist")
+          code=$(curl -s --max-time 20 -o /dev/null -w '%{http_code}' "$BASE_URL/this-short-link-does-not-exist")
           [ "$code" = "404" ] || { echo "FAIL: unknown path returned $code"; exit 1; }
-          curl -s "$BASE_URL/this-short-link-does-not-exist" | grep -q 'src="/404.js"' || { echo "FAIL: 404 page is not the generated one"; exit 1; }
+          curl -s --max-time 20 "$BASE_URL/this-short-link-does-not-exist" | grep -q 'src="/404.js"' || { echo "FAIL: 404 page is not the generated one"; exit 1; }
           echo "OK: unknown path is the generated 404"
 
       - name: security.txt is not about to expire
         run: |
-          exp=$(curl -s "$BASE_URL/.well-known/security.txt" | sed -n 's/^Expires: *//p')
+          exp=$(curl -s --max-time 20 "$BASE_URL/.well-known/security.txt" | sed -n 's/^Expires: *//p')
           left=$(( ( $(date -d "$exp" +%s) - $(date +%s) ) / 86400 ))
           echo "Expires $exp ($left days left)"
-          [ "$left" -ge 30 ] || { echo "FAIL: renew .well-known/security.txt (lucafchala.com and proof)"; exit 1; }
+          [ "$left" -ge 30 ] || { echo "FAIL: renew .well-known/security.txt (lucafchala.com, proof and status)"; exit 1; }

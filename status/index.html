@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Status · lucafchala.com</title>
     <meta name="description" content="Status dos serviços de lucafchala.com">
+    <meta name="theme-color" content="#0d0c0a">
+    <meta name="color-scheme" content="dark light">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <!-- The status dashboard lives on the subdomain, where Cloudflare Pages
@@ -17,59 +19,18 @@
     <meta http-equiv="refresh" content="0; url=https://status.lucafchala.com">
     <link rel="canonical" href="https://status.lucafchala.com/">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { --bg: #0d0c0a; --text: #e6e1d6; --muted: #6a6358; --accent: #c08030; }
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'JetBrains Mono', monospace;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 32px;
-            text-align: center;
-        }
-        .wrap { max-width: 480px; }
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 300;
-            font-size: clamp(36px, 9vw, 60px);
-            line-height: 0.92;
-            margin-bottom: 16px;
-        }
-        h1 em { font-style: italic; color: var(--accent); }
-        p { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 28px; }
-        a.go {
-            display: inline-block;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 12px;
-            letter-spacing: 0.08em;
-            border: 1px solid var(--accent);
-            border-radius: 3px;
-            padding: 9px 16px;
-            transition: background 0.15s, color 0.15s;
-        }
-        a.go:hover { background: var(--accent); color: var(--bg); }
-        .home { display: block; margin-top: 32px; font-size: 11px; }
-        .home a { color: var(--muted); text-decoration: none; }
-        .home a:hover { color: var(--accent); }
-    </style>
+    <script data-cfasync="false" src="/theme.js"></script>
+    <link rel="stylesheet" href="/notice.css">
 </head>
 
 <body>
-    <div class="wrap">
+    <main class="notice">
         <h1>Service <em>Status</em></h1>
         <p>O painel de status agora vive em status.lucafchala.com — redirecionando…</p>
+        <p lang="en">The status dashboard now lives at status.lucafchala.com — redirecting…</p>
         <a class="go" href="https://status.lucafchala.com">Ir para o status →</a>
-        <span class="home"><a href="https://lucafchala.com">← lucafchala.com</a></span>
-    </div>
+        <span class="back"><a href="https://lucafchala.com">← lucafchala.com</a></span>
+    </main>
 </body>
 
 </html>
