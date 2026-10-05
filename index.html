@@ -8,6 +8,7 @@
     <title>Luca F. Chala — Fotografia &amp; Radioamadorismo · PU2XIK</title>
     <meta name="description" content="Estudante, fotógrafo e radioamador (PU2XIK) em São Paulo, BR. Galerias de eventos, rádio (APRS, DMR, packet) e contato.">
     <meta name="author" content="Luca F. Chala">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta property="og:site_name" content="Luca F. Chala">
     <meta property="og:title" content="Luca F. Chala">
     <meta property="og:description" content="Fotografia, radioamadorismo (PU2XIK) e contato — São Paulo, BR.">
@@ -44,32 +45,77 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfilePage",
-      "url": "https://lucafchala.com/",
-      "inLanguage": ["pt-BR", "en"],
-      "dateModified": "2026-09-24",
-      "mainEntity": {
-        "@type": "Person",
-        "@id": "https://lucafchala.com/#person",
-        "name": "Luca F. Chala",
-        "alternateName": "PU2XIK",
-        "url": "https://lucafchala.com/",
-        "image": "https://lucafchala.com/og.png",
-        "jobTitle": "Photographer",
-        "description": "Student, photographer and amateur radio operator (PU2XIK) in São Paulo, Brazil.",
-        "address": { "@type": "PostalAddress", "addressLocality": "São Paulo", "addressCountry": "BR" },
-        "knowsLanguage": ["pt-BR", "en"],
-        "knowsAbout": ["Photography", "Event photography", "Amateur radio", "APRS", "DMR", "Packet radio", "Antennas"],
-        "sameAs": [
-          "https://www.instagram.com/lucafchala",
-          "https://github.com/lucafchala",
-          "https://www.linkedin.com/in/luca-f-chala-9b9143282",
-          "https://open.spotify.com/user/31slhygw6llfhswcz5jsldwzpleq",
-          "https://www.qrz.com/db/PU2XIK",
-          "https://radio.lucafchala.com/pu2xik/",
-          "https://proof.lucafchala.com"
-        ]
-      }
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://lucafchala.com/#website",
+          "url": "https://lucafchala.com/",
+          "name": "Luca F. Chala",
+          "alternateName": "lucafchala.com",
+          "inLanguage": [
+            "pt-BR",
+            "en"
+          ],
+          "publisher": {
+            "@id": "https://lucafchala.com/#person"
+          }
+        },
+        {
+          "@type": "ProfilePage",
+          "url": "https://lucafchala.com/",
+          "inLanguage": [
+            "pt-BR",
+            "en"
+          ],
+          "isPartOf": {
+            "@id": "https://lucafchala.com/#website"
+          },
+          "dateModified": "2026-10-05",
+          "mainEntity": {
+            "@type": "Person",
+            "@id": "https://lucafchala.com/#person",
+            "name": "Luca F. Chala",
+            "alternateName": [
+              "PU2XIK",
+              "Luca Ferriani Chala",
+              "Luca Chala"
+            ],
+            "url": "https://lucafchala.com/",
+            "image": "https://lucafchala.com/og.png",
+            "jobTitle": "Photographer",
+            "description": "Student, photographer and amateur radio operator (PU2XIK) in São Paulo, Brazil.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "São Paulo",
+              "addressCountry": "BR"
+            },
+            "knowsLanguage": [
+              "pt-BR",
+              "en"
+            ],
+            "knowsAbout": [
+              "Photography",
+              "Event photography",
+              "Amateur radio",
+              "APRS",
+              "DMR",
+              "Packet radio",
+              "Antennas"
+            ],
+            "sameAs": [
+              "https://www.instagram.com/lucafchala",
+              "https://github.com/lucafchala",
+              "https://www.linkedin.com/in/luca-f-chala-9b9143282",
+              "https://open.spotify.com/user/31slhygw6llfhswcz5jsldwzpleq",
+              "https://www.qrz.com/db/PU2XIK",
+              "https://radio.lucafchala.com/pu2xik/",
+              "https://proof.lucafchala.com",
+              "https://fotos.lucafchala.com",
+              "https://keys.lucafchala.com"
+            ]
+          }
+        }
+      ]
     }
     </script>
 
