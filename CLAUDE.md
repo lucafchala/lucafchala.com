@@ -5,7 +5,7 @@ Personal website for Luca F. Chala and hub of the `*.lucafchala.com` ecosystem. 
 ## Structure
 
 ```
-index.html          # Landing page markup (hero, 01 Fotografia, 02 Rádio, 03 Contato, 04 Ecossistema, 05 Verificação)
+index.html          # Landing page markup: one-screen hero + a menu of <details> rows (01 Sobre, 02 Fotografia, 03 Rádio, 04 Contato, 05 Ecossistema, 06 Verificação)
 style.css           # All homepage styles
 app.js              # All homepage behaviour (i18n, palette, clock, copy, easter eggs, WebMCP)
 theme.js            # Sync <head> script: applies the theme before first paint
@@ -27,13 +27,14 @@ todo.md             # Open follow-ups (also tracked as GitHub issues)
 - **HTML / CSS / JS are separate files.** Keep them that way: markup in `index.html`, styles in `style.css`, behaviour in `app.js`. The JSON‑LD block in `<head>` is the only inline `<script>`; it's data and never executes.
 - **Bilingual.** Strings live in the `i18n` object in `app.js`. Elements carry `data-i18n="key"` (innerHTML) or `data-i18n-aria="key"` (aria-label). The PT text in the markup is the no‑JS fallback, so keep both in sync.
 - **Theme and language are shared across subdomains.** Choices are stored in the `lf_theme` / `lf_lang` cookies on `.lucafchala.com` (see `store` in `app.js` and `theme.js`), with `localStorage` as a fallback. Every sibling site reads the same cookies. Without a saved choice, the theme follows `prefers-color-scheme` and the language follows `navigator.language`.
+- **One screen + menu:** the page is the hero plus one `<section id><details name="menu">` row per section, all closed; `name="menu"` makes it an exclusive accordion (native, works without JS). The `<h2>` sits in the `<summary>` so the palette still groups by it. A `#hash` (e.g. `/#contato`) opens its row (`openFromHash` in `app.js`), and printing opens every row. Keep new content inside a row's `.panel`, not on the first screen.
 - **Command palette:** `/` or ⌘K/Ctrl+K opens a `<dialog>` built automatically from every link inside `main section[id]` and the footer. New links show up in it for free. `T` toggles theme, `L` toggles language.
-- **Live status dots** (04 Ecossistema, `loadLive`/`renderLive` in `app.js`):
+- **Live status dots** (05 Ecossistema, `loadLive`/`renderLive` in `app.js`):
   - read `status.lucafchala.com/api/resumo` (~1 KB, CORS `*`, reads the D1 snapshot only) and draw only when `retratoCompartilhado` is true and the snapshot isn't `atrasado` (stale: unknown is not up);
   - `/api/painel` has no CORS and is ~90 KB — reading it is what kept the dots from ever showing (status#52);
   - never switch them to `/api/status`, which sweeps every subdomain per request;
   - matching is by the card link's hostname.
-- **"Galerias recentes"** (01 Fotografia, `loadGalleries` in `app.js`) updates itself:
+- **"Galerias recentes"** (02 Fotografia, `loadGalleries` in `app.js`) updates itself:
   - after `load` it reads `fotos.lucafchala.com/api/recentes` (CORS `*`, 5 min cache): up to 5 public galleries in the fotos gallery's order (pinned first), without hidden/private/family ones;
   - the response shape (`{galerias:[{slug, titulo, data, url, destaque, emBreve}]}`) is a contract with fotos (`handleRecentes`); change both together;
   - links are built from the validated slug, never from the response's `url`; titles stay PT in EN mode;

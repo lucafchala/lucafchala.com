@@ -70,7 +70,7 @@
           "isPartOf": {
             "@id": "https://lucafchala.com/#website"
           },
-          "dateModified": "2026-10-05",
+          "dateModified": "2026-10-08",
           "mainEntity": {
             "@type": "Person",
             "@id": "https://lucafchala.com/#person",
@@ -180,20 +180,13 @@
                 <span class="pulse" aria-hidden="true"></span>
                 <span><span data-i18n="now_in">Agora em São Paulo</span> · <time class="clock" id="clock">UTC−3</time></span>
             </p>
-            <h1 class="name p-name" id="hero-name">Luca <em>F.</em><br>Chala</h1>
+            <h1 class="name p-name" id="hero-name">Luca <em>F.</em> <br>Chala</h1>
             <ul class="roles">
                 <li data-i18n="r_student">Estudante</li>
                 <li data-i18n="r_photo">Fotógrafo</li>
                 <li data-i18n="r_ham">Radioamador</li>
                 <li class="callsign p-nickname">PU2XIK</li>
             </ul>
-            <ol class="toc" aria-label="Seções" data-i18n-aria="toc_aria">
-                <li><a href="#fotografia"><span>01</span><span data-i18n="h_photo">Fotografia</span></a></li>
-                <li><a href="#radio"><span>02</span><span data-i18n="h_radio">Rádio</span></a></li>
-                <li><a href="#contato"><span>03</span><span data-i18n="h_contact">Contato</span></a></li>
-                <li><a href="#ecossistema"><span>04</span><span data-i18n="h_eco">Ecossistema</span></a></li>
-                <li><a href="#verificacao"><span>05</span><span data-i18n="h_verify">Verificação</span></a></li>
-            </ol>
             <div class="cta">
                 <a class="btn btn-primary" href="https://fotos.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab">
                     <span data-i18n="cta_photos">Ver fotos</span><span aria-hidden="true">↗</span>
@@ -201,266 +194,282 @@
                 <a class="btn btn-ig" href="https://lucafchala.com/instagram" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg><span>Instagram</span>
                 </a>
-                <a class="btn btn-ghost" href="#contato">
-                    <span data-i18n="cta_contact">Contato</span><span aria-hidden="true">↓</span>
-                </a>
             </div>
         </section>
 
-        <!-- ── About ── -->
-        <section class="about reveal" aria-label="Sobre" data-i18n-aria="about_aria">
-            <div class="rule" aria-hidden="true">CQ DE <span class="callsign">PU2XIK</span></div>
+        <!-- ── Menu: each section is a <details name="menu"> row, closed by default.
+             app.js opens the one a #hash points at. ── -->
+        <div class="menu">
 
-            <div class="bio-wrapper">
-                <p class="bio p-note" data-i18n="bio">
-                    Estudante baseado em São Paulo. Fotografo eventos, viagens e o cotidiano urbano com uma <strong>Sony A6700</strong>, opero como radioamador sob o indicativo <strong>PU2XIK</strong> e divido meu tempo entre treinos de hipertrofia e a preparação para cursar engenharia da computação.
-                </p>
-            </div>
-
-            <dl class="facts">
-                <div><dt data-i18n="f_base">Base</dt><dd class="h-adr"><span class="p-locality">São Paulo</span>, <abbr class="p-country-name" title="Brasil">BR</abbr></dd></div>
-                <div><dt data-i18n="f_camera">Câmera</dt><dd>Sony A6700</dd></div>
-                <div><dt data-i18n="f_call">Indicativo</dt><dd class="hl">PU2XIK</dd></div>
-                <div><dt data-i18n="f_next">Próximo passo</dt><dd data-i18n="f_next_v">Eng. da computação</dd></div>
-            </dl>
-        </section>
-
-        <!-- ── 01 Photography ── -->
-        <section class="section reveal" id="fotografia" aria-labelledby="h-photo">
-            <div class="sec-head">
-                <span class="sec-num" aria-hidden="true">01</span>
-                <h2 id="h-photo" data-i18n="h_photo">Fotografia</h2>
-            </div>
-            <p class="sec-lede" data-i18n="photo_lede">Eventos escolares, shows, viagens e o cotidiano da cidade. No <strong>Instagram</strong> vai tudo ao vivo; as galerias completas — com entrega em alta resolução e pedido de remoção (LGPD) — ficam em <strong>fotos.lucafchala.com</strong>.</p>
-
-            <a class="card ig-card" href="https://lucafchala.com/instagram" target="_blank" rel="noopener noreferrer" aria-describedby="newtab" data-pal-i18n="p_instagram">
-                <span class="ig-top">
-                    <span class="ig-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/></svg></span>
-                    <span class="ig-handle"><b>@lucafchala</b><small>Instagram</small></span>
-                    <span class="live-pill"><span class="pulse" aria-hidden="true"></span><span data-i18n="ig_live">Ao vivo nos eventos</span></span>
-                </span>
-                <span class="ig-title" data-i18n="ig_title">Viagens e eventos, <em>em tempo real.</em></span>
-                <span class="ig-desc" data-i18n="ig_desc">Stories direto dos eventos enquanto acontecem e as fotos das viagens. A galeria completa chega depois, em fotos.lucafchala.com.</span>
-                <span class="ig-foot">
-                    <span class="ig-tags"><span data-i18n="ig_t1">Stories ao vivo</span><span data-i18n="ig_t2">Viagens</span><span data-i18n="ig_t3">Eventos</span></span>
-                    <span class="ig-follow"><span data-i18n="ig_follow">Seguir no Instagram</span><span aria-hidden="true">↗</span></span>
-                </span>
-            </a>
-
-            <div class="grid-2">
-                <article class="card hoverable">
-                    <div class="kicker">
-                        <span data-i18n="recent">Galerias recentes</span>
-                        <a href="https://fotos.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab" data-pal-i18n="p_gallery"><span data-i18n="see_all">Ver todas</span> ↗</a>
+        <!-- ── 01 About ── -->
+        <section class="menu-sec" id="sobre" aria-labelledby="h-about">
+            <details name="menu">
+                <summary>
+                    <span class="sec-num" aria-hidden="true">01</span>
+                    <h2 id="h-about" data-i18n="h_about">Sobre</h2>
+                    <span class="sum-hint" data-i18n="m_about">quem sou</span>
+                    <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="panel">
+                    <div class="bio-wrapper">
+                        <p class="bio p-note" data-i18n="bio">
+                            Estudante baseado em São Paulo. Fotografo eventos, viagens e o cotidiano urbano com uma <strong>Sony A6700</strong>, opero como radioamador sob o indicativo <strong>PU2XIK</strong> e divido meu tempo entre treinos de hipertrofia e a preparação para cursar engenharia da computação.
+                        </p>
                     </div>
-                    <ol class="recent">
-                        <li><a href="https://fotos.lucafchala.com/piauifut-2026" target="_blank" rel="noopener" aria-describedby="newtab"><time datetime="2026-09-12">12 set 2026</time><span>Piauí Fut+ 2026</span><span class="tag" data-i18n="featured">destaque</span></a></li>
-                        <li><a href="https://fotos.lucafchala.com/show-clovis-recreio" target="_blank" rel="noopener" aria-describedby="newtab"><time datetime="2026-08-27">27 ago 2026</time><span data-i18n="g_clovis">Show da Banda do Clóvis</span><span class="arr-ext" aria-hidden="true">↗</span></a></li>
-                        <li><a href="https://fotos.lucafchala.com/festajunina2026" target="_blank" rel="noopener" aria-describedby="newtab"><time datetime="2026-06-20">20 jun 2026</time><span data-i18n="g_junina">Festa Junina 2026</span><span class="arr-ext" aria-hidden="true">↗</span></a></li>
-                        <li><a href="https://fotos.lucafchala.com/zenite" target="_blank" rel="noopener" aria-describedby="newtab"><time datetime="2026-06-03">3 jun 2026</time><span data-i18n="g_zenite">Show da Zênite</span><span class="arr-ext" aria-hidden="true">↗</span></a></li>
-                        <li><a href="https://fotos.lucafchala.com/mostracultural2025" target="_blank" rel="noopener" aria-describedby="newtab"><time datetime="2025-11-15">15 nov 2025</time><span data-i18n="g_mostra">Mostra Cultural 2025</span><span class="arr-ext" aria-hidden="true">↗</span></a></li>
-                    </ol>
-                </article>
-
-                <article class="card hoverable">
-                    <div class="kicker"><span data-i18n="kit">Kit</span></div>
-                    <ul class="kit">
-                        <li><span>Sony A6700</span><small data-i18n="k_body">corpo</small></li>
-                        <li><span>Sigma 24-70 f/2.8 DG DN II</span><small data-i18n="k_zoom">zoom</small></li>
-                        <li><span>Sigma 10-18 f/2.8 DC DN</span><small data-i18n="k_wide">ultra-wide</small></li>
-                        <li><span>Godox V1 Pro</span><small data-i18n="k_flash">flash</small></li>
-                    </ul>
-                    <a class="more" href="https://paste.lucafchala.com/camera-gear/" target="_blank" rel="noopener" aria-describedby="newtab"><span data-i18n="gear_full">Lista completa de equipamento</span> <span class="arr" aria-hidden="true">→</span></a>
-                </article>
-            </div>
+                </div>
+            </details>
         </section>
 
-        <!-- ── 02 Radio ── -->
-        <section class="section reveal" id="radio" aria-labelledby="h-radio">
-            <div class="sec-head">
-                <span class="sec-num" aria-hidden="true">02</span>
-                <h2 id="h-radio" data-i18n="h_radio">Rádio</h2>
-            </div>
-            <p class="sec-lede" data-i18n="radio_lede">Opero sob o indicativo <strong>PU2XIK</strong>, com foco em APRS, rádio digital e infraestrutura portátil — comunicação resiliente, antenas e a ponte entre rádio e tecnologia.</p>
-
-            <div class="grid-2 even">
-                <figure class="qsl" aria-label="Cartão QSL de PU2XIK" data-i18n-aria="qsl_aria">
-                    <div class="qsl-top"><span data-i18n="qsl_confirm">QSL · Confirmando contato</span><span class="waves" aria-hidden="true">)) ))) )))</span></div>
-                    <div class="qsl-call">PU2XIK</div>
-                    <div class="qsl-grid">
-                        <div><span>QTH</span>São Paulo</div>
-                        <div><span>Grid</span>GG66</div>
-                        <div><span>CQ</span>11</div>
-                        <div><span>ITU</span>15</div>
-                        <div class="wide"><span>Rig</span>Quansheng UV-K6 · RT95</div>
-                        <div class="wide"><span data-i18n="qsl_modes">Modos</span>APRS · DMR · Packet · FM</div>
-                    </div>
-                    <figcaption class="qsl-foot"><span>73 <b>de PU2XIK</b></span><span>tnx QSO</span></figcaption>
-                </figure>
-
-                <div>
+        <!-- ── 02 Photography ── -->
+        <section class="menu-sec" id="fotografia" aria-labelledby="h-photo">
+            <details name="menu">
+                <summary>
+                    <span class="sec-num" aria-hidden="true">02</span>
+                    <h2 id="h-photo" data-i18n="h_photo">Fotografia</h2>
+                    <span class="sum-hint" data-i18n="m_photo">galerias · kit</span>
+                    <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="panel">
                     <ul class="linklist">
                         <li>
-                            <a href="https://radio.lucafchala.com/pu2xik/" target="_blank" rel="noopener" aria-describedby="newtab">
-                                <span class="t" data-i18n="l_profile">Perfil PU2XIK</span>
-                                <span class="d">radio.lucafchala.com/pu2xik</span>
+                            <a href="https://fotos.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab" data-pal-i18n="p_gallery">
+                                <span class="t">fotos.lucafchala.com</span>
+                                <span class="d" data-i18n="l_fotos_d">Galerias completas, alta resolução e pedido de remoção (LGPD)</span>
                                 <span class="go"><span class="arr" aria-hidden="true">→</span></span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.qrz.com/db/PU2XIK" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">
-                                <span class="t">QRZ.com</span>
-                                <span class="d" data-i18n="l_qrz">Perfil e diário de bordo</span>
+                            <a href="https://lucafchala.com/instagram" target="_blank" rel="noopener noreferrer" aria-describedby="newtab" data-pal-i18n="p_instagram">
+                                <span class="t">Instagram @lucafchala</span>
+                                <span class="d" data-i18n="l_ig_d">Stories ao vivo dos eventos e das viagens</span>
                                 <span class="go"><span class="arr-ext" aria-hidden="true">↗</span></span>
                             </a>
                         </li>
-                        <li>
-                            <a href="https://radio.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab">
-                                <span class="t" data-i18n="l_portal">Portal comunitário</span>
-                                <span class="d" data-i18n="l_portal_d">Páginas de operadores, APRS e modos digitais</span>
-                                <span class="go"><span class="arr" aria-hidden="true">→</span></span>
-                            </a>
-                        </li>
                     </ul>
-                    <ul class="chips" aria-label="Interesses" data-i18n-aria="interests_aria">
-                        <li>APRS</li>
-                        <li>DMR · OpenGD77</li>
-                        <li>Packet radio</li>
-                        <li data-i18n="i_ant">Antenas</li>
-                        <li data-i18n="i_field">Operação em campo</li>
-                        <li data-i18n="i_rf">RF experimental</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
 
-        <!-- ── 03 Contact ── -->
-        <section class="section reveal" id="contato" aria-labelledby="h-contact">
-            <div class="sec-head">
-                <span class="sec-num" aria-hidden="true">03</span>
-                <h2 id="h-contact" data-i18n="h_contact">Contato</h2>
-            </div>
-            <p class="sec-lede" data-i18n="contact_lede">Para trabalhos, fotos de eventos ou só um oi: email ou WhatsApp. Para algo privado, <strong>Signal</strong> ou <strong>SimpleX</strong>.</p>
+                    <div class="grid-2">
+                        <article class="card hoverable">
+                            <div class="kicker">
+                                <span data-i18n="recent">Galerias recentes</span>
+                                <a href="https://fotos.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab" data-pal-i18n="p_gallery"><span data-i18n="see_all">Ver todas</span> ↗</a>
+                            </div>
+                            <ol class="recent">
+                                <li><a href="https://fotos.lucafchala.com/piauifut-2026" target="_blank" rel="noopener" aria-describedby="newtab"><time datetime="2026-09-12">12 set 2026</time><span>Piauí Fut+ 2026</span><span class="tag" data-i18n="featured">destaque</span></a></li>
+                                <li><a href="https://fotos.lucafchala.com/show-clovis-recreio" target="_blank" rel="noopener" aria-describedby="newtab"><time datetime="2026-08-27">27 ago 2026</time><span data-i18n="g_clovis">Show da Banda do Clóvis</span><span class="arr-ext" aria-hidden="true">↗</span></a></li>
+                                <li><a href="https://fotos.lucafchala.com/festajunina2026" target="_blank" rel="noopener" aria-describedby="newtab"><time datetime="2026-06-20">20 jun 2026</time><span data-i18n="g_junina">Festa Junina 2026</span><span class="arr-ext" aria-hidden="true">↗</span></a></li>
+                                <li><a href="https://fotos.lucafchala.com/zenite" target="_blank" rel="noopener" aria-describedby="newtab"><time datetime="2026-06-03">3 jun 2026</time><span data-i18n="g_zenite">Show da Zênite</span><span class="arr-ext" aria-hidden="true">↗</span></a></li>
+                                <li><a href="https://fotos.lucafchala.com/mostracultural2025" target="_blank" rel="noopener" aria-describedby="newtab"><time datetime="2025-11-15">15 nov 2025</time><span data-i18n="g_mostra">Mostra Cultural 2025</span><span class="arr-ext" aria-hidden="true">↗</span></a></li>
+                            </ol>
+                        </article>
 
-            <div class="contact-grid">
-                <div class="card full email-card">
-                    <div class="c-label"><span>Email</span><span aria-hidden="true">@</span></div>
-                    <p class="c-value">
-                        <a href="#contato" id="email-link" class="u-email"><span id="email-text">website [at] lucafchala.com</span></a>
-                    </p>
-                    <div class="email-actions needs-js">
-                        <a class="mini-btn" id="email-send" href="#contato">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg>
-                            <span data-i18n="send">Escrever</span>
-                        </a>
-                        <button class="mini-btn" type="button" id="email-copy">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-                            <span data-i18n="copy">Copiar</span>
-                        </button>
+                        <article class="card hoverable">
+                            <div class="kicker"><span data-i18n="kit">Kit</span></div>
+                            <ul class="kit">
+                                <li><span>Sony A6700</span><small data-i18n="k_body">corpo</small></li>
+                                <li><span>Sigma 24-70 f/2.8 DG DN II</span><small data-i18n="k_zoom">zoom</small></li>
+                                <li><span>Sigma 10-18 f/2.8 DC DN</span><small data-i18n="k_wide">ultra-wide</small></li>
+                                <li><span>Godox V1 Pro</span><small data-i18n="k_flash">flash</small></li>
+                            </ul>
+                            <a class="more" href="https://paste.lucafchala.com/camera-gear/" target="_blank" rel="noopener" aria-describedby="newtab"><span data-i18n="gear_full">Lista completa de equipamento</span> <span class="arr" aria-hidden="true">→</span></a>
+                        </article>
                     </div>
                 </div>
-
-                <a class="card full wa" href="https://wa.me/5511989211178" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">
-                    <div class="c-label"><span>WhatsApp</span><span class="arr-ext" aria-hidden="true">↗</span></div>
-                    <p class="c-value" data-i18n="wa_v">Mensagem direta</p>
-                    <p class="c-desc" data-i18n="wa_d">resposta mais rápida</p>
-                </a>
-
-                <a class="card" href="https://lucafchala.com/signal" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">
-                    <div class="c-label"><span>Signal</span><span class="arr-ext" aria-hidden="true">↗</span></div>
-                    <p class="c-value" data-i18n="sig_v">Conversa privada</p>
-                    <p class="c-desc" data-i18n="sig_d">criptografia ponta a ponta</p>
-                </a>
-
-                <a class="card" href="https://lucafchala.com/simplex" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">
-                    <div class="c-label"><span>SimpleX</span><span class="arr-ext" aria-hidden="true">↗</span></div>
-                    <p class="c-value" data-i18n="sx_v">Sem identificador</p>
-                    <p class="c-desc" data-i18n="sx_d">nem número, nem usuário</p>
-                </a>
-
-                <a class="card full support" href="https://lucafchala.com/buymeacoffee" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">
-                    <span class="cup" aria-hidden="true">☕</span>
-                    <span>
-                        <span class="t" data-i18n="coffee">Me pague um café</span><br>
-                        <span class="d" data-i18n="coffee_d">Pix via LivePix</span>
-                    </span>
-                    <span class="arr" aria-hidden="true">→</span>
-                </a>
-            </div>
-
-            <ul class="socials" aria-label="Redes" data-i18n-aria="social_aria">
-                <li><a href="https://lucafchala.com/instagram" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">Instagram <span class="h">@lucafchala</span></a></li>
-                <li><a href="https://lucafchala.com/github" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">GitHub <span class="h">lucafchala</span></a></li>
-                <li><a href="https://lucafchala.com/linkedin" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">LinkedIn <span class="arr-ext" aria-hidden="true">↗</span></a></li>
-                <li><a href="https://lucafchala.com/spotify" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">Spotify <span class="arr-ext" aria-hidden="true">↗</span></a></li>
-            </ul>
+            </details>
         </section>
 
-        <!-- ── 04 Ecosystem ── -->
-        <section class="section reveal" id="ecossistema" aria-labelledby="h-eco">
-            <div class="sec-head">
-                <span class="sec-num" aria-hidden="true">04</span>
-                <h2 id="h-eco" data-i18n="h_eco">Ecossistema</h2>
-            </div>
-            <p class="sec-lede" data-i18n="eco_lede">Sites pequenos, cada um com um único propósito — todos sob <strong>lucafchala.com</strong>.</p>
+        <!-- ── 03 Radio ── -->
+        <section class="menu-sec" id="radio" aria-labelledby="h-radio">
+            <details name="menu">
+                <summary>
+                    <span class="sec-num" aria-hidden="true">03</span>
+                    <h2 id="h-radio" data-i18n="h_radio">Rádio</h2>
+                    <span class="sum-hint">PU2XIK · APRS · DMR</span>
+                    <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="panel">
+                    <div class="grid-2 even">
+                        <figure class="qsl" aria-label="Cartão QSL de PU2XIK" data-i18n-aria="qsl_aria">
+                            <div class="qsl-top"><span data-i18n="qsl_confirm">QSL · Confirmando contato</span><span class="waves" aria-hidden="true">)) ))) )))</span></div>
+                            <div class="qsl-call">PU2XIK</div>
+                            <div class="qsl-grid">
+                                <div><span>QTH</span>São Paulo</div>
+                                <div><span>Grid</span>GG66</div>
+                                <div><span>CQ</span>11</div>
+                                <div><span>ITU</span>15</div>
+                                <div class="wide"><span>Rig</span>Quansheng UV-K6 · RT95</div>
+                                <div class="wide"><span data-i18n="qsl_modes">Modos</span>APRS · DMR · Packet · FM</div>
+                            </div>
+                            <figcaption class="qsl-foot"><span>73 <b>de PU2XIK</b></span><span>tnx QSO</span></figcaption>
+                        </figure>
 
-            <ul class="eco">
-                <li><a href="https://fotos.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>fotos</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_fotos">Galerias de eventos e viagens</span></a></li>
-                <li><a href="https://radio.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>radio</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_radio">Portal comunitário de radioamadorismo</span></a></li>
-                <li><a href="https://paste.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>paste</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_paste">Notas, textos e documentos</span></a></li>
-                <li><a href="https://url.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>url</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_url">Diretório de links curtos</span></a></li>
-                <li><a href="https://status.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>status</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_status">Monitoramento dos serviços</span></a></li>
-                <li><a href="https://keys.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>keys</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_keys">Chaves públicas SSH e PGP</span></a></li>
-                <li><a href="https://proof.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>proof</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_proof">Declaração de identidade assinada</span></a></li>
-                <li><a href="https://restricted.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>restricted</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_restricted">Um desafio. Três tentativas.</span></a></li>
-            </ul>
-        </section>
-
-        <!-- ── 05 Verification ── -->
-        <section class="section reveal" id="verificacao" aria-labelledby="h-verify">
-            <div class="sec-head">
-                <span class="sec-num" aria-hidden="true">05</span>
-                <h2 id="h-verify" data-i18n="h_verify">Verificação</h2>
-            </div>
-            <p class="sec-lede" data-i18n="verify_lede">Tudo o que é oficial sai de um endereço <strong>@lucafchala.com</strong>. O antigo domínio tucas.me não é mais meu.</p>
-
-            <div class="card fp-card">
-                <div class="kicker">
-                    <span data-i18n="fp_label">Impressão digital PGP · RSA 4096</span>
-                    <button class="mini-btn needs-js" type="button" id="fp-copy">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-                        <span data-i18n="copy">Copiar</span>
-                    </button>
+                        <ul class="linklist">
+                            <li>
+                                <a href="https://radio.lucafchala.com/pu2xik/" target="_blank" rel="noopener" aria-describedby="newtab">
+                                    <span class="t" data-i18n="l_profile">Perfil PU2XIK</span>
+                                    <span class="d">radio.lucafchala.com/pu2xik</span>
+                                    <span class="go"><span class="arr" aria-hidden="true">→</span></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.qrz.com/db/PU2XIK" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">
+                                    <span class="t">QRZ.com</span>
+                                    <span class="d" data-i18n="l_qrz">Perfil e diário de bordo</span>
+                                    <span class="go"><span class="arr-ext" aria-hidden="true">↗</span></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://radio.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab">
+                                    <span class="t" data-i18n="l_portal">Portal comunitário</span>
+                                    <span class="d" data-i18n="l_portal_d">Páginas de operadores, APRS e modos digitais</span>
+                                    <span class="go"><span class="arr" aria-hidden="true">→</span></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <code class="fp" id="fp"><span>48E7</span> <span>3F6F</span> <span>A287</span> <span>1E7B</span> <span>86EF</span> <span>EA64</span> <span>8EC4</span> <span>329A</span> <span>369B</span> <span>7B33</span></code>
-
-                <ul class="linklist">
-                    <li>
-                        <a href="https://keys.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab" class="u-key">
-                            <span class="t" data-i18n="v_keys">Chaves públicas</span>
-                            <span class="d" data-i18n="v_keys_d">PGP (RSA 4096) e SSH (ed25519)</span>
-                            <span class="go"><span class="arr" aria-hidden="true">→</span></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://proof.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab">
-                            <span class="t" data-i18n="v_proof">Prova de propriedade</span>
-                            <span class="d" data-i18n="v_proof_d">Declaração assinada com PGP</span>
-                            <span class="go"><span class="arr" aria-hidden="true">→</span></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://keys.openpgp.org/vks/v1/by-fingerprint/48E73F6FA2871E7B86EFEA648EC4329A369B7B33" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">
-                            <span class="t">keys.openpgp.org</span>
-                            <span class="d" data-i18n="v_openpgp">Mesma chave, servidor público</span>
-                            <span class="go"><span class="arr-ext" aria-hidden="true">↗</span></span>
-                        </a>
-                    </li>
-                </ul>
-
-                <p class="verify-note" data-i18n="verify_note">Mensagens sobre assuntos sensíveis — código, finanças — precisam de assinatura PGP. Sem assinatura, considere não confiável.</p>
-            </div>
+            </details>
         </section>
+
+        <!-- ── 04 Contact ── -->
+        <section class="menu-sec" id="contato" aria-labelledby="h-contact">
+            <details name="menu">
+                <summary>
+                    <span class="sec-num" aria-hidden="true">04</span>
+                    <h2 id="h-contact" data-i18n="h_contact">Contato</h2>
+                    <span class="sum-hint">email · WhatsApp · Signal</span>
+                    <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="panel">
+                    <div class="contact-grid">
+                        <div class="card full email-card">
+                            <div class="c-label"><span>Email</span><span aria-hidden="true">@</span></div>
+                            <p class="c-value">
+                                <a href="#contato" id="email-link" class="u-email"><span id="email-text">website [at] lucafchala.com</span></a>
+                            </p>
+                            <div class="email-actions needs-js">
+                                <a class="mini-btn" id="email-send" href="#contato">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg>
+                                    <span data-i18n="send">Escrever</span>
+                                </a>
+                                <button class="mini-btn" type="button" id="email-copy">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                                    <span data-i18n="copy">Copiar</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <a class="card full wa" href="https://wa.me/5511989211178" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">
+                            <div class="c-label"><span>WhatsApp</span><span class="arr-ext" aria-hidden="true">↗</span></div>
+                            <p class="c-value" data-i18n="wa_v">Mensagem direta</p>
+                        </a>
+
+                        <a class="card" href="https://lucafchala.com/signal" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">
+                            <div class="c-label"><span>Signal</span><span class="arr-ext" aria-hidden="true">↗</span></div>
+                            <p class="c-value" data-i18n="sig_v">Conversa privada</p>
+                        </a>
+
+                        <a class="card" href="https://lucafchala.com/simplex" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">
+                            <div class="c-label"><span>SimpleX</span><span class="arr-ext" aria-hidden="true">↗</span></div>
+                            <p class="c-value" data-i18n="sx_v">Sem identificador</p>
+                        </a>
+
+                        <a class="card full support" href="https://lucafchala.com/buymeacoffee" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">
+                            <span class="cup" aria-hidden="true">☕</span>
+                            <span>
+                                <span class="t" data-i18n="coffee">Me pague um café</span><br>
+                                <span class="d" data-i18n="coffee_d">Pix via LivePix</span>
+                            </span>
+                            <span class="arr" aria-hidden="true">→</span>
+                        </a>
+                    </div>
+
+                    <ul class="socials" aria-label="Redes" data-i18n-aria="social_aria">
+                        <li><a href="https://lucafchala.com/instagram" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">Instagram <span class="h">@lucafchala</span></a></li>
+                        <li><a href="https://lucafchala.com/github" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">GitHub <span class="h">lucafchala</span></a></li>
+                        <li><a href="https://lucafchala.com/linkedin" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">LinkedIn <span class="arr-ext" aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://lucafchala.com/spotify" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">Spotify <span class="arr-ext" aria-hidden="true">↗</span></a></li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <!-- ── 05 Ecosystem ── -->
+        <section class="menu-sec" id="ecossistema" aria-labelledby="h-eco">
+            <details name="menu">
+                <summary>
+                    <span class="sec-num" aria-hidden="true">05</span>
+                    <h2 id="h-eco" data-i18n="h_eco">Ecossistema</h2>
+                    <span class="sum-hint">*.lucafchala.com</span>
+                    <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="panel">
+                    <ul class="eco">
+                        <li><a href="https://fotos.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>fotos</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_fotos">Galerias de eventos e viagens</span></a></li>
+                        <li><a href="https://radio.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>radio</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_radio">Portal comunitário de radioamadorismo</span></a></li>
+                        <li><a href="https://paste.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>paste</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_paste">Notas, textos e documentos</span></a></li>
+                        <li><a href="https://url.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>url</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_url">Diretório de links curtos</span></a></li>
+                        <li><a href="https://status.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>status</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_status">Monitoramento dos serviços</span></a></li>
+                        <li><a href="https://keys.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>keys</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_keys">Chaves públicas SSH e PGP</span></a></li>
+                        <li><a href="https://proof.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>proof</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_proof">Declaração de identidade assinada</span></a></li>
+                        <li><a href="https://restricted.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab"><span class="sub"><b>restricted</b><i>.lucafchala.com</i></span><span class="d" data-i18n="e_restricted">Um desafio. Três tentativas.</span></a></li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <!-- ── 06 Verification ── -->
+        <section class="menu-sec" id="verificacao" aria-labelledby="h-verify">
+            <details name="menu">
+                <summary>
+                    <span class="sec-num" aria-hidden="true">06</span>
+                    <h2 id="h-verify" data-i18n="h_verify">Verificação</h2>
+                    <span class="sum-hint" data-i18n="m_verify">PGP · chaves · prova</span>
+                    <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="panel">
+                    <p class="sec-lede" data-i18n="verify_lede">Tudo o que é oficial sai de um endereço <strong>@lucafchala.com</strong>. O antigo domínio tucas.me não é mais meu.</p>
+
+                    <div class="card fp-card">
+                        <div class="kicker">
+                            <span data-i18n="fp_label">Impressão digital PGP · RSA 4096</span>
+                            <button class="mini-btn needs-js" type="button" id="fp-copy">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                                <span data-i18n="copy">Copiar</span>
+                            </button>
+                        </div>
+                        <code class="fp" id="fp"><span>48E7</span> <span>3F6F</span> <span>A287</span> <span>1E7B</span> <span>86EF</span> <span>EA64</span> <span>8EC4</span> <span>329A</span> <span>369B</span> <span>7B33</span></code>
+
+                        <ul class="linklist">
+                            <li>
+                                <a href="https://keys.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab" class="u-key">
+                                    <span class="t" data-i18n="v_keys">Chaves públicas</span>
+                                    <span class="d" data-i18n="v_keys_d">PGP (RSA 4096) e SSH (ed25519)</span>
+                                    <span class="go"><span class="arr" aria-hidden="true">→</span></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://proof.lucafchala.com" target="_blank" rel="noopener" aria-describedby="newtab">
+                                    <span class="t" data-i18n="v_proof">Prova de propriedade</span>
+                                    <span class="d" data-i18n="v_proof_d">Declaração assinada com PGP</span>
+                                    <span class="go"><span class="arr" aria-hidden="true">→</span></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://keys.openpgp.org/vks/v1/by-fingerprint/48E73F6FA2871E7B86EFEA648EC4329A369B7B33" target="_blank" rel="noopener noreferrer" aria-describedby="newtab">
+                                    <span class="t">keys.openpgp.org</span>
+                                    <span class="d" data-i18n="v_openpgp">Mesma chave, servidor público</span>
+                                    <span class="go"><span class="arr-ext" aria-hidden="true">↗</span></span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <p class="verify-note" data-i18n="verify_note">Mensagens sobre assuntos sensíveis — código, finanças — precisam de assinatura PGP. Sem assinatura, considere não confiável.</p>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        </div>
     </main>
 
     <footer class="site-foot">

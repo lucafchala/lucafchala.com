@@ -10,29 +10,19 @@
             search_aria: 'Buscar links e ações',
             search_title: 'Buscar',
             theme_aria: 'Alternar tema claro/escuro',
-            about_aria: 'Sobre',
-            toc_aria: 'Seções',
             now_in: 'Agora em São Paulo',
             r_student: 'Estudante',
             r_photo: 'Fotógrafo',
             r_ham: 'Radioamador',
             cta_photos: 'Ver fotos',
-            cta_contact: 'Contato',
-            ig_live: 'Ao vivo nos eventos',
-            ig_title: 'Viagens e eventos, <em>em tempo real.</em>',
-            ig_desc: 'Stories direto dos eventos enquanto acontecem e as fotos das viagens. A galeria completa chega depois, em fotos.lucafchala.com.',
-            ig_t1: 'Stories ao vivo',
-            ig_t2: 'Viagens',
-            ig_t3: 'Eventos',
-            ig_follow: 'Seguir no Instagram',
+            h_about: 'Sobre',
+            m_about: 'quem sou',
+            m_photo: 'galerias · kit',
+            m_verify: 'PGP · chaves · prova',
             bio: 'Estudante baseado em São Paulo. Fotografo eventos, viagens e o cotidiano urbano com uma <strong>Sony A6700</strong>, opero como radioamador sob o indicativo <strong>PU2XIK</strong> e divido meu tempo entre treinos de hipertrofia e a preparação para cursar engenharia da computação.',
-            f_base: 'Base',
-            f_camera: 'Câmera',
-            f_call: 'Indicativo',
-            f_next: 'Próximo passo',
-            f_next_v: 'Eng. da computação',
             h_photo: 'Fotografia',
-            photo_lede: 'Eventos escolares, shows, viagens e o cotidiano da cidade. No <strong>Instagram</strong> vai tudo ao vivo; as galerias completas — com entrega em alta resolução e pedido de remoção (LGPD) — ficam em <strong>fotos.lucafchala.com</strong>.',
+            l_fotos_d: 'Galerias completas, alta resolução e pedido de remoção (LGPD)',
+            l_ig_d: 'Stories ao vivo dos eventos e das viagens',
             recent: 'Galerias recentes',
             see_all: 'Ver todas',
             featured: 'destaque',
@@ -48,7 +38,6 @@
             k_flash: 'flash',
             gear_full: 'Lista completa de equipamento',
             h_radio: 'Rádio',
-            radio_lede: 'Opero sob o indicativo <strong>PU2XIK</strong>, com foco em APRS, rádio digital e infraestrutura portátil — comunicação resiliente, antenas e a ponte entre rádio e tecnologia.',
             qsl_aria: 'Cartão QSL de PU2XIK',
             qsl_confirm: 'QSL · Confirmando contato',
             qsl_modes: 'Modos',
@@ -56,27 +45,18 @@
             l_qrz: 'Perfil e diário de bordo',
             l_portal: 'Portal comunitário',
             l_portal_d: 'Páginas de operadores, APRS e modos digitais',
-            interests_aria: 'Interesses',
-            i_ant: 'Antenas',
-            i_field: 'Operação em campo',
-            i_rf: 'RF experimental',
             h_contact: 'Contato',
-            contact_lede: 'Para trabalhos, fotos de eventos ou só um oi: email ou WhatsApp. Para algo privado, <strong>Signal</strong> ou <strong>SimpleX</strong>.',
             send: 'Escrever',
             copy: 'Copiar',
             copied: 'Copiado',
             copy_fail: 'Não foi possível copiar',
             wa_v: 'Mensagem direta',
-            wa_d: 'resposta mais rápida',
             sig_v: 'Conversa privada',
-            sig_d: 'criptografia ponta a ponta',
             sx_v: 'Sem identificador',
-            sx_d: 'nem número, nem usuário',
             coffee: 'Me pague um café',
             coffee_d: 'Pix via LivePix',
             social_aria: 'Redes',
             h_eco: 'Ecossistema',
-            eco_lede: 'Sites pequenos, cada um com um único propósito — todos sob <strong>lucafchala.com</strong>.',
             e_fotos: 'Galerias de eventos e viagens',
             e_radio: 'Portal comunitário de radioamadorismo',
             e_paste: 'Notas, textos e documentos',
@@ -125,29 +105,19 @@
             search_aria: 'Search links and actions',
             search_title: 'Search',
             theme_aria: 'Toggle light/dark theme',
-            about_aria: 'About',
-            toc_aria: 'Sections',
             now_in: 'Now in São Paulo',
             r_student: 'Student',
             r_photo: 'Photographer',
             r_ham: 'Radio amateur',
             cta_photos: 'See photos',
-            cta_contact: 'Contact',
-            ig_live: 'Live at events',
-            ig_title: 'Travel and events, <em>in real time.</em>',
-            ig_desc: 'Stories straight from events as they happen, plus travel photos. The full gallery follows later on fotos.lucafchala.com.',
-            ig_t1: 'Live stories',
-            ig_t2: 'Travel',
-            ig_t3: 'Events',
-            ig_follow: 'Follow on Instagram',
+            h_about: 'About',
+            m_about: 'who I am',
+            m_photo: 'galleries · kit',
+            m_verify: 'PGP · keys · proof',
             bio: 'Student based in São Paulo, Brazil. I photograph events, travel and everyday city life with a <strong>Sony A6700</strong>, operate amateur radio as <strong>PU2XIK</strong>, and split my time between hypertrophy training and preparing to study computer engineering.',
-            f_base: 'Based in',
-            f_camera: 'Camera',
-            f_call: 'Callsign',
-            f_next: 'Next up',
-            f_next_v: 'Computer eng.',
             h_photo: 'Photography',
-            photo_lede: 'School events, gigs, travel and everyday city life. <strong>Instagram</strong> gets it all live; full galleries — with full-resolution delivery and LGPD removal requests — live at <strong>fotos.lucafchala.com</strong>.',
+            l_fotos_d: 'Full galleries, full-resolution delivery and LGPD removal requests',
+            l_ig_d: 'Live stories from events and travel',
             recent: 'Recent galleries',
             see_all: 'See all',
             featured: 'featured',
@@ -163,7 +133,6 @@
             k_flash: 'flash',
             gear_full: 'Full gear list',
             h_radio: 'Radio',
-            radio_lede: 'I operate as <strong>PU2XIK</strong>, focused on APRS, digital radio and portable infrastructure — resilient communication, antennas and bridging radio with technology.',
             qsl_aria: 'PU2XIK QSL card',
             qsl_confirm: 'QSL · Confirming our QSO',
             qsl_modes: 'Modes',
@@ -171,27 +140,18 @@
             l_qrz: 'Profile and logbook',
             l_portal: 'Community portal',
             l_portal_d: 'Operator pages, APRS and digital modes',
-            interests_aria: 'Interests',
-            i_ant: 'Antennas',
-            i_field: 'Field operations',
-            i_rf: 'Experimental RF',
             h_contact: 'Contact',
-            contact_lede: 'For work, event photos or just to say hi: email or WhatsApp. For something private, <strong>Signal</strong> or <strong>SimpleX</strong>.',
             send: 'Compose',
             copy: 'Copy',
             copied: 'Copied',
             copy_fail: 'Couldn’t copy',
             wa_v: 'Direct message',
-            wa_d: 'fastest reply',
             sig_v: 'Private chat',
-            sig_d: 'end-to-end encrypted',
             sx_v: 'No identifier',
-            sx_d: 'no phone number, no username',
             coffee: 'Buy me a coffee',
             coffee_d: 'Pix via LivePix',
             social_aria: 'Social',
             h_eco: 'Ecosystem',
-            eco_lede: 'Small, single-purpose sites — all under <strong>lucafchala.com</strong>.',
             e_fotos: 'Event and travel galleries',
             e_radio: 'Community amateur-radio portal',
             e_paste: 'Notes, texts and documents',
@@ -461,16 +421,33 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // ── Reveal on scroll ──
+    // ── Menu: every section is a <details name="menu">, closed by default ──
     (function () {
-        const els = document.querySelectorAll('.reveal');
-        if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-            });
-        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
-        els.forEach(el => io.observe(el));
+        const rows = document.querySelectorAll('main section[id] > details');
+
+        // A #hash (/#contato, a deep link, the no-JS email fallback) opens its row.
+        function openFromHash() {
+            const id = decodeURIComponent(location.hash.slice(1));
+            const sec = id && document.getElementById(id);
+            const det = sec && sec.matches('main section[id]') && sec.querySelector(':scope > details');
+            if (!det) return;
+            det.open = true;
+            sec.scrollIntoView();
+        }
+        openFromHash();
+        window.addEventListener('hashchange', openFromHash);
+
+        // Print everything: drop the accordion group first, or opening one row closes the rest.
+        let closed = [];
+        window.addEventListener('beforeprint', () => {
+            closed = [...rows].filter(d => !d.open);
+            rows.forEach(d => { d.removeAttribute('name'); d.open = true; });
+        });
+        window.addEventListener('afterprint', () => {
+            closed.forEach(d => { d.open = false; });
+            rows.forEach(d => d.setAttribute('name', 'menu'));
+            closed = [];
+        });
     })();
 
     // ── Command palette ──
