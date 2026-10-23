@@ -4,7 +4,7 @@
     const i18n = {
         pt: {
             doc_title: 'Luca F. Chala · Estudante, projetos, fotografia e rádio',
-            brand_aria: 'Luca F. Chala — início',
+            brand_aria: 'Luca F. Chala: início',
             skip: 'Pular para o conteúdo',
             newtab: '(abre em nova aba)',
             search_aria: 'Buscar links e ações',
@@ -14,7 +14,7 @@
             r_student: 'Estudante',
             r_photo: 'Fotógrafo',
             r_ham: 'Radioamador',
-            hero_lede: 'Estudante de São Paulo, vestibulando 2027 em Engenharia de Computação. Construo e mantenho a minha própria infraestrutura, fotografo eventos e opero rádio amador como PU2XIK.',
+            hero_lede: 'Estudante de São Paulo, vestibulando 2027 em Engenharia de Computação. Construo e mantenho a minha própria infraestrutura, fotografo eventos e opero como radioamador (PU2XIK).',
             cta_projects: 'Projetos',
             cta_photos: 'Fotos',
             h_projects: 'Projetos',
@@ -30,7 +30,7 @@
             pj2_n: '<strong>10 serviços</strong> no ecossistema lucafchala.com, que comecei por volta de junho de 2026. Um deles, o WebSDR, está pausado de propósito.',
             pj2_l1: 'Status ao vivo',
             pj3_t: 'Curadoria para o T-Embed',
-            pj3_p: 'O problema: os arquivos para a placa LilyGO T-Embed CC1101 estavam espalhados, e a comunidade pediu um lugar só.',
+            pj3_p: 'Juntei esses arquivos para pesquisa e testes na minha própria infraestrutura; a comunidade pediu que eu documentasse e abrisse, e eu abri.',
             pj3_d: 'O que fiz: reuni e reorganizei fontes públicas para a placa com o firmware Bruce, e documentei em português e inglês. Não é código original, é curadoria.',
             pj3_n: '<strong>~55.800 arquivos</strong> sem duplicatas, 13 estrelas e 1 fork no GitHub. O projeto tem uma página no Discord oficial do Bruce.',
             ai_note: 'Sobre IA: o código dos meus projetos atuais é escrito com apoio do Claude. Os requisitos, a arquitetura, a revisão, as decisões e a operação são meus.',
@@ -100,7 +100,7 @@
             v_proof: 'Prova de propriedade',
             v_proof_d: 'Declaração assinada com PGP',
             v_openpgp: 'Mesma chave, servidor público',
-            verify_note: 'Mensagens sobre assuntos sensíveis — código, finanças — precisam de assinatura PGP. Sem assinatura, considere não confiável.',
+            verify_note: 'Mensagens sobre assuntos sensíveis, como código e finanças, precisam de assinatura PGP. Sem assinatura, considere não confiável.',
             madewith: 'HTML, CSS e JS puros · feito com ajuda do Claude',
             k_search: 'buscar',
             k_theme: 'tema',
@@ -126,7 +126,7 @@
         },
         en: {
             doc_title: 'Luca F. Chala · Student, projects, photography and radio',
-            brand_aria: 'Luca F. Chala — home',
+            brand_aria: 'Luca F. Chala: home',
             skip: 'Skip to content',
             newtab: '(opens in a new tab)',
             search_aria: 'Search links and actions',
@@ -136,7 +136,7 @@
             r_student: 'Student',
             r_photo: 'Photographer',
             r_ham: 'Radio amateur',
-            hero_lede: 'Student from São Paulo, applying for Computer Engineering in 2027. I build and run my own infrastructure, photograph events and operate amateur radio as PU2XIK.',
+            hero_lede: 'Student from São Paulo, applying for Computer Engineering in 2027. I build and run my own infrastructure, photograph events and operate as an amateur radio operator (PU2XIK).',
             cta_projects: 'Projects',
             cta_photos: 'Photos',
             h_projects: 'Projects',
@@ -152,7 +152,7 @@
             pj2_n: '<strong>10 services</strong> in the lucafchala.com ecosystem, which I started around June 2026. One of them, the WebSDR, is paused on purpose.',
             pj2_l1: 'Live status',
             pj3_t: 'T-Embed curation',
-            pj3_p: 'The problem: files for the LilyGO T-Embed CC1101 board were scattered, and the community asked for one place.',
+            pj3_p: 'I gathered these files for research and testing on my own infrastructure; the community asked me to document and open them, and I did.',
             pj3_d: 'What I did: gathered and reorganized public sources for the board with the Bruce firmware, documented in Portuguese and English. It is not original code, it is curation.',
             pj3_n: '<strong>~55,800 files</strong> without duplicates, 13 stars and 1 fork on GitHub. The project has a page on the official Bruce Discord.',
             ai_note: 'About AI: the code of my current projects is written with help from Claude. The requirements, architecture, review, decisions and operation are mine.',
@@ -222,7 +222,7 @@
             v_proof: 'Proof of ownership',
             v_proof_d: 'PGP-signed statement',
             v_openpgp: 'Same key, public keyserver',
-            verify_note: 'Messages about sensitive matters — code, money — must be PGP-signed. Unsigned means untrusted.',
+            verify_note: 'Messages about sensitive matters, like code and money, must be PGP-signed. Unsigned means untrusted.',
             madewith: 'plain HTML, CSS and JS · made with help from Claude',
             k_search: 'search',
             k_theme: 'theme',
@@ -381,7 +381,7 @@
             }
             dot.dataset.status = st;
             dot.title = t('live_title') + ': ' + t('live_' + st);
-            dot.querySelector('.sr-only').textContent = ' — ' + t('live_' + st);
+            dot.querySelector('.sr-only').textContent = ': ' + t('live_' + st);
         });
     }
     function loadLive() {
@@ -652,7 +652,7 @@
         '%c  )) ))) )))  %cPU2XIK%c\n\n' +
         'CQ CQ DE PU2XIK\n' +
         'Student · Photographer · Amateur radio operator\n' +
-        'São Paulo, BR — github.com/lucafchala\n' +
+        'São Paulo, BR, github.com/lucafchala\n' +
         'Psst: try / or ⌘K.',
         'color:#c08030;font-family:monospace;font-size:11px;',
         'background:#c08030;color:#0d0c0a;font-weight:bold;padding:2px 7px;border-radius:2px;font-family:monospace;font-size:12px;',
@@ -761,7 +761,7 @@
         });
     })();
 
-    // ── WebMCP — expose page actions to AI agents, feature-detected ──
+    // ── WebMCP: expose page actions to AI agents, feature-detected ──
     // https://webmachinelearning.github.io/webmcp/
     if (navigator.modelContext && typeof navigator.modelContext.provideContext === 'function') {
         navigator.modelContext.provideContext({
