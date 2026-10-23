@@ -1,12 +1,14 @@
 # Luca F. Chala
 
-> Student, photographer, and amateur radio operator (callsign PU2XIK) based in
-> São Paulo, Brazil, preparing to study computer engineering. lucafchala.com is
+> Student in São Paulo, Brazil, applying for Computer Engineering in 2027. Builds
+> and runs his own infrastructure, photographs events and operates amateur radio
+> (callsign PU2XIK). Code of the current projects is written with help from Claude;
+> requirements, architecture, review, decisions and operation are his. lucafchala.com is
 > the apex of a small network of self-hosted, single-purpose sites. All content
 > may be crawled, indexed, and used by AI agents (see /robots.txt).
 
 ## Pages
-- [Home](https://lucafchala.com/): Bio, photography, radio, contact, ecosystem and identity verification (bilingual PT-BR / EN).
+- [Home](https://lucafchala.com/): Projects, bio, photography, radio, contact, ecosystem and identity verification (bilingual PT-BR / EN).
 - [Sitemap](https://lucafchala.com/sitemap.xml): Canonical URLs.
 
 ## Photography

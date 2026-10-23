@@ -3,8 +3,8 @@
 
     const i18n = {
         pt: {
-            doc_title: 'Luca F. Chala — Fotografia & Radioamadorismo · PU2XIK',
-            brand_aria: 'Luca F. Chala — início',
+            doc_title: 'Luca F. Chala · Estudante, projetos, fotografia e rádio',
+            brand_aria: 'Luca F. Chala: início',
             skip: 'Pular para o conteúdo',
             newtab: '(abre em nova aba)',
             search_aria: 'Buscar links e ações',
@@ -14,12 +14,39 @@
             r_student: 'Estudante',
             r_photo: 'Fotógrafo',
             r_ham: 'Radioamador',
-            cta_photos: 'Ver fotos',
+            hero_lede: 'Estudante de São Paulo, vestibulando 2027 em Engenharia de Computação. Construo e mantenho a minha própria infraestrutura, fotografo eventos e opero como radioamador (PU2XIK).',
+            cta_projects: 'Projetos',
+            cta_photos: 'Fotos',
+            h_projects: 'Projetos',
+            proj_lede: 'Três coisas que eu construí e mantenho. Cada uma tem um link para ver funcionando.',
+            pj1_t: 'Galeria de fotos com privacidade',
+            pj1_p: 'O problema: entregar as fotos de um evento sem deixar uma pasta aberta para qualquer pessoa.',
+            pj1_d: 'O que fiz: uma galeria com painel administrativo, acesso protegido e uma página por evento. Tem pedido de remoção de fotos conforme a LGPD, métricas e backup.',
+            pj1_n: '<strong>~68 participantes</strong> no FNUSC, em 26/09/2026. Fui o fotógrafo oficial e entreguei as fotos pela galeria, não por link de pasta. Próxima etapa: cada participante achar e baixar as próprias fotos, com integração ao Google Drive.',
+            pj1_l1: 'Ver o caso FNUSC',
+            pj2_t: 'Homelab e monitoramento',
+            pj2_p: 'O problema: manter os meus serviços no ar e saber quando algum cai.',
+            pj2_d: 'O que fiz: um servidor Linux dedicado com Docker e Docker Compose. Acesso remoto por Tailscale, Pi-hole com DNS recursivo, backup criptografado com Restic e atualização com Watchtower. Monitoro com Homepage, Prometheus, Grafana e Uptime Kuma. O site e os serviços rodam na Cloudflare (Workers, Pages e KV).',
+            pj2_n: '<strong>10 serviços</strong> no ecossistema lucafchala.com, que comecei por volta de junho de 2026. Um deles, o WebSDR, está pausado de propósito.',
+            pj2_l1: 'Status ao vivo',
+            pj3_t: 'Curadoria para o T-Embed',
+            pj3_p: 'Juntei esses arquivos para pesquisa e testes na minha própria infraestrutura; a comunidade pediu que eu documentasse e abrisse, e eu abri.',
+            pj3_d: 'O que fiz: reuni e reorganizei fontes públicas para a placa com o firmware Bruce, e documentei em português e inglês. Não é código original, é curadoria.',
+            pj3_n: '<strong>~55.800 arquivos</strong> sem duplicatas, 13 estrelas e 1 fork no GitHub. O projeto tem uma página no Discord oficial do Bruce.',
+            ai_note: 'Sobre IA: o código dos meus projetos atuais é escrito com apoio do Claude. Os requisitos, a arquitetura, a revisão, as decisões e a operação são meus.',
+            m_radio: 'PU2XIK · classe C',
+            radio_lede: 'Radioamadorismo é o hobby de se comunicar por rádio, com licença da Anatel. Tenho o certificado classe C (COER) desde 30/06/2025, sou associado à LABRE e meu indicativo é PU2XIK.',
+            li_v: 'Perfil profissional',
+            gh_v: 'Código e projetos',
+            others: 'Outros canais',
+            eco_lede: 'Cada serviço é um site meu, em um endereço próprio. Os pontos mostram se está no ar agora.',
+            shortcuts_hint: 'Atalhos: / busca, T tema, L idioma',
+            search_hint: 'Buscar (/ ou Ctrl+K)',
             h_about: 'Sobre',
             m_about: 'quem sou',
             m_photo: 'galerias · kit',
             m_verify: 'PGP · chaves · prova',
-            bio: 'Estudante baseado em São Paulo. Fotografo eventos, viagens e o cotidiano urbano com uma <strong>Sony A6700</strong>, opero como radioamador sob o indicativo <strong>PU2XIK</strong> e divido meu tempo entre treinos de hipertrofia e a preparação para cursar engenharia da computação.',
+            bio: 'Sou estudante do 3º ano do ensino médio em São Paulo e vou prestar vestibular em 2027 para Engenharia de Computação. Meus primeiros programas são de 2021 e 2022 (cifra de César, forca e calculadora), feitos com a ajuda de um professor. De agosto a novembro de 2025, dei aulas de inglês toda semana para crianças em hemodiálise no Instituto da Criança do Hospital das Clínicas, em um estágio da escola. Fora do código, fotografo eventos e opero rádio.',
             h_photo: 'Fotografia',
             l_fotos_d: 'Galerias completas, alta resolução e pedido de remoção (LGPD)',
             l_ig_d: 'Stories ao vivo dos eventos e das viagens',
@@ -44,7 +71,7 @@
             l_profile: 'Perfil PU2XIK',
             l_qrz: 'Perfil e diário de bordo',
             l_portal: 'Portal comunitário',
-            l_portal_d: 'Páginas de operadores, APRS e modos digitais',
+            l_portal_d: 'Páginas de operadores e modos digitais',
             h_contact: 'Contato',
             send: 'Escrever',
             copy: 'Copiar',
@@ -64,16 +91,16 @@
             e_status: 'Monitoramento dos serviços',
             e_keys: 'Chaves públicas SSH e PGP',
             e_proof: 'Declaração de identidade assinada',
-            e_restricted: 'Um desafio. Três tentativas.',
+            e_restricted: 'Um quebra-cabeça de criptografia que fiz por diversão.',
             h_verify: 'Verificação',
-            verify_lede: 'Tudo o que é oficial sai de um endereço <strong>@lucafchala.com</strong>. O antigo domínio tucas.me não é mais meu.',
+            verify_lede: 'Servem para provar que uma mensagem ou arquivo veio mesmo de mim. Tudo o que é oficial sai de um endereço <strong>@lucafchala.com</strong>. O antigo domínio tucas.me não é mais meu.',
             fp_label: 'Impressão digital PGP · RSA 4096',
             v_keys: 'Chaves públicas',
             v_keys_d: 'PGP (RSA 4096) e SSH (ed25519)',
             v_proof: 'Prova de propriedade',
             v_proof_d: 'Declaração assinada com PGP',
             v_openpgp: 'Mesma chave, servidor público',
-            verify_note: 'Mensagens sobre assuntos sensíveis — código, finanças — precisam de assinatura PGP. Sem assinatura, considere não confiável.',
+            verify_note: 'Mensagens sobre assuntos sensíveis, como código e finanças, precisam de assinatura PGP. Sem assinatura, considere não confiável.',
             madewith: 'HTML, CSS e JS puros · feito com ajuda do Claude',
             k_search: 'buscar',
             k_theme: 'tema',
@@ -98,8 +125,8 @@
             live_title: 'Agora, segundo status.lucafchala.com'
         },
         en: {
-            doc_title: 'Luca F. Chala — Photography & Amateur Radio · PU2XIK',
-            brand_aria: 'Luca F. Chala — home',
+            doc_title: 'Luca F. Chala · Student, projects, photography and radio',
+            brand_aria: 'Luca F. Chala: home',
             skip: 'Skip to content',
             newtab: '(opens in a new tab)',
             search_aria: 'Search links and actions',
@@ -109,12 +136,39 @@
             r_student: 'Student',
             r_photo: 'Photographer',
             r_ham: 'Radio amateur',
-            cta_photos: 'See photos',
+            hero_lede: 'Student from São Paulo, applying for Computer Engineering in 2027. I build and run my own infrastructure, photograph events and operate as an amateur radio operator (PU2XIK).',
+            cta_projects: 'Projects',
+            cta_photos: 'Photos',
+            h_projects: 'Projects',
+            proj_lede: 'Three things I built and maintain. Each one has a link so you can see it working.',
+            pj1_t: 'Photo gallery with privacy',
+            pj1_p: 'The problem: delivering event photos without leaving an open folder for anyone to find.',
+            pj1_d: 'What I did: a gallery with an admin panel, protected access and one page per event. It has photo removal requests under Brazil’s data protection law (LGPD), metrics and backup.',
+            pj1_n: '<strong>~68 participants</strong> at FNUSC, on 26 Sep 2026. I was the official photographer and delivered the photos through the gallery, not a folder link. Next step: each participant finds and downloads their own photos, with Google Drive integration.',
+            pj1_l1: 'See the FNUSC case',
+            pj2_t: 'Homelab and monitoring',
+            pj2_p: 'The problem: keeping my services up and knowing when one goes down.',
+            pj2_d: 'What I did: a dedicated Linux server with Docker and Docker Compose. Remote access through Tailscale, Pi-hole with recursive DNS, encrypted backups with Restic and updates with Watchtower. I monitor it with Homepage, Prometheus, Grafana and Uptime Kuma. The site and services run on Cloudflare (Workers, Pages and KV).',
+            pj2_n: '<strong>10 services</strong> in the lucafchala.com ecosystem, which I started around June 2026. One of them, the WebSDR, is paused on purpose.',
+            pj2_l1: 'Live status',
+            pj3_t: 'T-Embed curation',
+            pj3_p: 'I gathered these files for research and testing on my own infrastructure; the community asked me to document and open them, and I did.',
+            pj3_d: 'What I did: gathered and reorganized public sources for the board with the Bruce firmware, documented in Portuguese and English. It is not original code, it is curation.',
+            pj3_n: '<strong>~55,800 files</strong> without duplicates, 13 stars and 1 fork on GitHub. The project has a page on the official Bruce Discord.',
+            ai_note: 'About AI: the code of my current projects is written with help from Claude. The requirements, architecture, review, decisions and operation are mine.',
+            m_radio: 'PU2XIK · class C',
+            radio_lede: 'Amateur radio is the hobby of communicating by radio, with a license from Anatel (Brazil’s telecom regulator). I hold the class C certificate (COER) since 30 Jun 2025, I am a LABRE member and my callsign is PU2XIK.',
+            li_v: 'Professional profile',
+            gh_v: 'Code and projects',
+            others: 'Other channels',
+            eco_lede: 'Each service is a site of mine, on its own address. The dots show whether it is up right now.',
+            shortcuts_hint: 'Shortcuts: / search, T theme, L language',
+            search_hint: 'Search (/ or Ctrl+K)',
             h_about: 'About',
             m_about: 'who I am',
             m_photo: 'galleries · kit',
             m_verify: 'PGP · keys · proof',
-            bio: 'Student based in São Paulo, Brazil. I photograph events, travel and everyday city life with a <strong>Sony A6700</strong>, operate amateur radio as <strong>PU2XIK</strong>, and split my time between hypertrophy training and preparing to study computer engineering.',
+            bio: 'I am a third-year high school student in São Paulo and will take the college entrance exams in 2027 for Computer Engineering. My first programs date from 2021 and 2022 (Caesar cipher, hangman and a calculator), written with a teacher’s help. From August to November 2025, I taught English every week to children in hemodialysis at the Instituto da Criança of Hospital das Clínicas, in a school internship. Outside code, I photograph events and operate radio.',
             h_photo: 'Photography',
             l_fotos_d: 'Full galleries, full-resolution delivery and LGPD removal requests',
             l_ig_d: 'Live stories from events and travel',
@@ -139,7 +193,7 @@
             l_profile: 'PU2XIK profile',
             l_qrz: 'Profile and logbook',
             l_portal: 'Community portal',
-            l_portal_d: 'Operator pages, APRS and digital modes',
+            l_portal_d: 'Operator pages and digital modes',
             h_contact: 'Contact',
             send: 'Compose',
             copy: 'Copy',
@@ -159,16 +213,16 @@
             e_status: 'Service monitoring',
             e_keys: 'Public SSH and PGP keys',
             e_proof: 'Signed identity statement',
-            e_restricted: 'A challenge. Three attempts.',
+            e_restricted: 'A cryptography puzzle I made for fun.',
             h_verify: 'Verification',
-            verify_lede: 'Anything official comes from an <strong>@lucafchala.com</strong> address. The old tucas.me domain is no longer mine.',
+            verify_lede: 'They prove a message or file really came from me. Anything official comes from an <strong>@lucafchala.com</strong> address. The old tucas.me domain is no longer mine.',
             fp_label: 'PGP fingerprint · RSA 4096',
             v_keys: 'Public keys',
             v_keys_d: 'PGP (RSA 4096) and SSH (ed25519)',
             v_proof: 'Proof of ownership',
             v_proof_d: 'PGP-signed statement',
             v_openpgp: 'Same key, public keyserver',
-            verify_note: 'Messages about sensitive matters — code, money — must be PGP-signed. Unsigned means untrusted.',
+            verify_note: 'Messages about sensitive matters, like code and money, must be PGP-signed. Unsigned means untrusted.',
             madewith: 'plain HTML, CSS and JS · made with help from Claude',
             k_search: 'search',
             k_theme: 'theme',
@@ -234,6 +288,7 @@
         });
         $('#pal-input').placeholder = i18n[lang].p_placeholder;
         document.title = i18n[lang].doc_title;
+        $('#btn-search').title = i18n[lang].search_hint;
         $('#btn-pt').setAttribute('aria-pressed', String(lang === 'pt'));
         $('#btn-en').setAttribute('aria-pressed', String(lang === 'en'));
         formatDates(lang);
@@ -278,7 +333,7 @@
         el.textContent = msg;
         el.classList.add('show');
         clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => el.classList.remove('show'), 1800);
+        toastTimer = setTimeout(() => el.classList.remove('show'), 3200);
     }
     async function copy(text) {
         try {
@@ -326,7 +381,7 @@
             }
             dot.dataset.status = st;
             dot.title = t('live_title') + ': ' + t('live_' + st);
-            dot.querySelector('.sr-only').textContent = ' — ' + t('live_' + st);
+            dot.querySelector('.sr-only').textContent = ': ' + t('live_' + st);
         });
     }
     function loadLive() {
@@ -442,6 +497,7 @@
         window.addEventListener('beforeprint', () => {
             closed = [...rows].filter(d => !d.open);
             rows.forEach(d => { d.removeAttribute('name'); d.open = true; });
+            document.querySelectorAll('details.others').forEach(d => { if (!d.open) { d.open = true; closed.push(d); } });
         });
         window.addEventListener('afterprint', () => {
             closed.forEach(d => { d.open = false; });
@@ -586,6 +642,7 @@
         }
         if (typing || e.metaKey || e.ctrlKey || e.altKey) return;
         if (palette && e.key === '/') { e.preventDefault(); palette.open(); }
+        else if (e.key === '?') toast(t('shortcuts_hint'));
         else if (e.key === 't' || e.key === 'T') toggleTheme();
         else if (e.key === 'l' || e.key === 'L') setLang(root.dataset.lang === 'pt' ? 'en' : 'pt', true);
     });
@@ -595,7 +652,7 @@
         '%c  )) ))) )))  %cPU2XIK%c\n\n' +
         'CQ CQ DE PU2XIK\n' +
         'Student · Photographer · Amateur radio operator\n' +
-        'São Paulo, BR — github.com/lucafchala\n' +
+        'São Paulo, BR, github.com/lucafchala\n' +
         'Psst: try / or ⌘K.',
         'color:#c08030;font-family:monospace;font-size:11px;',
         'background:#c08030;color:#0d0c0a;font-weight:bold;padding:2px 7px;border-radius:2px;font-family:monospace;font-size:12px;',
@@ -704,7 +761,7 @@
         });
     })();
 
-    // ── WebMCP — expose page actions to AI agents, feature-detected ──
+    // ── WebMCP: expose page actions to AI agents, feature-detected ──
     // https://webmachinelearning.github.io/webmcp/
     if (navigator.modelContext && typeof navigator.modelContext.provideContext === 'function') {
         navigator.modelContext.provideContext({
@@ -751,6 +808,7 @@
                             callsign: 'PU2XIK',
                             location: 'São Paulo, Brazil',
                             roles: ['Student', 'Photographer', 'Amateur radio operator'],
+                            projects: ['Photo gallery with privacy', 'Homelab and monitoring', 'T-Embed curation'],
                             bio: i18n.en.bio.replace(/<[^>]+>/g, ''),
                             camera: 'Sony A6700',
                             radioInterests: ['APRS', 'DMR', 'Packet radio', 'Antennas', 'Field operations'],

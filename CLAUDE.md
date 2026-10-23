@@ -5,7 +5,7 @@ Personal website for Luca F. Chala and hub of the `*.lucafchala.com` ecosystem. 
 ## Structure
 
 ```
-index.html          # Landing page markup: one-screen hero + a menu of <details> rows (01 Sobre, 02 Fotografia, 03 Rádio, 04 Contato, 05 Ecossistema, 06 Verificação)
+index.html          # Landing page markup: hero + an always-visible 01 Projetos section (3 cards + the AI-honesty sentence) + a menu of <details> rows (02 Sobre, 03 Fotografia, 04 Rádio, 05 Contato, 06 Ecossistema, 07 Verificação)
 style.css           # All homepage styles
 app.js              # All homepage behaviour (i18n, palette, clock, copy, easter eggs, WebMCP)
 theme.js            # Sync <head> script: applies the theme before first paint
@@ -29,7 +29,10 @@ todo.md             # Open follow-ups (also tracked as GitHub issues)
 - **Theme and language are shared across subdomains.** Choices are stored in the `lf_theme` / `lf_lang` cookies on `.lucafchala.com` (see `store` in `app.js` and `theme.js`), with `localStorage` as a fallback. Every sibling site reads the same cookies. Without a saved choice, the theme follows `prefers-color-scheme` and the language follows `navigator.language`.
 - **One screen + menu:** the page is the hero plus one `<section id><details name="menu">` row per section, all closed; `name="menu"` makes it an exclusive accordion (native, works without JS). The `<h2>` sits in the `<summary>` so the palette still groups by it. A `#hash` (e.g. `/#contato`) opens its row (`openFromHash` in `app.js`), and printing opens every row. Keep new content inside a row's `.panel`, not on the first screen.
 - **Command palette:** `/` or ⌘K/Ctrl+K opens a `<dialog>` built automatically from every link inside `main section[id]` and the footer. New links show up in it for free. `T` toggles theme, `L` toggles language.
-- **Live status dots** (05 Ecossistema, `loadLive`/`renderLive` in `app.js`):
+- **Honesty about AI** (`ai_note` in 01 Projetos): the code of the current projects is written with Claude; requirements, architecture, review, decisions and operation are the owner's. Keep that sentence. Don't add facts that aren't verified (FIAP stays a TODO until confirmed).
+- **Contact:** email, LinkedIn and GitHub are up front; WhatsApp, Signal, SimpleX, Spotify, Instagram and the Pix donation live in the collapsed `details.others`.
+- **Shortcuts** aren't printed on the page: `?` shows a toast with them and the search button has a title.
+- **Live status dots** (06 Ecossistema, `loadLive`/`renderLive` in `app.js`):
   - read `status.lucafchala.com/api/resumo` (~1 KB, CORS `*`, reads the D1 snapshot only) and draw only when `retratoCompartilhado` is true and the snapshot isn't `atrasado` (stale: unknown is not up);
   - `/api/painel` has no CORS and is ~90 KB — reading it is what kept the dots from ever showing (status#52);
   - never switch them to `/api/status`, which sweeps every subdomain per request;

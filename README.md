@@ -148,21 +148,22 @@ Without a saved choice, the theme follows `prefers-color-scheme` and the languag
 One screen, mobile‑first: the hero, then a menu of collapsible rows (native `<details name="menu">`, one open at a time; a `#hash` such as `/#contato` opens its row):
 
 - **Sticky top bar:** monogram, **Instagram** shortcut, **search** (command palette), **PT/EN** and **theme** toggles.
-- **Hero:** live São Paulo clock, name, roles with callsign **PU2XIK**, CTAs (photos · Instagram).
-- **01 Sobre:** the bio, with a drop cap.
-- **02 Fotografia:** fotos and Instagram links, recent galleries from `fotos`, camera‑kit summary.
+- **Hero:** live São Paulo clock, name, a one-sentence intro, CTAs (Projetos · Fotos · GitHub).
+- **01 Projetos** (always visible): three cards (photo gallery with privacy / FNUSC case, homelab and monitoring, T-Embed curation) and a sentence about AI use.
+- **02 Sobre:** the bio, with a drop cap.
+- **03 Fotografia:** fotos and Instagram links, recent galleries from `fotos`, camera‑kit summary.
   - **Recent galleries update themselves:** after load, the page reads `fotos.lucafchala.com/api/recentes` (the 5 newest public galleries, pinned first, CORS-open, 5‑min cache) and redraws the list. A new project in fotos shows up here with no edit to this repo.
     - The list in `index.html` is the fallback for no JS, offline, or fotos down; it's replaced only when the API returns at least one valid item.
     - Links are rebuilt from the validated slug; tags: `destaque` (pinned) and `em breve` (coming soon).
-- **03 Rádio:** QSL‑card station summary and profile / QRZ / portal links.
-- **04 Contato:** email (compose + copy), WhatsApp, Signal, SimpleX, Pix, social links.
-- **05 Ecossistema:** every subdomain with a one‑line description.
+- **04 Rádio:** QSL‑card station summary and profile / QRZ / portal links.
+- **05 Contato:** email (compose + copy), LinkedIn and GitHub up front; the rest (WhatsApp, Signal, SimpleX, Pix, Spotify, Instagram) under a collapsed "Outros canais".
+- **06 Ecossistema:** every subdomain with a one‑line description.
   - **Live status dot:** a dot on each card, read from `status.lucafchala.com/api/resumo` (a ~1 KB, CORS-open summary that only reads status's D1 snapshot).
     - It only shows when status serves its shared D1 snapshot (`retratoCompartilhado`), so homepage visitors never trigger a sweep.
     - With no snapshot, or on any error, there are no dots.
     - Colours are `--up` / `--degraded` / `--down`, with a ring and screen-reader text so colour isn't the only signal.
-- **06 Verificação:** PGP fingerprint (copy), keys, proof, keys.openpgp.org.
-- **Footer:** `73 de PU2XIK`, utility links, shortcuts.
+- **07 Verificação:** PGP fingerprint (copy), keys, proof, keys.openpgp.org.
+- **Footer:** `73 de PU2XIK`, utility links. Shortcuts show on the `?` key.
 
 Translations live in the `i18n` object in `app.js`. Elements carry `data-i18n` / `data-i18n-aria`, and the PT text in the markup is the no‑JS fallback. The email address is assembled in JS to dodge naive scrapers.
 

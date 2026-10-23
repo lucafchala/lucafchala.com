@@ -114,7 +114,7 @@ body::before {
 ::selection { background: var(--accent); color: var(--on-accent); }
 
 /* Cormorant defaults to old-style figures — keep callsigns and numbers on the baseline */
-.name, .bio, .sign, .qsl-call, .menu h2, .card h3, .email-card .c-value { font-variant-numeric: lining-nums; }
+.name, .bio, .sign, .qsl-call, .menu h2, .projects h2, .card h3, .email-card .c-value { font-variant-numeric: lining-nums; }
 
 abbr[title] { text-decoration: none; }
 
@@ -333,7 +333,9 @@ html:not(.js) #btn-search { display: none; }
     user-select: none;
 }
 
-.cta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 460px; }
+.lede { max-width: 560px; margin-bottom: 24px; color: var(--text); font-size: 13.5px; line-height: 1.7; }
+.cta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 460px; }
+.cta .btn { padding: 0 8px; gap: 6px; }
 .cta .btn { justify-content: center; }
 
 .btn {
@@ -387,6 +389,20 @@ html:not(.js) #btn-search { display: none; }
 .bio strong { font-weight: 600; font-style: italic; }
 
 /* ── Menu: each section is a <details name="menu"> row ── */
+/* ── Projects ── */
+.projects { margin-top: 44px; }
+.proj-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+.proj-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 16px; }
+.card.proj { padding: 20px; }
+.card.proj p + p { margin-top: 10px; }
+.card.proj .pj-problem { color: var(--text); }
+.card.proj .pj-num { border-left: 2px solid var(--accent-dim); padding-left: 12px; }
+.card.proj .pj-num strong { color: var(--accent); font-weight: 500; }
+.pj-links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.pj-links a { display: inline-flex; align-items: center; min-height: 32px; gap: 6px; font-size: 11.5px; color: var(--accent); text-decoration: none; }
+.pj-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.ai-note { margin-top: 18px; font-size: 12px; color: var(--muted); max-width: 600px; border-left: 2px solid var(--accent-dim); padding-left: 12px; }
+
 .menu {
     margin-top: 32px;
     border-top: 1px solid var(--border);
@@ -409,7 +425,7 @@ html:not(.js) #btn-search { display: none; }
     color: var(--accent);
     flex-shrink: 0;
 }
-.menu h2 {
+.menu h2, .projects h2 {
     font-family: var(--serif);
     font-weight: 300;
     font-size: clamp(26px, 7vw, 32px);
@@ -768,6 +784,14 @@ html:not(.js) .needs-js { display: none; }
 .socials a:hover { border-color: var(--accent-dim); color: var(--accent); }
 .socials .h { color: var(--muted); font-size: 10.5px; }
 
+.others { margin-top: 14px; }
+.others summary { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px; border: 1px solid var(--border); border-radius: 20px; background: var(--ctrl-bg); font-size: 11.5px; cursor: pointer; list-style: none; }
+.others summary::-webkit-details-marker { display: none; }
+.others summary::after { content: '+'; color: var(--accent); }
+.others[open] summary::after { content: '−'; }
+.others > * + * { margin-top: 14px; }
+.others > .contact-grid { margin-top: 14px; }
+
 /* ── Ecosystem ── */
 .eco {
     display: grid;
@@ -998,6 +1022,7 @@ main:focus { outline: none; }
     .bio { font-size: 21px; }
     #btn-search .kbd { display: inline; }
     .cta { display: flex; flex-wrap: wrap; max-width: none; }
+    .cta .btn { padding: 0 18px; gap: 10px; }
 }
 
 /* One line for the name on wider screens, so hero + menu still fit one screen */
@@ -1091,3 +1116,32 @@ body.radio-sweep::after {
     color: var(--muted);
 }
 
+
+/* ── Clean pass: flatter, quieter, more air ──
+   Overrides on purpose, so the earlier rules stay readable until the redesign. */
+body::before { display: none; }                       /* no grain */
+.pulse::after { animation: none; opacity: 0; }        /* static dot */
+.menu details[open] > .panel { animation: none; }
+.card, .qsl, .eco a, .fp-card {
+    background: none;
+    box-shadow: none;
+    border-radius: 4px;
+}
+a.card:hover, .eco a:hover { transform: none; box-shadow: none; background: var(--accent-soft); }
+.qsl::before { display: none; }
+.qsl { background: none; }
+.kicker { letter-spacing: 0.1em; }
+.btn-ig { background: none; border-color: var(--border-strong); }
+.btn-ig:hover { background: var(--accent-soft); }
+.lede { font-size: 14px; max-width: 520px; margin-bottom: 28px; }
+.roles { margin-bottom: 20px; }
+
+/* Projects: a divided list instead of three boxes */
+.projects { margin-top: 56px; }
+.proj-grid { gap: 0; margin-top: 12px; border-bottom: 1px solid var(--border); }
+.card.proj { border: 0; border-top: 1px solid var(--border); border-radius: 0; padding: 28px 0; }
+.card.proj h3 { font-size: 28px; margin-bottom: 10px; }
+.card.proj .pj-problem { color: var(--muted); }
+.card.proj .pj-num { border-left: 0; padding-left: 0; color: var(--text); }
+.ai-note { border-left: 0; padding-left: 0; margin-top: 24px; }
+.panel { padding-bottom: 34px; }
