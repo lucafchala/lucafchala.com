@@ -1116,3 +1116,32 @@ body.radio-sweep::after {
     color: var(--muted);
 }
 
+
+/* ── Clean pass: flatter, quieter, more air ──
+   Overrides on purpose, so the earlier rules stay readable until the redesign. */
+body::before { display: none; }                       /* no grain */
+.pulse::after { animation: none; opacity: 0; }        /* static dot */
+.menu details[open] > .panel { animation: none; }
+.card, .qsl, .eco a, .fp-card {
+    background: none;
+    box-shadow: none;
+    border-radius: 4px;
+}
+a.card:hover, .eco a:hover { transform: none; box-shadow: none; background: var(--accent-soft); }
+.qsl::before { display: none; }
+.qsl { background: none; }
+.kicker { letter-spacing: 0.1em; }
+.btn-ig { background: none; border-color: var(--border-strong); }
+.btn-ig:hover { background: var(--accent-soft); }
+.lede { font-size: 14px; max-width: 520px; margin-bottom: 28px; }
+.roles { margin-bottom: 20px; }
+
+/* Projects: a divided list instead of three boxes */
+.projects { margin-top: 56px; }
+.proj-grid { gap: 0; margin-top: 12px; border-bottom: 1px solid var(--border); }
+.card.proj { border: 0; border-top: 1px solid var(--border); border-radius: 0; padding: 28px 0; }
+.card.proj h3 { font-size: 28px; margin-bottom: 10px; }
+.card.proj .pj-problem { color: var(--muted); }
+.card.proj .pj-num { border-left: 0; padding-left: 0; color: var(--text); }
+.ai-note { border-left: 0; padding-left: 0; margin-top: 24px; }
+.panel { padding-bottom: 34px; }
