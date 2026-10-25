@@ -16,12 +16,14 @@ transferring.html   # Migration notice (pages moved off omg.lol)
 status/index.html   # Meta-refresh to status.lucafchala.com
 notice.css          # Styles shared by those two notice pages (same fonts/tokens, follows lf_theme)
 robots.txt, sitemap.xml, llms.txt, manifest.json, .well-known/
-fonts/              # Self-hosted woff2 (Cormorant Garamond normal+italic, JetBrains Mono) — latin, variable, OFL
+fonts/              # Self-hosted woff2: Inter (homepage) + Cormorant Garamond / JetBrains Mono (notice pages, 404) — latin, variable, OFL
 favicon.svg, icon.svg, icon-*.png, apple-touch-icon.png, og.png, og.svg
 todo.md             # Open follow-ups (also tracked as GitHub issues)
 ```
 
 ## Key facts
+
+- **Look:** the homepage follows fotos.lucafchala.com (Inter, `#0a0a0a`/`#111` surfaces, gold `#c0a060`, 10 px radius). Tokens are the `--bg/--surface/--accent…` variables at the top of `style.css`; the dark/light toggle only flips `data-theme`.
 
 - **No framework, no build tool.** Pure HTML, CSS, vanilla JS. Edit and push.
 - **HTML / CSS / JS are separate files.** Keep them that way: markup in `index.html`, styles in `style.css`, behaviour in `app.js`. The JSON‑LD block in `<head>` is the only inline `<script>`; it's data and never executes.
