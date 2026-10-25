@@ -9,6 +9,6 @@
     d.dataset.theme = t;
     d.classList.add('js');
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = t === 'light' ? '#f4efe6' : '#0d0c0a';
+    if (meta) meta.content = t === 'light' ? '#f0ece8' : '#0a0a0a';
 })();
 

@@ -301,7 +301,7 @@
     function applyTheme(theme, persist) {
         root.dataset.theme = theme;
         const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.content = theme === 'light' ? '#f4efe6' : '#0d0c0a';
+        if (meta) meta.content = theme === 'light' ? '#f0ece8' : '#0a0a0a';
         if (persist) store.set('theme', theme);
     }
     function toggleTheme() {
@@ -654,9 +654,9 @@
         'Student · Photographer · Amateur radio operator\n' +
         'São Paulo, BR, github.com/lucafchala\n' +
         'Psst: try / or ⌘K.',
-        'color:#c08030;font-family:monospace;font-size:11px;',
-        'background:#c08030;color:#0d0c0a;font-weight:bold;padding:2px 7px;border-radius:2px;font-family:monospace;font-size:12px;',
-        'color:#c08030;font-family:monospace;font-size:12px;line-height:1.6;'
+        'color:#c0a060;font-family:monospace;font-size:11px;',
+        'background:#c0a060;color:#0a0a0a;font-weight:bold;padding:2px 7px;border-radius:2px;font-family:monospace;font-size:12px;',
+        'color:#c0a060;font-family:monospace;font-size:12px;line-height:1.6;'
     );
 
     // ── Hidden: hold the callsign → radio sweep ──

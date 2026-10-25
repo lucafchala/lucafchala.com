@@ -222,14 +222,16 @@ All behaviour is in `404.js`, loaded from `'self'`, so the page needs nothing sp
 
 ## Design system
 
-The **canonical reference** for the shared visual language used by `lucafchala.com`, `dash`, `url`, `paste`, `keys`, `proof`, `pays` and `status` (and the `pu2xik` profile in `portal_radio`).
+The **canonical reference** for the shared visual language (the homepage now follows the fotos look, see Fonts; the tables below describe the older palette that dash, url, paste, keys, proof, pays and status still use) used by `lucafchala.com`, `dash`, `url`, `paste`, `keys`, `proof`, `pays` and `status` (and the `pu2xik` profile in `portal_radio`).
 
 > `fotos`, `restricted`, `spectral-drift`, and the `portal_radio` landing and other callsign profiles have their **own** palettes and fonts, documented in their READMEs.
 
 ### Fonts
 
-- **Cormorant Garamond** (serif): display — names, titles, large headings; italic accents are common.
-- **JetBrains Mono** (monospace): everything else — body, labels, buttons, metadata.
+- **Homepage (since the 2026-10 redesign):** **Inter** only (variable, latin, `fonts/inter-latin-wght-normal.woff2`), the same face and look as fotos.lucafchala.com: near-black surfaces (`#0a0a0a` / cards `#111`), warm gold accent `#c0a060` (`#8a6428` on the light theme), 10 px cards, hairline borders.
+- **Other sibling sites** still use the older pair below until they are migrated:
+  - **Cormorant Garamond** (serif): display — names, titles, large headings.
+  - **JetBrains Mono** (monospace): everything else.
 
 **Every site self‑hosts them.** Copy `fonts/` (latin subset, variable weight, OFL licences included) and use:
 
