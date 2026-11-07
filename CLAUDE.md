@@ -56,7 +56,9 @@ todo.md             # Open follow-ups (also tracked as GitHub issues)
 
 ## Content-Security-Policy
 
-`_headers` sets `script-src 'self' https://static.cloudflareinsights.com`, with no hashes and no `'unsafe-inline'`:
+`_headers` sets `script-src 'self' https://static.cloudflareinsights.com https://fotos.lucafchala.com`, with no hashes and no `'unsafe-inline'`:
+
+- **`fotos.lucafchala.com/destaque.js`** is the album launch notice (a banner at the top of the page). It fetches `fotos.lucafchala.com/api/destaque` (covered by `connect-src https://*.lucafchala.com`) and draws something only while an album is launched there; otherwise it does nothing. It renders inside a closed shadow root, so this site's CSS doesn't touch it.
 
 - **Never add an inline `<script>` or an `on*=` attribute.** Put code in `app.js` (or a new file) and use `addEventListener`.
 - CI (`checks.yml` → "CSP hashes cover every inline script") fails if any executable inline script or handler appears in any `.html` file, since none is allowed.
