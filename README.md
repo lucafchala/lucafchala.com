@@ -320,3 +320,13 @@ The status service adds state colors (`--up`, `--degraded`, `--down`) for its ba
 ## License
 
 All rights reserved. The content and design belong to Luca F. Chala.
+
+## Album launch notice (from fotos)
+
+`index.html` loads `https://fotos.lucafchala.com/destaque.js` (`async`, before `</body>`). The script asks `fotos.lucafchala.com/api/destaque` and **draws something only when fotos launches an album with "Destaque máximo no site"** on: a blue strip at the top, "TURMA 2026 · COLÉGIO SANTA CRUZ **Entre Nós** · o álbum está no ar · Ver o álbum →". Until then nothing shows.
+
+- It lives in a closed shadow root (this site's CSS doesn't touch it, and it doesn't touch the page), built without `innerHTML` and without cookies. The × hides it for 3 days on that device (`localStorage`). fotos down → nothing shows.
+- **CSP (`_headers`):** `https://fotos.lucafchala.com` is in `script-src`; `connect-src https://*.lucafchala.com` already covers the API call.
+- This page is hand-written: the line is in `index.html` itself.
+- To remove it: delete the script line and take `https://fotos.lucafchala.com` out of the CSP.
+- The full picture across every site (which ones load this script, which ones get the server-side version) is in fotos' `docs/ALBUM.md`, "Aviso nos outros sites".
