@@ -5,7 +5,7 @@ Personal website for Luca F. Chala and hub of the `*.lucafchala.com` ecosystem. 
 ## Structure
 
 ```
-index.html          # Landing page markup: hero + an always-visible 01 Projetos section (3 cards + the AI-honesty sentence) + a menu of <details> rows (02 Sobre, 03 Fotografia, 04 Rádio, 05 Contato, 06 Ecossistema, 07 Verificação)
+index.html          # Landing page markup: hero + Agora panel, then open sections: Projetos (3 cards + the AI-honesty sentence), Fotografia, Rádio, Sobre, Contato, Ecossistema, Verificação
 style.css           # All homepage styles
 app.js              # All homepage behaviour (i18n, palette, clock, copy, easter eggs, WebMCP)
 theme.js            # Sync <head> script: applies the theme before first paint
@@ -23,23 +23,24 @@ todo.md             # Open follow-ups (also tracked as GitHub issues)
 
 ## Key facts
 
-- **Look:** the homepage follows fotos.lucafchala.com (Inter, `#0a0a0a`/`#111` surfaces, gold `#c0a060`, 10 px radius). Tokens are the `--bg/--surface/--accent…` variables at the top of `style.css`; the dark/light toggle only flips `data-theme`.
+- **Look:** the homepage follows fotos.lucafchala.com (Inter, `#0a0a0a` page / `#141414` cards, gold `#c0a060`, 12 px cards, small tracked uppercase labels). Tokens are the `--bg/--surface/--accent…` variables at the top of `style.css`; the dark/light toggle only flips `data-theme`.
 
 - **No framework, no build tool.** Pure HTML, CSS, vanilla JS. Edit and push.
 - **HTML / CSS / JS are separate files.** Keep them that way: markup in `index.html`, styles in `style.css`, behaviour in `app.js`. The JSON‑LD block in `<head>` is the only inline `<script>`; it's data and never executes.
 - **Bilingual.** Strings live in the `i18n` object in `app.js`. Elements carry `data-i18n="key"` (innerHTML) or `data-i18n-aria="key"` (aria-label). The PT text in the markup is the no‑JS fallback, so keep both in sync.
 - **Theme and language are shared across subdomains.** Choices are stored in the `lf_theme` / `lf_lang` cookies on `.lucafchala.com` (see `store` in `app.js` and `theme.js`), with `localStorage` as a fallback. Every sibling site reads the same cookies. Without a saved choice, the theme follows `prefers-color-scheme` and the language follows `navigator.language`.
-- **One screen + menu:** the page is the hero plus one `<section id><details name="menu">` row per section, all closed; `name="menu"` makes it an exclusive accordion (native, works without JS). The `<h2>` sits in the `<summary>` so the palette still groups by it. A `#hash` (e.g. `/#contato`) opens its row (`openFromHash` in `app.js`), and printing opens every row. Keep new content inside a row's `.panel`, not on the first screen.
+- **Phone first, every section open:** the base CSS is the phone layout and the media queries only add columns (640 / 800 / 960 px). Each section is a `<section class="sec wrap" id>` with a `.sec-head` `<h2>` (fotos' small tracked label); there is no accordion (the owner dropped the old `<details name="menu">` rows), so `#hash` links work natively. The palette groups links by that `<h2>` and labels each by its `.t` child; give new link components a `.t`. Check every UI change at 390 px and 1440 px, in both themes.
+- **The "Agora" panel** (hero) is the one live element: clock, latest gallery (`loadGalleries`), ecosystem line (`renderNow`, from `/api/resumo`: worst status + `uptime.h24`). No data → static fallback / plain link, never a guessed "all up".
 - **Command palette:** `/` or ⌘K/Ctrl+K opens a `<dialog>` built automatically from every link inside `main section[id]` and the footer. New links show up in it for free. `T` toggles theme, `L` toggles language.
-- **Honesty about AI** (`ai_note` in 01 Projetos): the code of the current projects is written with Claude; requirements, architecture, review, decisions and operation are the owner's. Keep that sentence. Don't add facts that aren't verified (FIAP stays a TODO until confirmed).
-- **Contact:** email, LinkedIn and GitHub are up front; WhatsApp, Signal, SimpleX, Spotify, Instagram and the Pix donation live in the collapsed `details.others`.
+- **Honesty about AI** (`ai_note` in Projetos): the code of the current projects is written with Claude; requirements, architecture, review, decisions and operation are the owner's. Keep that sentence. Don't add facts that aren't verified (FIAP stays a TODO until confirmed).
+- **Contact:** email, LinkedIn, GitHub and Instagram are up front; WhatsApp, Signal, SimpleX, Spotify and the Pix donation live in the collapsed `details.others`.
 - **Shortcuts** aren't printed on the page: `?` shows a toast with them and the search button has a title.
-- **Live status dots** (06 Ecossistema, `loadLive`/`renderLive` in `app.js`):
+- **Live status dots** (Ecossistema + the Agora panel, `loadLive`/`renderLive` in `app.js`):
   - read `status.lucafchala.com/api/resumo` (~1 KB, CORS `*`, reads the D1 snapshot only) and draw only when `retratoCompartilhado` is true and the snapshot isn't `atrasado` (stale: unknown is not up);
   - `/api/painel` has no CORS and is ~90 KB — reading it is what kept the dots from ever showing (status#52);
   - never switch them to `/api/status`, which sweeps every subdomain per request;
   - matching is by the card link's hostname.
-- **"Galerias recentes"** (02 Fotografia, `loadGalleries` in `app.js`) updates itself:
+- **"Galerias recentes"** (Fotografia + the Agora panel, `loadGalleries` in `app.js`) updates itself:
   - after `load` it reads `fotos.lucafchala.com/api/recentes` (CORS `*`, 5 min cache): up to 5 public galleries in the fotos gallery's order (pinned first), without hidden/private/family ones;
   - the response shape (`{galerias:[{slug, titulo, data, url, destaque, emBreve}]}`) is a contract with fotos (`handleRecentes`); change both together;
   - links are built from the validated slug, never from the response's `url`; titles stay PT in EN mode;
