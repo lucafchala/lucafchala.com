@@ -5,7 +5,7 @@ Personal website for Luca F. Chala and hub of the `*.lucafchala.com` ecosystem. 
 ## Structure
 
 ```
-index.html          # Landing page markup: hero + Agora panel, then open sections: Projetos (3 cards + the AI-honesty sentence), Fotografia, Rádio, Sobre, Contato, Ecossistema, Verificação
+index.html          # Landing page markup: hero, then open sections: Projetos (3 cards + the AI-honesty sentence), Fora do código (Fotografia + Rádio cards), Sobre, Contato; ecosystem and verification links live in the footer
 style.css           # All homepage styles
 app.js              # All homepage behaviour (i18n, palette, clock, copy, easter eggs, WebMCP)
 theme.js            # Sync <head> script: applies the theme before first paint
@@ -29,23 +29,18 @@ todo.md             # Open follow-ups (also tracked as GitHub issues)
 - **HTML / CSS / JS are separate files.** Keep them that way: markup in `index.html`, styles in `style.css`, behaviour in `app.js`. The JSON‑LD block in `<head>` is the only inline `<script>`; it's data and never executes.
 - **Bilingual.** Strings live in the `i18n` object in `app.js`. Elements carry `data-i18n="key"` (innerHTML) or `data-i18n-aria="key"` (aria-label). The PT text in the markup is the no‑JS fallback, so keep both in sync.
 - **Theme and language are shared across subdomains.** Choices are stored in the `lf_theme` / `lf_lang` cookies on `.lucafchala.com` (see `store` in `app.js` and `theme.js`), with `localStorage` as a fallback. Every sibling site reads the same cookies. Without a saved choice, the theme follows `prefers-color-scheme` and the language follows `navigator.language`.
-- **Phone first, every section open:** the base CSS is the phone layout and the media queries only add columns (640 / 800 / 960 px). Each section is a `<section class="sec wrap" id>` with a `.sec-head` `<h2>` (fotos' small tracked label); there is no accordion (the owner dropped the old `<details name="menu">` rows), so `#hash` links work natively. The palette groups links by that `<h2>` and labels each by its `.t` child; give new link components a `.t`. Check every UI change at 390 px and 1440 px, in both themes.
-- **The "Agora" panel** (hero) is the one live element: clock, latest gallery (`loadGalleries`), ecosystem line (`renderNow`, from `/api/resumo`: worst status + `uptime.h24`). No data → static fallback / plain link, never a guessed "all up".
+- **A homepage, not a dashboard (owner's call):** keep it short. No live panels, status dots or uptime numbers; the owner rejected an "Agora" panel as a "me dash". New content earns a place only if a visitor needs it; links to the rest go in the footer columns.
+- **Phone first, every section open:** the base CSS is the phone layout and the media queries only add columns (480 / 640 / 800 / 960 px). Each section is a `<section class="sec wrap" id>` with a `.sec-head` `<h2>` (fotos' small tracked label); there is no accordion, so `#hash` links work natively. The palette groups links by that `<h2>` and labels each by its `.t` child; give new link components a `.t`. Check every UI change at 390 px and 1440 px, in both themes.
 - **Command palette:** `/` or ⌘K/Ctrl+K opens a `<dialog>` built automatically from every link inside `main section[id]` and the footer. New links show up in it for free. `T` toggles theme, `L` toggles language.
 - **Honesty about AI** (`ai_note` in Projetos): the code of the current projects is written with Claude; requirements, architecture, review, decisions and operation are the owner's. Keep that sentence. Don't add facts that aren't verified (FIAP stays a TODO until confirmed).
-- **Contact:** email, LinkedIn, GitHub and Instagram are up front; WhatsApp, Signal, SimpleX, Spotify and the Pix donation live in the collapsed `details.others`.
+- **Contact:** email (copy), LinkedIn, GitHub and Instagram are up front; WhatsApp, Signal, SimpleX, Spotify and the Pix donation live in the collapsed `details.others`.
 - **Shortcuts** aren't printed on the page: `?` shows a toast with them and the search button has a title.
-- **Live status dots** (Ecossistema + the Agora panel, `loadLive`/`renderLive` in `app.js`):
-  - read `status.lucafchala.com/api/resumo` (~1 KB, CORS `*`, reads the D1 snapshot only) and draw only when `retratoCompartilhado` is true and the snapshot isn't `atrasado` (stale: unknown is not up);
-  - `/api/painel` has no CORS and is ~90 KB — reading it is what kept the dots from ever showing (status#52);
-  - never switch them to `/api/status`, which sweeps every subdomain per request;
-  - matching is by the card link's hostname.
-- **"Galerias recentes"** (Fotografia + the Agora panel, `loadGalleries` in `app.js`) updates itself:
-  - after `load` it reads `fotos.lucafchala.com/api/recentes` (CORS `*`, 5 min cache): up to 5 public galleries in the fotos gallery's order (pinned first), without hidden/private/family ones;
+- **Recent galleries** (the Fotografia card, `loadGalleries` in `app.js`) update themselves:
+  - after `load` it reads `fotos.lucafchala.com/api/recentes` (CORS `*`, 5 min cache): up to 5 public galleries in the fotos gallery's order (pinned first), without hidden/private/family ones; the homepage drops `emBreve` ones and shows 3;
   - the response shape (`{galerias:[{slug, titulo, data, url, destaque, emBreve}]}`) is a contract with fotos (`handleRecentes`); change both together;
   - links are built from the validated slug, never from the response's `url`; titles stay PT in EN mode;
   - the list in `index.html` is only the no‑JS/offline fallback, replaced when the API returns at least one valid item. Refresh it now and then, but nothing breaks if it lags.
-- **Content that goes stale:** the camera kit summary (from paste.lucafchala.com/camera-gear) and the radio details (from radio.lucafchala.com/pu2xik) are static snapshots. Update them when those change.
+- **Content that goes stale:** the radio sentence (from radio.lucafchala.com/pu2xik) is a static snapshot. Update them when those change.
 - **Generated files:** `_redirects`, `404.html`, `404.js` come from dash and start with a "generated by dash.lucafchala.com" marker. Change them in the dash (`/home/.../dash.lucafchala.com/index.html`, functions `genRedirectsFile`, `gen404Html`, `gen404Js`). The next PURL save there overwrites hand edits.
 - **Short links are 302 by default** (301 only when marked permanent in dash). Cloudflare applies `_redirects` before static files, so a slug named like a file here would shadow it; dash has a reserved list.
 - **Easter eggs** (keep them working): hold the first `.callsign` → radio sweep; five quick taps on `.name` → Morse "CQ DE PU2XIK"; styled console signature.

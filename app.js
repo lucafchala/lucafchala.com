@@ -3,26 +3,6 @@
 
     const i18n = {
         pt: {
-            eyebrow: 'São Paulo, Brasil',
-            cta_contact: 'Entrar em contato',
-            now_h: 'Agora',
-            now_time: 'Hora local',
-            now_gallery: 'Última galeria',
-            now_status: 'Serviços',
-            now_radio: 'Rádio',
-            now_up: 'Tudo no ar',
-            now_degraded: 'Algum serviço instável',
-            now_down: 'Algum serviço fora do ar',
-            now_24h: 'em 24\u00a0h',
-            pj1_f: '~68',
-            pj1_fl: 'participantes no FNUSC, em 26/09/2026',
-            pj1_s: 'Painel · LGPD · métricas · backup',
-            pj2_fl: 'serviços no ecossistema, desde junho de 2026',
-            pj3_f: '~55.800',
-            pj3_fl: 'arquivos, sem duplicatas',
-            pj3_s: '13 estrelas · 1 fork · página no Discord do Bruce',
-            photo_lede: 'Fotografo eventos e shows. As galerias completas ficam em fotos.lucafchala.com, em alta resolução e com pedido de remoção conforme a LGPD.',
-            sp_v: 'Perfil',
             doc_title: 'Luca F. Chala · Estudante, projetos, fotografia e rádio',
             brand_aria: 'Luca F. Chala: início',
             skip: 'Pular para o conteúdo',
@@ -30,81 +10,51 @@
             search_aria: 'Buscar links e ações',
             search_title: 'Buscar',
             theme_aria: 'Alternar tema claro/escuro',
+            eyebrow: 'São Paulo, Brasil',
             r_student: 'Estudante',
             r_photo: 'Fotógrafo',
             r_ham: 'Radioamador',
-            hero_lede: 'Vestibulando 2027 em Engenharia de Computação. Construo e mantenho a minha própria infraestrutura, fotografo eventos e opero rádio.',
-            cta_projects: 'Projetos',
-            cta_photos: 'Ver fotos',
+            hero_lede: 'Vestibulando 2027 em Engenharia de Computação. Construo a minha própria infraestrutura, fotografo eventos e opero rádio.',
+            cta_projects: 'Ver projetos',
+            cta_contact: 'Contato',
             h_projects: 'Projetos',
-            proj_lede: 'Três coisas que eu construí e mantenho, cada uma com um link para ver funcionando.',
             pj1_t: 'Galeria de fotos com privacidade',
-            pj1_d: 'Entregar as fotos de um evento sem deixar uma pasta aberta para qualquer pessoa. Uma página por evento, acesso protegido, painel administrativo e pedido de remoção conforme a LGPD. No FNUSC fui o fotógrafo oficial e entreguei tudo pela galeria.',
-            pj1_l1: 'Ver o caso FNUSC',
+            pj1_d: 'Fotos de eventos entregues por uma galeria com acesso protegido e pedido de remoção conforme a LGPD, em vez de uma pasta aberta.',
+            pj1_f: '<strong>~68</strong> participantes no FNUSC 2026',
+            pj1_l1: 'Ver o caso',
             pj2_t: 'Homelab e monitoramento',
-            pj2_d: 'Manter os meus serviços no ar e saber quando algum cai. Um servidor Linux dedicado com Docker, acesso remoto por Tailscale, Pi-hole com DNS recursivo e backup criptografado com Restic. O site e os serviços rodam na Cloudflare. O WebSDR está pausado de propósito.',
-            pj2_l1: 'Status ao vivo',
+            pj2_d: 'Um servidor Linux com Docker e os sites lucafchala.com na Cloudflare, monitorados para eu saber quando algo cai.',
+            pj2_f: '<strong>10</strong> serviços no ecossistema',
+            pj2_l1: 'Status',
             pj3_t: 'Curadoria para o T-Embed',
-            pj3_d: 'Reuni e reorganizei fontes públicas para a placa com o firmware Bruce, documentadas em português e inglês. Juntei para pesquisa e testes na minha infraestrutura; a comunidade pediu que eu abrisse, e eu abri. Não é código original, é curadoria.',
+            pj3_d: 'Fontes públicas para a placa com o firmware Bruce, reorganizadas e documentadas em português e inglês. É curadoria, não código original.',
+            pj3_f: '<strong>~55.800</strong> arquivos, sem duplicatas',
             ai_note: 'Sobre IA: o código dos meus projetos atuais é escrito com apoio do Claude. Os requisitos, a arquitetura, a revisão, as decisões e a operação são meus.',
-            radio_lede: 'Radioamadorismo é o hobby de se comunicar por rádio, com licença da Anatel. Tenho o certificado classe C (COER) desde 30/06/2025, sou associado à LABRE e meu indicativo é PU2XIK.',
-            li_v: 'Perfil profissional',
-            gh_v: 'Código e projetos',
-            others: 'Outros canais',
-            eco_lede: 'Cada serviço é um site meu, em um endereço próprio. Os pontos mostram se está no ar agora.',
-            shortcuts_hint: 'Atalhos: / busca, T tema, L idioma',
-            search_hint: 'Buscar (/ ou Ctrl+K)',
-            h_about: 'Sobre',
-            bio: 'Sou estudante do 3º ano do ensino médio em São Paulo e vou prestar vestibular em 2027 para Engenharia de Computação. Meus primeiros programas são de 2021 e 2022 (cifra de César, forca e calculadora), feitos com a ajuda de um professor. De agosto a novembro de 2025, dei aulas de inglês toda semana para crianças em hemodiálise no Instituto da Criança do Hospital das Clínicas, em um estágio da escola. Fora do código, fotografo eventos e opero rádio.',
+            h_beyond: 'Fora do código',
             h_photo: 'Fotografia',
-            l_ig_d: 'Stories ao vivo dos eventos e das viagens',
-            recent: 'Galerias recentes',
-            see_all: 'Ver todas',
-            soon: 'em breve',
-            kit: 'Equipamento',
-            k_body: 'corpo',
-            k_zoom: 'zoom',
-            k_wide: 'ultra-wide',
-            k_flash: 'flash',
-            gear_full: 'Lista completa de equipamento',
+            photo_lede: 'Fotografo eventos e shows. As galerias ficam em fotos.lucafchala.com.',
+            see_all: 'Todas as galerias',
+            gear: 'Equipamento',
             h_radio: 'Rádio',
-            qsl_aria: 'Cartão QSL de PU2XIK',
-            qsl_confirm: 'QSL · Confirmando contato',
-            qsl_modes: 'Modos',
-            l_profile: 'Perfil PU2XIK',
-            l_qrz: 'Perfil e diário de bordo',
+            radio_lede: 'Radioamador com certificado classe C da Anatel desde 2025 e associado à LABRE.',
+            l_profile: 'Perfil',
             l_portal: 'Portal comunitário',
-            l_portal_d: 'Páginas de operadores e modos digitais',
+            h_about: 'Sobre',
+            bio: 'Estou no 3º ano do ensino médio em São Paulo. Escrevi meus primeiros programas em 2021, com a ajuda de um professor. Em 2025, dei aulas de inglês toda semana para crianças em hemodiálise no Instituto da Criança do Hospital das Clínicas, em um estágio da escola.',
             h_contact: 'Contato',
-            send: 'Escrever',
             copy: 'Copiar',
             copied: 'Copiado',
             copy_fail: 'Não foi possível copiar',
-            wa_v: 'Mensagem direta',
-            sig_v: 'Conversa privada',
-            sx_v: 'Sem identificador',
-            coffee: 'Me pague um café',
-            coffee_d: 'Pix via LivePix',
-            social_aria: 'Redes',
-            h_eco: 'Ecossistema',
-            e_fotos: 'Galerias de eventos e viagens',
-            e_radio: 'Portal comunitário de radioamadorismo',
-            e_paste: 'Notas, textos e documentos',
-            e_url: 'Diretório de links curtos',
-            e_status: 'Monitoramento dos serviços',
-            e_keys: 'Chaves públicas SSH e PGP',
-            e_proof: 'Declaração de identidade assinada',
-            e_restricted: 'Um quebra-cabeça de criptografia que fiz por diversão',
-            h_verify: 'Verificação',
-            verify_lede: 'Servem para provar que uma mensagem ou arquivo veio mesmo de mim. Tudo o que é oficial sai de um endereço <strong>@lucafchala.com</strong>. O antigo domínio tucas.me não é mais meu.',
-            fp_label: 'Impressão digital PGP · RSA 4096',
+            others: 'Outros canais',
+            coffee: 'Me pague um café (Pix)',
+            verify_note: 'Mensagens sobre assuntos sensíveis precisam de assinatura PGP. Tudo o que é oficial sai de um endereço @lucafchala.com.',
             v_keys: 'Chaves públicas',
-            v_keys_d: 'PGP (RSA 4096) e SSH (ed25519)',
-            v_proof: 'Prova de propriedade',
-            v_proof_d: 'Declaração assinada com PGP',
-            v_openpgp: 'Mesma chave, servidor público',
-            verify_note: 'Mensagens sobre assuntos sensíveis, como código e finanças, precisam de assinatura PGP. Sem assinatura, considere não confiável.',
+            h_eco: 'Ecossistema',
+            h_verify: 'Verificação',
+            h_site: 'Site',
             madewith: 'HTML, CSS e JS puros · feito com ajuda do Claude',
+            shortcuts_hint: 'Atalhos: / busca, T tema, L idioma',
+            search_hint: 'Buscar (/ ou Ctrl+K)',
             p_placeholder: 'Buscar links e ações…',
             p_results: 'Resultados',
             p_nav: 'navegar',
@@ -117,34 +67,9 @@
             p_copy_fp: 'Copiar impressão digital PGP',
             p_top: 'Voltar ao topo',
             p_more: 'Mais',
-            p_gallery: 'Galeria de fotos',
-            p_instagram: 'Instagram @lucafchala',
-            live_up: 'no ar',
-            live_degraded: 'instável',
-            live_down: 'fora do ar',
-            live_title: 'Agora, segundo status.lucafchala.com'
+            p_gallery: 'Galeria de fotos'
         },
         en: {
-            eyebrow: 'São Paulo, Brazil',
-            cta_contact: 'Get in touch',
-            now_h: 'Now',
-            now_time: 'Local time',
-            now_gallery: 'Latest gallery',
-            now_status: 'Services',
-            now_radio: 'Radio',
-            now_up: 'All up',
-            now_degraded: 'A service is degraded',
-            now_down: 'A service is down',
-            now_24h: 'over 24\u00a0h',
-            pj1_f: '~68',
-            pj1_fl: 'participants at FNUSC, on 26 Sep 2026',
-            pj1_s: 'Admin panel · LGPD · metrics · backup',
-            pj2_fl: 'services in the ecosystem, since June 2026',
-            pj3_f: '~55,800',
-            pj3_fl: 'files, without duplicates',
-            pj3_s: '13 stars · 1 fork · a page on the Bruce Discord',
-            photo_lede: 'I photograph events and concerts. The full galleries live on fotos.lucafchala.com, in full resolution and with LGPD removal requests.',
-            sp_v: 'Profile',
             doc_title: 'Luca F. Chala · Student, projects, photography and radio',
             brand_aria: 'Luca F. Chala: home',
             skip: 'Skip to content',
@@ -152,81 +77,51 @@
             search_aria: 'Search links and actions',
             search_title: 'Search',
             theme_aria: 'Toggle light/dark theme',
+            eyebrow: 'São Paulo, Brazil',
             r_student: 'Student',
             r_photo: 'Photographer',
             r_ham: 'Radio amateur',
-            hero_lede: 'Applying for Computer Engineering in 2027. I build and run my own infrastructure, photograph events and operate amateur radio.',
-            cta_projects: 'Projects',
-            cta_photos: 'See photos',
+            hero_lede: 'Applying for Computer Engineering in 2027. I build my own infrastructure, photograph events and operate amateur radio.',
+            cta_projects: 'See projects',
+            cta_contact: 'Contact',
             h_projects: 'Projects',
-            proj_lede: 'Three things I built and maintain, each with a link so you can see it working.',
             pj1_t: 'Photo gallery with privacy',
-            pj1_d: 'Delivering event photos without leaving an open folder for anyone to find. One page per event, protected access, an admin panel and photo removal requests under Brazil’s data protection law (LGPD). At FNUSC I was the official photographer and delivered everything through the gallery.',
-            pj1_l1: 'See the FNUSC case',
+            pj1_d: 'Event photos delivered through a gallery with protected access and removal requests under Brazil’s data protection law (LGPD), not an open folder.',
+            pj1_f: '<strong>~68</strong> participants at FNUSC 2026',
+            pj1_l1: 'See the case',
             pj2_t: 'Homelab and monitoring',
-            pj2_d: 'Keeping my services up and knowing when one goes down. A dedicated Linux server with Docker, remote access through Tailscale, Pi-hole with recursive DNS and encrypted backups with Restic. The site and services run on Cloudflare. The WebSDR is paused on purpose.',
-            pj2_l1: 'Live status',
+            pj2_d: 'A Linux server with Docker and the lucafchala.com sites on Cloudflare, monitored so I know when something goes down.',
+            pj2_f: '<strong>10</strong> services in the ecosystem',
+            pj2_l1: 'Status',
             pj3_t: 'T-Embed curation',
-            pj3_d: 'I gathered and reorganized public sources for the board with the Bruce firmware, documented in Portuguese and English. I collected them for research and testing on my own infrastructure; the community asked me to open them, and I did. It is not original code, it is curation.',
+            pj3_d: 'Public sources for the board with the Bruce firmware, reorganized and documented in Portuguese and English. It is curation, not original code.',
+            pj3_f: '<strong>~55,800</strong> files, without duplicates',
             ai_note: 'About AI: the code of my current projects is written with help from Claude. The requirements, architecture, review, decisions and operation are mine.',
-            radio_lede: 'Amateur radio is the hobby of communicating by radio, with a license from Anatel (Brazil’s telecom regulator). I hold the class C certificate (COER) since 30 Jun 2025, I am a LABRE member and my callsign is PU2XIK.',
-            li_v: 'Professional profile',
-            gh_v: 'Code and projects',
-            others: 'Other channels',
-            eco_lede: 'Each service is a site of mine, on its own address. The dots show whether it is up right now.',
-            shortcuts_hint: 'Shortcuts: / search, T theme, L language',
-            search_hint: 'Search (/ or Ctrl+K)',
-            h_about: 'About',
-            bio: 'I am a third-year high school student in São Paulo and will take the college entrance exams in 2027 for Computer Engineering. My first programs date from 2021 and 2022 (Caesar cipher, hangman and a calculator), written with a teacher’s help. From August to November 2025, I taught English every week to children in hemodialysis at the Instituto da Criança of Hospital das Clínicas, in a school internship. Outside code, I photograph events and operate radio.',
+            h_beyond: 'Beyond code',
             h_photo: 'Photography',
-            l_ig_d: 'Live stories from events and travel',
-            recent: 'Recent galleries',
-            see_all: 'See all',
-            soon: 'coming soon',
-            kit: 'Gear',
-            k_body: 'body',
-            k_zoom: 'zoom',
-            k_wide: 'ultra-wide',
-            k_flash: 'flash',
-            gear_full: 'Full gear list',
+            photo_lede: 'I photograph events and concerts. The galleries live on fotos.lucafchala.com.',
+            see_all: 'All galleries',
+            gear: 'Gear',
             h_radio: 'Radio',
-            qsl_aria: 'PU2XIK QSL card',
-            qsl_confirm: 'QSL · Confirming our QSO',
-            qsl_modes: 'Modes',
-            l_profile: 'PU2XIK profile',
-            l_qrz: 'Profile and logbook',
+            radio_lede: 'Amateur radio operator with a class C certificate from Anatel since 2025, and a LABRE member.',
+            l_profile: 'Profile',
             l_portal: 'Community portal',
-            l_portal_d: 'Operator pages and digital modes',
+            h_about: 'About',
+            bio: 'I am a third-year high school student in São Paulo. I wrote my first programs in 2021, with a teacher’s help. In 2025, I taught English every week to children in hemodialysis at the Instituto da Criança of Hospital das Clínicas, in a school internship.',
             h_contact: 'Contact',
-            send: 'Compose',
             copy: 'Copy',
             copied: 'Copied',
             copy_fail: 'Couldn’t copy',
-            wa_v: 'Direct message',
-            sig_v: 'Private chat',
-            sx_v: 'No identifier',
-            coffee: 'Buy me a coffee',
-            coffee_d: 'Pix via LivePix',
-            social_aria: 'Social',
-            h_eco: 'Ecosystem',
-            e_fotos: 'Event and travel galleries',
-            e_radio: 'Community amateur-radio portal',
-            e_paste: 'Notes, texts and documents',
-            e_url: 'Short-link directory',
-            e_status: 'Service monitoring',
-            e_keys: 'Public SSH and PGP keys',
-            e_proof: 'Signed identity statement',
-            e_restricted: 'A cryptography puzzle I made for fun',
-            h_verify: 'Verification',
-            verify_lede: 'They prove a message or file really came from me. Anything official comes from an <strong>@lucafchala.com</strong> address. The old tucas.me domain is no longer mine.',
-            fp_label: 'PGP fingerprint · RSA 4096',
+            others: 'Other channels',
+            coffee: 'Buy me a coffee (Pix)',
+            verify_note: 'Messages about sensitive matters must be PGP-signed. Anything official comes from an @lucafchala.com address.',
             v_keys: 'Public keys',
-            v_keys_d: 'PGP (RSA 4096) and SSH (ed25519)',
-            v_proof: 'Proof of ownership',
-            v_proof_d: 'PGP-signed statement',
-            v_openpgp: 'Same key, public keyserver',
-            verify_note: 'Messages about sensitive matters, like code and money, must be PGP-signed. Unsigned means untrusted.',
+            h_eco: 'Ecosystem',
+            h_verify: 'Verification',
+            h_site: 'Site',
             madewith: 'plain HTML, CSS and JS · made with help from Claude',
+            shortcuts_hint: 'Shortcuts: / search, T theme, L language',
+            search_hint: 'Search (/ or Ctrl+K)',
             p_placeholder: 'Search links and actions…',
             p_results: 'Results',
             p_nav: 'navigate',
@@ -239,12 +134,7 @@
             p_copy_fp: 'Copy PGP fingerprint',
             p_top: 'Back to top',
             p_more: 'More',
-            p_gallery: 'Photo gallery',
-            p_instagram: 'Instagram @lucafchala',
-            live_up: 'up',
-            live_degraded: 'degraded',
-            live_down: 'down',
-            live_title: 'Right now, per status.lucafchala.com'
+            p_gallery: 'Photo gallery'
         }
     };
 
@@ -292,8 +182,6 @@
         $('#btn-pt').setAttribute('aria-pressed', String(lang === 'pt'));
         $('#btn-en').setAttribute('aria-pressed', String(lang === 'en'));
         formatDates(lang);
-        renderClock();
-        renderLive();
         if (persist) store.set('lang', lang);
     }
 
@@ -311,19 +199,6 @@
         const mq = matchMedia('(prefers-color-scheme: light)');
         const follow = (e) => { if (!store.get('theme')) applyTheme(e.matches ? 'light' : 'dark', false); };
         if (mq.addEventListener) mq.addEventListener('change', follow);
-    }
-
-    // ── Clock (São Paulo, UTC−3) ──
-    function renderClock() {
-        const el = $('#clock');
-        if (!el) return;
-        try {
-            const now = new Date();
-            el.textContent = new Intl.DateTimeFormat(root.dataset.lang === 'en' ? 'en-GB' : 'pt-BR', {
-                hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo'
-            }).format(now) + ' (UTC−3)';
-            el.setAttribute('datetime', now.toISOString());
-        } catch (e) { /* keep static fallback */ }
     }
 
     // ── Toast + clipboard ──
@@ -349,83 +224,10 @@
     const domain = 'lucafchala.com';
     const email = `${user}@${domain}`;
     $('#email-link').href = `mailto:${email}`;
-    $('#email-send').href = `mailto:${email}`;
     $('#email-text').textContent = email;
     $('#email-copy').addEventListener('click', () => copy(email));
 
     const fingerprint = '48E73F6FA2871E7B86EFEA648EC4329A369B7B33';
-    $('#fp-copy').addEventListener('click', () => copy(fingerprint));
-
-    // ── Live status: dots on the Ecossistema cards + the "Serviços" row of the Agora panel ──
-    // Reads status's /api/resumo: ~1 KB, CORS-open, cached 60 s, and it only
-    // reads the D1 snapshot (never sweeps). It used to read /api/painel, which
-    // has no CORS header and weighs ~90 KB, so the browser dropped it and no dot
-    // ever showed (status#52). Dots only appear with the shared snapshot
-    // (retratoCompartilhado):
-    // without it the panel has no status, and /api/status would sweep every
-    // subdomain per visitor. Any failure leaves the cards as they are.
-    let live = null;
-    let liveSummary = null;
-    // The Agora panel shows one line for the whole ecosystem: the worst status
-    // and status's own 24 h uptime. Without a reading it keeps the plain link
-    // (unknown is not up), and uptime only shows when it's a number.
-    function renderNow() {
-        const a = $('#now-status');
-        if (!a || !liveSummary) return;
-        a.dataset.status = liveSummary.worst;
-        a.querySelector('.live-dot').hidden = false;
-        let txt = t('now_' + liveSummary.worst);
-        if (typeof liveSummary.h24 === 'number') {
-            const pct = new Intl.NumberFormat(root.dataset.lang === 'en' ? 'en-US' : 'pt-BR', { maximumFractionDigits: 1 }).format(liveSummary.h24);
-            txt += ' · ' + pct + '%\u00a0' + t('now_24h');
-        }
-        $('#now-status-t').textContent = txt;
-    }
-    function renderLive() {
-        renderNow();
-        if (!live) return;
-        document.querySelectorAll('.eco a[href]').forEach(a => {
-            let host;
-            try { host = new URL(a.href).host; } catch (e) { return; }
-            const st = live[host];
-            let dot = a.querySelector('.live');
-            if (!st) { if (dot) dot.remove(); return; }
-            if (!dot) {
-                dot = document.createElement('span');
-                dot.className = 'live';
-                dot.innerHTML = '<span class="live-dot" aria-hidden="true"></span><span class="sr-only"></span>';
-                a.appendChild(dot);
-            }
-            dot.dataset.status = st;
-            dot.title = t('live_title') + ': ' + t('live_' + st);
-            dot.querySelector('.sr-only').textContent = ': ' + t('live_' + st);
-        });
-    }
-    function loadLive() {
-        if (!window.fetch) return;
-        fetch('https://status.lucafchala.com/api/resumo', { credentials: 'omit' })
-            .then(r => (r.ok ? r.json() : null))
-            .then(p => {
-                // A stale snapshot (atrasado: older than status's 20 min TTL, e.g. the
-                // scheduler stopped) says nothing about now: no dots beats green ones.
-                const svcs = p && p.retratoCompartilhado === true && p.atrasado !== true && Array.isArray(p.services) ? p.services : null;
-                if (!svcs) return;
-                const map = {};
-                const rank = { up: 0, degraded: 1, down: 2 };
-                let worst = null;
-                svcs.forEach(s => {
-                    if (s && rank[s.status] !== undefined && (worst === null || rank[s.status] > rank[worst])) worst = s.status;
-                });
-                if (worst) liveSummary = { worst, h24: p.uptime && typeof p.uptime.h24 === 'number' && isFinite(p.uptime.h24) ? p.uptime.h24 : null };
-                svcs.forEach(s => {
-                    if (!s || typeof s.url !== 'string' || !['up', 'degraded', 'down'].includes(s.status)) return;
-                    try { const h = new URL(s.url).host; if (!map[h] || s.url.replace(/\/$/, '') === 'https://' + h) map[h] = s.status; } catch (e) {}
-                });
-                live = map;
-                renderLive();
-            })
-            .catch(() => {});
-    }
 
     // "Galerias recentes" comes from fotos.lucafchala.com/api/recentes, so a new
     // project shows up here without editing this HTML. The list in index.html
@@ -441,8 +243,10 @@
                 const items = (p && Array.isArray(p.galerias) ? p.galerias : []).filter(g =>
                     g && typeof g.slug === 'string' && /^[a-z0-9_-]+$/i.test(g.slug) &&
                     typeof g.titulo === 'string' && g.titulo.trim() &&
-                    (g.data === null || (typeof g.data === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(g.data)))
-                ).slice(0, 5);
+                    (g.data === null || (typeof g.data === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(g.data))) &&
+                    // A homepage visitor should land on photos: "em breve" ones have none yet.
+                    !g.emBreve
+                ).slice(0, 3);
                 if (!items.length) return;
                 // Built from the validated slug, never the response's `url`:
                 // nothing from outside becomes a link target.
@@ -455,40 +259,18 @@
                     a.target = '_blank';
                     a.rel = 'noopener';
                     a.setAttribute('aria-describedby', 'newtab');
-                    const time = document.createElement('time');
-                    time.className = 'fdate';
-                    if (g.data) time.setAttribute('datetime', g.data);
                     const title = document.createElement('span');
                     title.className = 't';
                     title.textContent = g.titulo.trim();
-                    const tail = document.createElement('span');
-                    // fotos marks almost everything recent as `destaque`, so only
-                    // "em breve" earns a tag; the rest get the plain arrow.
-                    if (g.emBreve) {
-                        tail.className = 'tag';
-                        tail.dataset.i18n = 'soon';
-                        tail.textContent = t('soon');
-                    } else {
-                        tail.className = 'arr-ext';
-                        tail.setAttribute('aria-hidden', 'true');
-                        tail.textContent = '↗';
-                    }
-                    a.append(time, title, tail);
+                    const time = document.createElement('time');
+                    time.className = 'fdate';
+                    if (g.data) time.setAttribute('datetime', g.data);
+                    a.append(title, time);
                     li.appendChild(a);
                     frag.appendChild(li);
                 });
                 list.replaceChildren(frag);
 
-                // "Última galeria" in the Agora panel: the newest dated gallery
-                // already open to the public (an "em breve" one has nothing to see yet).
-                const open = items.filter(g => !g.emBreve && g.data).sort((x, y) => (x.data < y.data ? 1 : -1));
-                const latest = open[0];
-                const nowA = $('#now-gallery');
-                if (latest && nowA) {
-                    nowA.href = href(latest);
-                    nowA.querySelector('.t').textContent = latest.titulo.trim();
-                    nowA.querySelector('time').setAttribute('datetime', latest.data);
-                }
                 formatDates(root.dataset.lang || 'pt');
             })
             .catch(() => {});
@@ -498,9 +280,8 @@
     const savedLang = store.get('lang');
     const initialLang = savedLang || ((navigator.language || 'pt').toLowerCase().startsWith('pt') ? 'pt' : 'en');
     setLang(initialLang, false);
-    setInterval(renderClock, 20000);
-    // After first paint: the dots are decoration, never worth delaying the page.
-    const afterLoad = () => { loadLive(); loadGalleries(); };
+    // After first paint: the gallery list is an extra, never worth delaying the page.
+    const afterLoad = () => { loadGalleries(); };
     if (document.readyState === 'complete') afterLoad(); else window.addEventListener('load', afterLoad, { once: true });
 
     // Controls (listeners instead of inline onclick so the CSP can drop 'unsafe-inline')

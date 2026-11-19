@@ -145,26 +145,19 @@ Without a saved choice, the theme follows `prefers-color-scheme` and the languag
 
 ### The landing page (`index.html` + `style.css` + `app.js`)
 
-Phone first (the base CSS is the 360–430 px layout; media queries at 640 / 800 / 960 px only add columns), every section open, no accordion. Order: hero, Projetos, Fotografia, Rádio, Sobre, Contato, Ecossistema, Verificação. Each section has an `id`, so `/#contato` and the other deep links work natively. Checked in both themes at 390 px and 1440 px.
+A homepage, not a dashboard: short, phone first (the base CSS is the 360–430 px layout; 480 / 640 / 800 / 960 px only add columns), every section open, no accordion. Order: hero, Projetos, Fora do código (Fotografia + Rádio), Sobre, Contato. Checked in both themes at 390 px and 1440 px.
 
-- **Sticky top bar:** monogram + the fotos-style wordmark (`luca f. chala`, light, tracked), **search** (command palette), **PT/EN** and **theme** toggles.
-- **Hero:** name, roles (hold `PU2XIK` for the radio sweep), a one-sentence intro, one primary action (contact) and one secondary (fotos).
-  - **"Agora" panel** next to it (below it on phones), the page's one live element: São Paulo time, the latest public gallery from fotos, one line for the whole ecosystem from status (worst status + `uptime.h24`), and the station. Without JS or data it keeps static fallbacks and a plain link to status (unknown is not up).
-- **Projetos:** three cards (photo gallery with privacy / FNUSC case, homelab and monitoring, T-Embed curation), each led by its key figure, then a short description, a stack line and links; plus the sentence about AI use.
-- **Fotografia:** recent galleries from `fotos`, the gear list, the full gear list and Instagram.
-  - **Recent galleries update themselves:** after load, the page reads `fotos.lucafchala.com/api/recentes` (the 5 newest public galleries, pinned first, CORS-open, 5‑min cache) and redraws the list. A new project in fotos shows up here with no edit to this repo.
-    - The list in `index.html` is the fallback for no JS, offline, or fotos down; it's replaced only when the API returns at least one valid item.
-    - Links are rebuilt from the validated slug. Only `em breve` (coming soon) gets a tag: fotos pins almost every recent gallery, so a `destaque` tag said nothing.
-- **Rádio:** QSL‑card station summary and profile / QRZ / portal links.
-- **Sobre:** the bio.
-- **Contato:** email (compose + copy), LinkedIn, GitHub and Instagram up front; WhatsApp, Signal, SimpleX, Spotify and the Pix donation under a collapsed "Outros canais".
-- **Ecossistema:** every subdomain with a one‑line description.
-  - **Live status dot:** a dot on each card, read from `status.lucafchala.com/api/resumo` (a ~1 KB, CORS-open summary that only reads status's D1 snapshot).
-    - It only shows when status serves its shared D1 snapshot (`retratoCompartilhado`) and it isn't stale (`atrasado`), so homepage visitors never trigger a sweep.
-    - With no snapshot, or on any error, there are no dots.
-    - Colours are `--up` / `--degraded` / `--down`, with a ring and screen-reader text so colour isn't the only signal.
-- **Verificação:** PGP fingerprint (copy), keys, proof, keys.openpgp.org.
-- **Footer:** `73 de PU2XIK`, utility links. Shortcuts show on the `?` key.
+- **Sticky top bar:** monogram + the fotos-style wordmark (`luca f. chala`), **search** (command palette), **PT/EN** and **theme** toggles.
+- **Hero:** name, roles (hold `PU2XIK` for the radio sweep), one sentence, one primary action (projects) and one secondary (contact).
+- **Projetos:** three short cards (photo gallery with privacy / FNUSC case, homelab and monitoring, T-Embed curation): title, one sentence, the key figure, links. Then the sentence about AI use.
+- **Fora do código:** two cards side by side on wide screens.
+  - **Fotografia** (`#fotografia`): the 3 newest galleries already open to the public, plus links to all galleries and the gear list. They update themselves: after load the page reads `fotos.lucafchala.com/api/recentes` (CORS-open, 5‑min cache), drops the `em breve` ones and redraws the list. The list in `index.html` is the fallback for no JS, offline, or fotos down; links are rebuilt from the validated slug.
+  - **Rádio** (`#radio`): one sentence, the callsign, profile / QRZ / portal links.
+- **Sobre:** a short bio.
+- **Contato:** the email (copy button), LinkedIn, GitHub, Instagram; WhatsApp, Signal, SimpleX, Spotify and the Pix donation under a collapsed "Outros canais"; one line on PGP-signed messages with a link to the keys.
+- **Footer:** link columns for the ecosystem (fotos, radio, paste, url, status, restricted), verification (keys, proof, keys.openpgp.org, security.txt) and the site (llms.txt, sitemap), then `73 de PU2XIK`. Shortcuts show on the `?` key.
+
+The homepage no longer shows live status (the status dots and the uptime line read like a dashboard). `status.lucafchala.com/api/resumo` stays in use by dash.
 
 Translations live in the `i18n` object in `app.js`. Elements carry `data-i18n` / `data-i18n-aria`, and the PT text in the markup is the no‑JS fallback. The email address is assembled in JS to dodge naive scrapers.
 
@@ -281,7 +274,7 @@ The status service adds state colors (`--up`, `--degraded`, `--down`) for its ba
 ### Shared components
 
 - **Base patterns:** `.controls` / `.controls-inner` / `.ctrl-btn` (top toggle bar: `PT | EN · ◐`), `.rule` (labelled section divider), `.hub` (service card), `.act-btn` (inline copy/open button), `.name` (clamped Cormorant display heading), `.micro` (small uppercase subtitle).
-- **Homepage only:** `.topbar`, `.sec` / `.sec-head` (fotos' small tracked label over a hairline), `.card` / `.card-h`, `.now` (the Agora panel), `.proj` / `.pj-fig`, `.recent`, `.linklist`, `.channels`, `.eco`, `.btn-primary` / `.btn-quiet` / `.mini-btn`, `.qsl` and `.palette`.
+- **Homepage only:** `.topbar`, `.sec` / `.sec-head` (fotos' small tracked label over a hairline), `.card` / `.card-t` / `.card-d` / `.card-links`, `.proj` / `.pj-fig`, `.recent`, `.channels`, `.foot-cols`, `.btn-primary` / `.btn-quiet` / `.mini-btn` and `.palette`.
 
 ---
 
