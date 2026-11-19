@@ -145,19 +145,16 @@ Without a saved choice, the theme follows `prefers-color-scheme` and the languag
 
 ### The landing page (`index.html` + `style.css` + `app.js`)
 
-A homepage, not a dashboard: short, phone first (the base CSS is the 360–430 px layout; 480 / 640 / 800 / 960 px only add columns), every section open, no accordion. Order: hero, Projetos, Fora do código (Fotografia + Rádio), Sobre, Contato. Checked in both themes at 390 px and 1440 px.
+The omg.lol-era link board, brought back and modernized (owner's call, after a fotos-style pass was rejected as too generic). It speaks to recruiters first and is the hub of the `*.lucafchala.com` system. Phone first (360–430 px base; 640 / 720 px only add columns), every section open, no accordion. Checked in both themes at 390 px and 1440 px.
 
-- **Sticky top bar:** monogram + the fotos-style wordmark (`luca f. chala`), **search** (command palette), **PT/EN** and **theme** toggles.
-- **Hero:** name, roles (hold `PU2XIK` for the radio sweep), one sentence, one primary action (projects) and one secondary (contact).
-- **Projetos:** three short cards (photo gallery with privacy / FNUSC case, homelab and monitoring, T-Embed curation): title, one sentence, the key figure, links. Then the sentence about AI use.
-- **Fora do código:** two cards side by side on wide screens.
-  - **Fotografia** (`#fotografia`): the 3 newest galleries already open to the public, plus links to all galleries and the gear list. They update themselves: after load the page reads `fotos.lucafchala.com/api/recentes` (CORS-open, 5‑min cache), drops the `em breve` ones and redraws the list. The list in `index.html` is the fallback for no JS, offline, or fotos down; links are rebuilt from the validated slug.
-  - **Rádio** (`#radio`): one sentence, the callsign, profile / QRZ / portal links.
-- **Sobre:** a short bio.
-- **Contato:** the email (copy button), LinkedIn, GitHub, Instagram; WhatsApp, Signal, SimpleX, Spotify and the Pix donation under a collapsed "Outros canais"; one line on PGP-signed messages with a link to the keys.
-- **Footer:** link columns for the ecosystem (fotos, radio, paste, url, status, restricted), verification (keys, proof, keys.openpgp.org, security.txt) and the site (llms.txt, sitemap), then `73 de PU2XIK`. Shortcuts show on the `?` key.
+- **Top row:** `lucafchala.com`, then one bordered control strip: **search** (command palette), **PT/EN**, **theme**.
+- **Intro:** the Cormorant name (`Luca F.` / `Chala`), a mono tagline (hold `PU2XIK` for the radio sweep), the `CQ DE PU2XIK` rule, the serif bio with an amber drop cap, one mono line about the 2025 internship, and the email with a copy button (assembled in JS).
+- **Projetos:** an editorial list, not cards: the key figure (a left margin column from 720 px), a serif title, one mono sentence, links. Then the sentence about AI use.
+- **Link board** (`#links`): Fotografia, Rádio, Contato, Mais, then **Galerias recentes** across the full width: the 3 newest galleries already open to the public. They update themselves: after load the page reads `fotos.lucafchala.com/api/recentes` (CORS-open, 5‑min cache), drops `em breve` ones and redraws; the list in `index.html` is the no‑JS/offline fallback; links are rebuilt from the validated slug.
+- **Ecossistema:** a tile per subdomain (fotos, radio, paste, url, status, keys, proof, restricted) with a few words each.
+- **Footer:** the PGP-signing note, proof / keys / keys.openpgp.org / security.txt / llms.txt / sitemap, `73 de PU2XIK`, credit. Shortcuts show on the `?` key.
 
-The homepage no longer shows live status (the status dots and the uptime line read like a dashboard). `status.lucafchala.com/api/resumo` stays in use by dash.
+No live status on the homepage (an earlier pass with status dots and uptime read like a dashboard). `status.lucafchala.com/api/resumo` stays in use by dash.
 
 Translations live in the `i18n` object in `app.js`. Elements carry `data-i18n` / `data-i18n-aria`, and the PT text in the markup is the no‑JS fallback. The email address is assembled in JS to dodge naive scrapers.
 
@@ -216,16 +213,16 @@ All behaviour is in `404.js`, loaded from `'self'`, so the page needs nothing sp
 
 ## Design system
 
-The **canonical reference** for the shared visual language (the homepage now follows the fotos look, see Fonts; the tables below describe the older palette that dash, url, paste, keys, proof, pays and status still use) used by `lucafchala.com`, `dash`, `url`, `paste`, `keys`, `proof`, `pays` and `status` (and the `pu2xik` profile in `portal_radio`).
+The **canonical reference** for the shared visual language used by `lucafchala.com`, `dash`, `url`, `paste`, `keys`, `proof`, `pays` and `status` (and the `pu2xik` profile in `portal_radio`).
 
 > `fotos`, `restricted`, `spectral-drift`, and the `portal_radio` landing and other callsign profiles have their **own** palettes and fonts, documented in their READMEs.
 
 ### Fonts
 
-- **Homepage (since the 2026-10 redesign):** **Inter** only (variable, latin, `fonts/inter-latin-wght-normal.woff2`), the same face and look as fotos.lucafchala.com: near-black surfaces (`#0a0a0a` / cards `#111`), warm gold accent `#c0a060` (`#8a6428` on the light theme), 10 px cards, hairline borders.
-- **Other sibling sites** still use the older pair below until they are migrated:
-  - **Cormorant Garamond** (serif): display — names, titles, large headings.
-  - **JetBrains Mono** (monospace): everything else.
+- **Cormorant Garamond** (serif): display — names, titles, large headings, the homepage bio.
+- **JetBrains Mono** (monospace): everything else.
+
+The homepage went back to this pair on 2026-11-19 (it used Inter, in the fotos look, from 2026-10). `fonts/inter-latin-wght-normal.woff2` stays only for the notice pages.
 
 **Every site self‑hosts them.** Copy `fonts/` (latin subset, variable weight, OFL licences included) and use:
 
@@ -259,8 +256,8 @@ The status service adds state colors (`--up`, `--degraded`, `--down`) for its ba
 
 - **Canvas:** `font-size: 14px; line-height: 1.75`, content `max-width: 680–760px`, centered, `padding: 48px 32px 72px` (mobile `28px 18px 52px`). **Mobile‑first**: the Samsung S26 Ultra is the primary device.
 - **Theme before first paint:** a synchronous `/theme.js` in `<head>` reads the `lf_theme` cookie, then `localStorage`, then `prefers-color-scheme`. Mark every `<script>` `data-cfasync="false"` so Cloudflare Rocket Loader doesn't defer it.
-- **Grain overlay:** a fixed, pointer‑events‑none SVG `feTurbulence` layer at `opacity: 0.28`.
-- **Entrance animation:** `rise` — `opacity: 0; translateY(18px)` → settled — at `0.9s cubic-bezier(0.16,1,0.3,1)`, staggered.
+- **Grain overlay:** older sibling pages carry a fixed SVG `feTurbulence` layer at `opacity: 0.28`; the homepage dropped it.
+- **Entrance animation:** `rise` — `opacity: 0; translateY(18px)` → settled — at `0.9s cubic-bezier(0.16,1,0.3,1)`, staggered. The homepage uses one short rise (12 px, 0.8 s) for header, content and footer.
 - **Accessibility baseline** on every site:
   - `:focus-visible` outline in `--accent`;
   - `prefers-reduced-motion` disables animations;
@@ -274,7 +271,7 @@ The status service adds state colors (`--up`, `--degraded`, `--down`) for its ba
 ### Shared components
 
 - **Base patterns:** `.controls` / `.controls-inner` / `.ctrl-btn` (top toggle bar: `PT | EN · ◐`), `.rule` (labelled section divider), `.hub` (service card), `.act-btn` (inline copy/open button), `.name` (clamped Cormorant display heading), `.micro` (small uppercase subtitle).
-- **Homepage only:** `.topbar`, `.sec` / `.sec-head` (fotos' small tracked label over a hairline), `.card` / `.card-t` / `.card-d` / `.card-links`, `.proj` / `.pj-fig`, `.recent`, `.channels`, `.foot-cols`, `.btn-primary` / `.btn-quiet` / `.mini-btn` and `.palette`.
+- **Homepage only:** `.top` / `.controls`, `.tagline`, `.bio-wrap` (drop cap), `.reach` / `.copy`, `.label` (left-aligned rule), `.project` / `.pj-fig`, `.board` / `.group` / `.cta-link` (the link board), `.recent`, `.services` (ecosystem tiles), `.foot` and `.palette`.
 
 ---
 
